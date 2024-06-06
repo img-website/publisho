@@ -1,13 +1,13 @@
 import './App.css'
-import { Button } from '@nextui-org/react';
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-     <Button size='lg' variant='bordered' color='primary'>
-      click here 
-     </Button>
+    <div>
+      <Home/>
+    </div>
     </>
   )
 }
