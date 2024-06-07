@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body{
+    font-family: 'Harabara';
+  }
+
+@font-face {
+    font-family: 'Harabara';
+    src: url('./assets/fonts/harabhara/Harabara.woff2') format('woff2'),
+        url('./assets/fonts/harabhara/Harabara.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Painting With Chocolate';
+    src: url('./assets/fonts/PaintingWithChocolate/PaintingWithChocolate.woff2') format('woff2'),
+        url('./assets/fonts/PaintingWithChocolate/PaintingWithChocolate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
