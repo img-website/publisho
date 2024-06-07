@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import { SearchIcon } from "../component/Icons";
 
@@ -132,10 +131,10 @@ function Home() {
     <div class="relative">
         <div class="px-5 mx-auto max-w-7xl">
             <div class="w-full lg:w-2/3 xl:w-1/2">
-                <h1 class="font-sans text-base font-normal tracking-tight text-white text-opacity-70">Master the basics of baking</h1>
+                <h1 class="text-base font-normal tracking-tight text-white text-opacity-70">Master the basics of baking</h1>
                 <p class="mt-6 tracking-tighter text-white">
-                    <span class="font-sans font-normal italic text-7xl">Unlock the World of </span><br />
-                    <span class="font-serif italic font-normal text-8xl">blogera</span>
+                    <span class=" font-normal [font-family:'Painting_With_Chocolate'] text-7xl">Unlock the World of </span><br />
+                    <span class="[font-family:'Painting_With_Chocolate'] font-normal text-8xl">blogera</span>
                 </p>
                 <p class="mt-12 font-sans text-base font-normal leading-7 text-white text-opacity-70">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu penatibus pellentesque dolor consequat ligula egestas massa gravida. Porttitor venenatis enim praesent.</p>
 
@@ -212,20 +211,3 @@ function Home() {
 
 
 export default Home
-=======
-import React from 'react'
-import QillForm from '../components/QillForm'
-
-function Home() {
-  return (
-    <div>
-        <div>
-            Home
-        </div >
-            <QillForm/>
-    </div>
-  )
-}
-
-export default Home
->>>>>>> origin/ratan
