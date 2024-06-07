@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Painting With Chocolate';
+    src: url('PaintingWithChocolate.woff2') format('woff2'),
+        url('PaintingWithChocolate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
