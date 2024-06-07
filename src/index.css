@@ -4,9 +4,10 @@
 
 
 body{
-    font-family: 'Harabara';
+    background: #f9fafb;
+    /* font-family: 'Harabara'; */
   }
-
+/* 
 @font-face {
     font-family: 'Harabara';
     src: url('./assets/fonts/harabhara/Harabara.woff2') format('woff2'),
@@ -14,7 +15,7 @@ body{
     font-weight: bold;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 @font-face {
     font-family: 'Painting With Chocolate';
