@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
@@ -211,3 +212,20 @@ function Home() {
 
 
 export default Home
+=======
+import React from 'react'
+import QillForm from '../components/QillForm'
+
+function Home() {
+  return (
+    <div>
+        <div>
+            Home
+        </div >
+            <QillForm/>
+    </div>
+  )
+}
+
+export default Home
+>>>>>>> origin/ratan
