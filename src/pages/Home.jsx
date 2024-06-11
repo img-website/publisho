@@ -1,31 +1,45 @@
-import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
+import React, { useState } from "react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import { SearchIcon } from "../component/Icons";
 
 function Home() {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuItems = [
+    "home",
+    "About us",
+    "Category",
+    "Sign In",
+    "Sign UP",
+    "log Out",
+    
+  ];
   return (
     <>
-         <Navbar maxWidth="xl" className="mx-auto w-full bg-indigo-50 shadow-xl">
+         <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="xl" className="mx-auto w-full bg-indigo-50 shadow-xl">
       <NavbarBrand>
         {/* <AcmeLogo /> */}
         <p className="font-bold text-inherit">BLOGERA</p>
       </NavbarBrand>
+      
       <NavbarContent className="hidden sm:flex gap-4 " justify="center">
+     
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            Home
           </Link>
         </NavbarItem>
+        
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
-            Customers
+            About us
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            Category
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -57,10 +71,13 @@ function Home() {
         startContent={
           <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
         }
+        
       />
+      
         </NavbarItem>
+        
       <NavbarContent justify="end">
-    
+  
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem>
@@ -83,7 +100,7 @@ function Home() {
           </Button>
         </NavbarItem>
         <NavbarItem>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center">
       <Dropdown placement="bottom-end">
         <DropdownTrigger>
           <Avatar
@@ -117,9 +134,31 @@ function Home() {
       </Dropdown> 
     </div>
         </NavbarItem>
+        <NavbarItem>
+    <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden ms-4"
+        />
+    </NavbarItem>
       </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              color={
+                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+              }
+              className="w-full"
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </Navbar>
-    <div className="relative pb-12 bg-black xl:pt-24 sm:pb-16 lg:pb-32 xl:pb-48 2xl:pb-56">
+    <div className="relative pb-12 bg-black xl:py-40 py-12 sm:py-20 md:py-28 ">
     
 
     <div className="absolute inset-0">
@@ -204,100 +243,39 @@ function Home() {
         </div>
     </div>
 </div>
-<div className="relative bg-slate-50 py-6 md:py-8 lg:py-16 select-none ">
-    <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full">
-        <div className="absolute inset-0 size-full pointer-events-none overflow-hidden">
-            <div className="absolute inset-y-0 hidden w-full min-w-[1360px] bg-[url('../img/beams1.webp')] bg-[length:2000px_100%] bg-[position:calc(50%_+_220px)_-50px] bg-no-repeat lg:block pointer-events-none"></div>
-        </div>
-        <div className="
-                mx-auto max-w-container gap-7 flex max-lg:flex-col group-[]/flip:flex-row-reverse group-[]/flip:max-lg:flex-col max-lg:gap-4 
 
-                [&amp;>*:first-child]:[&amp;:has(.content1-img)]:lg:block 
-                [&amp;:first-child]:hidden [&amp;>*:last-child]:[&amp;:has(.content1-img)]:max-w-3xl 
-                [&amp;>*:last-child]:[&amp;:has(.content1-img)]:lg:w-3xl
-            ">
-            <div className="relative z-10 pointer-events-none h-auto lg:sticky lg:top-24 self-start mx-auto">
-                <div className="flex [transform:rotateY(180deg)] group-[]/flip:[transform:rotateY(0deg)]">
-                    <div className="relative flex-shrink-0 p-4 w-full">
-                        <div className="relative z-10 overflow-hidden *:rounded-xl [transform:rotateY(180deg)] group-[]/flip:[transform:rotateY(0deg)] [&amp;~*]:[&amp;:has(.mask)]:lg:hidden">
-                                        <img className="object-cover w-full h-auto content1-img" width="384" height="384" src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?fit=crop&amp;crop=focalpoint&amp;w=750&amp;h=750&amp;q=60&amp;fm=webp" srcset="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?fit=crop&amp;crop=focalpoint&amp;w=384&amp;h=384&amp;q=60&amp;fm=webp 1x, https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?fit=crop&amp;crop=focalpoint&amp;w=750&amp;h=750&amp;q=60&amp;fm=webp 2x" data-src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?fit=crop&amp;crop=focalpoint&amp;w=750&amp;h=750&amp;q=60&amp;fm=webp" alt="image3" />
-                                    
-                            
-                        </div>
-                        <div className="z-0">
-                            <div className="absolute -right-12 left-0 top-0 h-px bg-slate-900/[0.1] [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                            <div className="absolute -top-8 bottom-0 left-12 w-px bg-slate-900/[0.1] [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                            <div className="absolute -right-12 bottom-14 left-0 h-px bg-slate-900/[0.1] [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                            <div className="absolute -bottom-8 -top-2 right-0 w-px bg-slate-900/[0.1] [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                            <div className="absolute bottom-full right-10 -mb-px flex h-8 items-end overflow-hidden">
-                                <div className="flex -mb-px h-[2px] w-80 -scale-x-100">
-                                    <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#0EA5E9_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                                    <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#0EA5E9_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="relative z-20 mx-auto lg:mx-0 lg:pr-4 md:py-6 md:md:py-8 h-auto md:sticky md:top-24 self-start shrink-1 grow-0 basis-auto w-full">
-                <p className="
-                    max-md:text-2xl/tight max-xl:text-3xl/tight text-4xl/tight tracking-[-0.04em] text-black text-balance
-
-                    first:*:font-normal
-
-                    last:*:fontsemi last:*:text-theme4
-                ">
-                                <p className=" font-normal [font-family:'Painting_With_Chocolate'] text-5xl">
-                                  Why Blogera </p>
-                            
-                </p>
-                            <p className="mt-4 text-sm md:text-base leading-7 text-slate-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi corrupti voluptatem necessitatibus omnis, voluptas veritatis? Quasi delectus ea eum? Quidem inventore quaerat temporibus id esse voluptatum neque nemo doloremque? Illum, odit debitis. Minus blanditiis neque molestiae porro, quas nostrum?.</p>
-            <p className="mt-4 text-sm md:text-base leading-7 text-slate-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, vero in a odit perferendis molestias alias. Eaque doloremque, quasi, maiores error illum vero consequatur tempore quam labore modi saepe dignissimos tenetur quos quia laboriosam? Praesentium at, saepe repudiandae, ullam quo commodi est illo molestiae iste mollitia, voluptate neque rerum?</p>
-            <a
-                        href="#"
-                        title=""
-                        className="
-                            inline-flex
-                            items-center
-                            justify-center
-                            px-5
-                            py-2
-                            font-sans
-                            text-base
-                            font-semibold
-                            transition-all
-                            duration-200
-                            bg-transparent
-                            border-2
-                            rounded-xl
-                            sm:leading-8
-                            text-primary
-                            border-primary
-                            hover:bg-white
-                           hover:border-black
-                           mt-5
-
-                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
-                            hover:text-black
-                            sm:text-lg
-                            
-                            focus:ring-offset-secondary
-                        "
-                        role="button"
-                    >
-                       <svg className="w-6 h-6 mr-2" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57a.84.84 0 0 0-.31-.05c-.26 0-.51.1-.71.29l-2.2 2.2a15.149 15.149 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1z"></path></svg>
-                       Join us
-                    </a>
-            </div>
-        </div>
-        <div className="pointer-events-none absolute inset-0 shadow-[inset_0_-1px_1px_rgba(0,0,0,0.06)]"></div>
-    </div>
+<div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
+<div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
+<div className="lg:max-w-[570px] w-full">
+<img src="https://clarity-tailwind.preview.uideck.com/images/about.png" alt="about" className="w-full" />
 </div>
+<div className="lg:max-w-[490px] w-full">
+<span className="inline-flex text-primary font-medium md:text-6xl text-3xl mt-3  [font-family:'Painting_With_Chocolate'] mb-1 sm:mb-3">Who we are</span>
+<h1 className="font-bold text-heading-6 sm:text-heading-4 lg:text-heading-3 text-dark mb-5">
+We provide high quality Articles &amp; blogs
+</h1>
+<p>
+Sed ullamcorper dui at risus viverra, nec cursus leo
+ullamcorper. Class aptent taciti sociosqu ad litora torquent per
+conubia nostra, per inceptos himenaeos congue dui nec dui
+lobortis maximus.
+</p>
+<p className="mt-4.5">
+Curabitur pretium, libero vitae pharetra rhoncus, tellus urna
+auctor orci, eu dictum diam diam nec neque. Pellentesque.
+</p>
+</div>
+</div>
+</div>
+{/* blog-card */}
+
+
 <div>
 
 </div>
+{/* blog-card */}
 <div className="flex flex-wrap items-center justify-between gap-8 mb-6 max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
-<h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-5xl text-dark">Top Blogs</h2>
+<h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-3xl md:text-5xl text-dark">Top Blogs</h2>
 <a href="#" className="group text-dark leading-none">
 <span className="flex items-center gap-2 bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
 All Blogs
@@ -410,18 +388,20 @@ typesetting industry...
 </div>
 
 </div>
+{/* blog ui */}
+
 <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full relative z-1">
 <div className="flex flex-wrap justify-between">
 
-<div className="max-w-7xl overflow-hidden bg-white shadow-2xl p-2 rounded-xl w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 my-10">
+<div className="max-w-7xl px-6 lg:px-8 mt-10 mx-auto border-b py-5 overflow-hidden bg-white shadow-2xl p-2 rounded-xl w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 my-10">
 <div className="lg:max-w-[536px] w-full">
 <a href="blog-single.html">
 <img className="w-full shadow-2xl rounded-xl" src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fHByb3BlcnR5fGVufDB8fDB8fHww" alt="hero" />
 </a>
 </div>
-<div className="lg:max-w-[540px] w-full">
+<div className="lg:max-w-[540px] w-full mt-4 lg:mt-0">
 <a href="category.html" className="inline-flex text-purple-dark bg-purple-200/60 font-medium text-sm py-1 px-3 rounded-full mb-4">Lifestyle</a>
-<h1 className="font-bold text-custom-4 xl:text-heading-4 text-dark mb-4">
+<h1 className="font-bold text-custom-4 xl:text-heading-4 text-dark mb-4 ">
 <a href="blog-single.html">
 Begin here to obtain a brief summary encompassing all the
 essential
@@ -444,13 +424,14 @@ familiarize yourself with Ghost. Packed with crucial...
 </div>
 </div>
 
-<div className="lg:max-w-[570px] w-full flex bg-white mx-2 rounded-xl shadow-2xl p-2 flex-col sm:flex-row sm:items-center gap-6 shadow-1">
-<div className="lg:max-w-[238px] w-full">
+<div className="grid lg:grid-cols-2 gap-4 ">
+<div className=" flex bg-white rounded-xl shadow-2xl p-2 flex-col sm:flex-row sm:items-center gap-6 shadow-1">
+<div className="w-full">
 <a href="blog-single.html">
 <img className="w-full rounded-2xl" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D" alt="hero" />
 </a>
 </div>
-<div className="lg:max-w-[272px] w-full">
+<div className=" w-full">
 <a href="category.html" className="inline-flex text-blue bg-blue-400/50 font-medium text-sm py-1 px-3 rounded-full mb-4">Technology</a>
 <h2 className="font-semibold text-custom-lg text-dark mb-3">
 <a href="blog-single.html">
@@ -468,18 +449,18 @@ Interior Space
 </div>
 </div>
 
-<div className="lg:max-w-[570px] w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-2xl rounded-xl p-2.5">
-<div className="lg:max-w-[238px] w-full">
+<div className=" flex bg-white rounded-xl shadow-2xl p-2 flex-col sm:flex-row sm:items-center gap-6 shadow-1">
+<div className="w-full">
 <a href="blog-single.html">
-<img className="w-full rounded-xl" src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D" alt="hero"/>
+<img className="w-full rounded-2xl" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D" alt="hero" />
 </a>
 </div>
-<div className="lg:max-w-[272px] w-full">
-<a href="category.html" className="inline-flex text-green-dark bg-green-400/50 font-medium text-sm py-1 px-3 rounded-full mb-4">Travel</a>
+<div className=" w-full">
+<a href="category.html" className="inline-flex text-blue bg-blue-400/50 font-medium text-sm py-1 px-3 rounded-full mb-4">Technology</a>
 <h2 className="font-semibold text-custom-lg text-dark mb-3">
 <a href="blog-single.html">
-Traveller Visiting Ice Cave With Amazing Eye-catching view
-with nature
+14 Innovative Architectural Designs to Create a Vast
+Interior Space
 </a>
 </h2>
 <div className="flex items-center gap-2.5">
@@ -493,12 +474,16 @@ with nature
 </div>
 </div>
 </div>
+</div>
+{/* blog-ui end */}
+{/* top author */}
+
 <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto">
-<div className="flex flex-wrap items-center justify-between gap-8 mb-6 max-w-7xl px-6 lg:px-8 w-full mt-3 mx-auto border-b py-5">
-<h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-5xl text-dark">Top Authors</h2>
+<div className="flex flex-wrap items-center justify-between gap-8 mb-6  w-full mt-10 mx-auto border-b py-5">
+<h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-3xl md:text-5xl text-dark">Top Authers</h2>
 <a href="#" className="group text-dark leading-none">
 <span className="flex items-center gap-2 bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
-All Authors
+All Author
 <svg className="fill-current group-hover:rotate-45 transition-all" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_675_6418)">
 <path d="M13.7734 3.59902L5.48035 3.53935C5.12237 3.53935 4.84395 3.81778 4.84395 4.17575C4.84395 4.53372 5.12237 4.81215 5.48035 4.81215L12.2222 4.87181L3.77003 13.3239C3.53138 13.5626 3.53138 13.9603 3.77003 14.199C4.00868 14.4376 4.42632 14.4575 4.66496 14.2189L13.1569 5.72696L13.2165 12.5483C13.2165 12.9063 13.495 13.1847 13.8529 13.1847C14.012 13.1847 14.1711 13.1052 14.2905 12.9859C14.4098 12.8665 14.4893 12.7074 14.4694 12.5284L14.4098 4.23541C14.4098 3.87744 14.1314 3.59902 13.7734 3.59902Z" fill=""></path>
@@ -586,6 +571,8 @@ Talan Philips
 </div>
 </div>
 </div>
+{/* top auther end */}
+{/* newsletter */}
 <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mb-3 mx-auto">
 <div className="bg-white shadow-2xl rounded-[10px] py-9 px-4 sm:px-8 xl:px-10">
 <div className="flex flex-wrap items-center justify-between gap-10">
@@ -613,6 +600,8 @@ Subscribe
 </div>
 </div>
 </div>
+{/* newsletter end */}
+{/* footer start */}
 <footer className="relative z-10 py-8 border-t border-gray-3">
 <div className="max-w-7xl mx-auto px-4 sm:px-8 xl:px-6">
 <div className="flex flex-wrap items-center justify-center flex-col gap-4 lg:gap-0 lg:flex-row lg:justify-between">
@@ -691,6 +680,7 @@ Subscribe
 </div>
 </div>
 </footer>
+{/* fotter end */}
     </>
   )
 }
