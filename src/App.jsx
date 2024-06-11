@@ -1,13 +1,11 @@
 import './App.css'
-import Home from './pages/Home'
+import RouteComp from './routes/Route'
 
 function App() {
 
   return (
     <>
-    <div>
-      <Home/>
-    </div>
+      <RouteComp/>
     </>
   )
 }
