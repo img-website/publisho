@@ -4,7 +4,6 @@ import App from "./App.jsx";
 import "./index.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { FirebaseProvider } from "./context/Firebase.jsx";
-import Detail from "./pages/Detail.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
