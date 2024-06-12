@@ -4,7 +4,9 @@ import Home from '../pages/Home'
 import Detail from '../pages/Detail'
 import Contact from '../pages/Contact'
 import Category from '../pages/Category'
-import Author from '../pages/Author'
+import About  from '../pages/About'
+import Signin from '../pages/Signin'
+
 
 const RouteComp = () => {
   return (
@@ -14,7 +16,8 @@ const RouteComp = () => {
       <Route path='/detail' element={<Detail/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/category' element={<Category/>} />
-      <Route path='/author' element={<Author/>} />
+      <Route path='/about' element={<About/>} />
+      <Route path='/signin' element={<Signin/>} />
     </Routes>
     </>
   )

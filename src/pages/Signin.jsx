@@ -1,19 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-
-
-export default function Contact() {
+export default function Signin() {
   return (
     <>
-    
-    <section  className="pt-34 lg:pt-39 pb-15 lg:pb-20 bg-gray my-5">
+      <section  className="pt-34 lg:pt-39 pb-15 lg:pb-20 bg-gray my-5">
 <div  className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
 <div  className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
 <div  className="text-center mb-9">
 <h1  className="font-bold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
-Sign up
+Sign in
 </h1>
-<p  className="text-body">Create your account</p>
+<p  className="text-body">Sign in your account</p>
 </div>
 <button  className="w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
 <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,39 +26,39 @@ Sign up
 </clipPath>
 </defs>
 </svg>
-Sign up with Google
+Sign in with Google
 </button>
 <button  className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.9997 1.83331C5.93773 1.83331 1.83301 6.04119 1.83301 11.232C1.83301 15.3847 4.45954 18.9077 8.10178 20.1505C8.55988 20.2375 8.72811 19.9466 8.72811 19.6983C8.72811 19.4743 8.71956 18.7338 8.71567 17.9485C6.16541 18.517 5.6273 16.8395 5.6273 16.8395C5.21032 15.7532 4.60951 15.4644 4.60951 15.4644C3.77785 14.8811 4.6722 14.893 4.6722 14.893C5.59272 14.9593 6.07742 15.8615 6.07742 15.8615C6.89499 17.2984 8.22184 16.883 8.74493 16.6429C8.82718 16.0353 9.06478 15.6208 9.32694 15.3861C7.2909 15.1484 5.15051 14.3425 5.15051 10.7412C5.15051 9.71509 5.5086 8.87661 6.09503 8.21844C5.99984 7.98167 5.68611 7.02577 6.18382 5.73115C6.18382 5.73115 6.95358 5.47855 8.70532 6.69458C9.43648 6.48627 10.2207 6.3819 10.9997 6.37836C11.7787 6.3819 12.5635 6.48627 13.2961 6.69458C15.0457 5.47855 15.8145 5.73115 15.8145 5.73115C16.3134 7.02577 15.9995 7.98167 15.9043 8.21844C16.4921 8.87661 16.8477 9.715 16.8477 10.7412C16.8477 14.351 14.7033 15.146 12.662 15.3786C12.9909 15.6702 13.2838 16.2423 13.2838 17.1191C13.2838 18.3766 13.2732 19.3888 13.2732 19.6983C13.2732 19.9485 13.4382 20.2415 13.9028 20.1492C17.5431 18.905 20.1663 15.3833 20.1663 11.232C20.1663 6.04119 16.0621 1.83331 10.9997 1.83331Z" fill="#15171A"></path>
 </svg>
-Sign up with Github
+Sign in with Github
 </button>
-<span  className="relative block  mx-auto text-custom-sm text-center mt-9">
+<span  className="relative block text-custom-sm text-center mt-9">
 <span  className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
 <span  className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
-<div className='bg-white px-3 w-max m-auto relative'>Or sign up with email</div>
+<div className='w-max mx-auto px-3 bg-white relative z-50'>Or sign in with email</div>
 </span>
 <div  className="mt-6">
 <form>
 <div  className="mb-4">
-<label for="name"  className="block font-medium text-dark text-custom-sm mb-3">Name</label>
-<input type="name" placeholder="Enter your name"  className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
-</div>
-<div  className="mb-4">
 <label for="email"  className="block font-medium text-dark text-custom-sm mb-3">Email</label>
 <input type="email" placeholder="Enter your email"  className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
 </div>
-<div  className="mb-6">
+<div  className="mb-2">
 <label for="password"  className="block font-medium text-dark text-custom-sm mb-3">Password</label>
 <input type="password" placeholder="Confirm password"  className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
 </div>
-<button type="submit"  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200">
-Sign up
+<div className='mb-6 text-right w-full'>
+<a href="#" className="text-black/80 yexy-base font-medium">Forgot Password?</a>
+
+</div>
+<button type="submit" className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200">
+Sign in
 </button>
 <p  className="text-center mt-5">
-Already a member?
-<a href="signin.html"  className="text-dark">Sign in</a>
+Don't have an account? 
+<a href="Contact"  className="text-dark">Sign Up for Free</a>
 </p>
 </form>
 </div>
