@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import Loading from "../Loading";
+import { useAuthentication } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
-export default function Signin() {
+function Login() {
+  const allAuth = useAuthentication();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const HandleSignInUserWithEmailAndPassword = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await allAuth.signInUserWithEmailAndPassword(email, password);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  console.log(allAuth, "login");
   return (
-    <>
+    <div>
+      {/* {loading && <Loading />} */}
       <section className="pt-34 lg:pt-39 pb-15 lg:pb-20 bg-gray my-5">
         <div className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
           <div className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
@@ -51,7 +72,7 @@ export default function Signin() {
               </svg>
               Sign in with Google
             </button>
-            <button className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
+            {/* <button className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
               <svg
                 width="22"
                 height="22"
@@ -65,7 +86,7 @@ export default function Signin() {
                 ></path>
               </svg>
               Sign in with Github
-            </button>
+            </button> */}
             <span className="relative block text-custom-sm text-center mt-9">
               <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
               <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
@@ -74,35 +95,43 @@ export default function Signin() {
               </div>
             </span>
             <div className="mt-6">
-              <form>
+              <form onSubmit={HandleSignInUserWithEmailAndPassword}>
                 <div className="mb-4">
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block font-medium text-dark text-custom-sm mb-3"
                   >
                     Email
                   </label>
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     type="email"
+                    required
                     placeholder="Enter your email"
                     className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
                   />
                 </div>
                 <div className="mb-2">
-                  <label
-                    for="password"
-                    className="block font-medium text-dark text-custom-sm mb-3"
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="Confirm password"
-                    className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                  />
-                </div>
+                    <label
+                        htmlFor="password"
+                        className="block font-medium text-dark text-custom-sm mb-3"
+                    >
+                        Password
+                    </label>
+                    <input
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        required
+                        type="password"
+                        placeholder="Enter your password"
+                        className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
+                        autocomplete="current-password" 
+                    />
+                    </div>
+
                 <div className="mb-6 text-right w-full">
-                  <a href="#" className="text-black/80 yexy-base font-medium">
+                  <a href="/forget-Password" className="text-black/80 yexy-base font-medium">
                     Forgot Password?
                   </a>
                 </div>
@@ -110,19 +139,21 @@ export default function Signin() {
                   type="submit"
                   className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
                 >
-                  Sign in
+                  {loading?<Loading color="secondary"  size="sm" area-label="Loading..." />:"Sign in" } 
                 </button>
                 <p className="text-center mt-5">
                   Don't have an account?
-                  <a href="Contact" className="text-dark">
+                  <Link to="/signUp" className="text-dark">
                     Sign Up for Free
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
+
+export default Login;

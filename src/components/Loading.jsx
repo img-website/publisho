@@ -2,10 +2,10 @@
 import React from 'react';
 import { CircularProgress } from "@nextui-org/react";
 
-function Loading() {
+function Loading({...props}) {
     return (
-        <div className="loading-overlay">
-            <CircularProgress aria-label="Loading..." />
+        <div className="w-100 h-100 flex justify-center items-center">
+            <CircularProgress {...props} aria-label="Loading..." />
         </div>
     );
 }

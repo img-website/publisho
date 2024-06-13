@@ -1,26 +1,36 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from '../pages/Home'
-import Detail from '../pages/Detail'
-import Contact from '../pages/Contact'
-import Category from '../pages/Category'
-import About  from '../pages/About'
-import Signin from '../pages/Signin'
-
+import React from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Home from "../pages/Home";
+import Detail from "../pages/Detail";
+import Contact from "../pages/Contact";
+import Category from "../pages/Category";
+import About from "../pages/About";
+import Signin from "../pages/Signin";
+import Signup from "../components/auth/Signup";
+import Login from "../components/auth/Login";
+import Header from "../components/Header";
+import ForgetPass from "../components/auth/ForgetPass";
 
 const RouteComp = () => {
+  const location = useLocation();
+  const noHeaderPaths = ["/signUp", "/login", "/forget-Password"];
+
   return (
     <>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/detail' element={<Detail/>}/>
-      <Route path='/contact' element={<Contact/>}/>
-      <Route path='/category' element={<Category/>} />
-      <Route path='/about' element={<About/>} />
-      <Route path='/signin' element={<Signin/>} />
-    </Routes>
+      {!noHeaderPaths.includes(location.pathname) && <Header />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signUp" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forget-Password" element={<ForgetPass />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/signin" element={<Signin />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default RouteComp
+export default RouteComp;
