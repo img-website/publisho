@@ -10,6 +10,7 @@ import Signup from "../components/auth/Signup";
 import Login from "../components/auth/Login";
 import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
+import ProtectedRoute from "./ProtectedRoute";
 
 const RouteComp = () => {
   const location = useLocation();
@@ -20,12 +21,45 @@ const RouteComp = () => {
       {!noHeaderPaths.includes(location.pathname) && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signUp" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forget-Password" element={<ForgetPass />} />
+        {/* <Route path="/signUp" element={<Signup />} /> */}
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/forget-Password" element={<ForgetPass />} /> */}
+        <Route
+          path="/signUp"
+          element={
+            <ProtectedRoute auth>
+              <Signup />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <ProtectedRoute auth>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/forget-Password"
+          element={
+            <ProtectedRoute auth>
+              <ForgetPass />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/category"
+          element={
+            <ProtectedRoute>
+              <Category />
+            </ProtectedRoute>
+          }
+        />
+        
         <Route path="/detail" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/category" element={<Category />} />
+        {/* <Route path="/category" element={<Category />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<Signin />} />
       </Routes>

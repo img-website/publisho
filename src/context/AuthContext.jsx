@@ -1,6 +1,7 @@
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  getIdToken,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -34,10 +35,18 @@ export const AuthProvider = (props) => {
             displayName: user.displayName || displayName,
             email: user.email,
           });
+
+           // Get the user's ID token
+        const idToken = await getIdToken(user);
+        // console.log("ID Token:", idToken);
+
+        // Store the token 
+        localStorage.setItem("accessToken", idToken);
+
         toast.success("Signup Successful , Login Please", {
           description: "Welcome to the app",
         });
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log("error", error);
@@ -76,12 +85,20 @@ export const AuthProvider = (props) => {
 
   const signInUserWithEmailAndPassword = async (email, password) => {
     await signInWithEmailAndPassword(firebaseAuth, email, password)
-      .then((res) => {
+      .then(async(res) => {
+        const { user } =  res;
         console.log(res.user);
+           // Get the user's ID token
+        const idToken = await getIdToken(user);
+        // console.log("ID Token:", idToken);
+
+        // Store the token 
+        localStorage.setItem("accessToken", idToken);
+
         toast.success("Login Successful", {
           description: "Welcome to the app",
         });
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         console.log("error", error);
