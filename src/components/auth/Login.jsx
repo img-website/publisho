@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
+import {Button, Input} from "@nextui-org/react";
+import {Eyeopen, Eyeclose, Google} from "../../component/Icons";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -8,6 +10,18 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const HandleSignUpWithGoogle = async () => {
+    setLoading(true);
+    try {
+        await allAuth.signInWithGoogle("signUp");
+
+    } catch (error) {
+        // Handle errors
+    } finally {
+        setLoading(false);
+    }
+};
 
   const HandleSignInUserWithEmailAndPassword = async (e) => {
     e.preventDefault();
@@ -19,59 +33,26 @@ function Login() {
       setLoading(false);
     }
   };
-
+  
+    const [isVisible, setIsVisible] = React.useState(false);
+  
+    const toggleVisibility = () => setIsVisible(!isVisible);
   console.log(allAuth, "login");
   return (
     <div>
       {/* {loading && <Loading />} */}
-      <section className="pt-34 lg:pt-39 pb-15 lg:pb-20 bg-gray my-5">
-        <div className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
-          <div className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
-            <div className="text-center mb-9">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
-                Sign in
-              </h1>
-              <p className="text-body">Sign in your account</p>
+     <div className="h-dvh  flex justify-center items-center">
+     <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
+          <div className="rounded-xl bg-white w-full shadow-box p-4 sm:p-7.5 xl:p-12.5">
+            <div className="text-center mb-">
+            <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-black">
+                                Sign In
+                            </h1> 
+              <p className="text-body my-2">Sign in your account</p>
             </div>
-            <button className="w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
-              <svg
-                width="23"
-                height="22"
-                viewBox="0 0 23 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_709_8846)">
-                  <path
-                    d="M22.5001 11.2438C22.5134 10.4876 22.4338 9.73256 22.2629 8.995H11.7246V13.0771H17.9105C17.7933 13.7929 17.5296 14.478 17.1352 15.0914C16.7409 15.7047 16.224 16.2335 15.6158 16.646L15.5942 16.7827L18.9264 19.3124L19.1571 19.335C21.2772 17.4161 22.4997 14.5926 22.4997 11.2438"
-                    fill="#4285F4"
-                  ></path>
-                  <path
-                    d="M11.7245 22C14.755 22 17.2992 21.0221 19.1577 19.3355L15.6156 16.6464C14.6679 17.2944 13.3958 17.7467 11.7245 17.7467C10.3051 17.7385 8.92433 17.2926 7.77814 16.472C6.63195 15.6515 5.77851 14.4981 5.33892 13.1755L5.20737 13.1865L1.74255 15.8142L1.69727 15.9376C2.63043 17.7602 4.06252 19.2925 5.83341 20.3631C7.60429 21.4337 9.64416 22.0005 11.7249 22"
-                    fill="#34A853"
-                  ></path>
-                  <path
-                    d="M5.33889 13.1755C5.09338 12.4753 4.96669 11.7404 4.96388 11C4.9684 10.2608 5.09041 9.52685 5.32552 8.8245L5.31927 8.67868L1.81196 6.00867L1.69724 6.06214C0.910039 7.5938 0.5 9.28491 0.5 10.9999C0.5 12.7148 0.910039 14.406 1.69724 15.9376L5.33889 13.1755Z"
-                    fill="#FBBC05"
-                  ></path>
-                  <path
-                    d="M11.7249 4.25337C13.3333 4.22889 14.8888 4.8159 16.065 5.89121L19.2329 2.86003C17.2011 0.992106 14.5106 -0.0328008 11.7249 3.27798e-05C9.64418 -0.000452376 7.60433 0.566279 5.83345 1.63686C4.06256 2.70743 2.63046 4.23965 1.69727 6.06218L5.32684 8.82455C5.77077 7.50213 6.62703 6.34962 7.77491 5.5295C8.9228 4.70938 10.3044 4.26302 11.7249 4.25337Z"
-                    fill="#EB4335"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_709_8846">
-                    <rect
-                      width="22"
-                      height="22"
-                      fill="white"
-                      transform="translate(0.5)"
-                    ></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              Sign in with Google
-            </button>
+            <Button onClick={HandleSignUpWithGoogle } className="w-full !border-black hover:!bg-black/10 text-sm font-semibold" variant="bordered" startContent={<Google/>}>
+        Login With Google
+      </Button>
             {/* <button className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
               <svg
                 width="22"
@@ -87,63 +68,66 @@ function Login() {
               </svg>
               Sign in with Github
             </button> */}
-            <span className="relative block text-custom-sm text-center mt-9">
-              <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
-              <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
-              <div className="w-max mx-auto px-3 bg-white relative z-50">
-                Or sign in with email
-              </div>
-            </span>
+           <span className="relative block text-custom-sm text-center mt-4 mb-2">
+                            <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
+                            <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
+                           <div className="bg-white w-max mx-auto font-semibold text-sm px-4 relative z-30"> Or sign In with email</div>
+                        </span>
             <div className="mt-6">
               <form onSubmit={HandleSignInUserWithEmailAndPassword}>
                 <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="block font-medium text-dark text-custom-sm mb-3"
-                  >
-                    Email
-                  </label>
-                  <input
+                  
+                <div className="mb-4 w-full">
+                                <Input
+                                
+                                
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                    type="email"
-                    required
-                    placeholder="Enter your email"
-                    className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                  />
+                                    isClearable
+                                    type="email"
+                                    label="Email"
+                                    variant="bordered"
+                                    placeholder=""
+                                    defaultValue="junior@nextui.org"
+                                    onClear={() => console.log("input cleared")}
+                                    className="w-full"
+                                    />
+                                </div>
+                  
                 </div>
-                <div className="mb-2">
-                    <label
-                        htmlFor="password"
-                        className="block font-medium text-dark text-custom-sm mb-3"
-                    >
-                        Password
-                    </label>
-                    <input
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                        required
-                        type="password"
-                        placeholder="Enter your password"
-                        className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                        autocomplete="current-password" 
-                    />
-                    </div>
-
+                  <div className="mb-4 !w-full">
+                  <Input
+                  
+      label="Password"
+      variant="bordered"
+      placeholder=""
+      endContent={
+        <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+          {isVisible ? (
+            <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+          ) : (
+            <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+          )}
+        </button>
+      }
+      type={isVisible ? "text" : "password"}
+      className="w-full"
+    />
+                  </div>
                 <div className="mb-6 text-right w-full">
                   <a href="/forget-Password" className="text-black/80 yexy-base font-medium">
                     Forgot Password?
                   </a>
                 </div>
-                <button
+                <Button
                   type="submit"
                   className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
                 >
                   {loading?<Loading color="secondary"  size="sm" area-label="Loading..." />:"Sign in" } 
-                </button>
+                </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
-                  <Link to="/signUp" className="text-dark">
+                  <Link to="/signUp" className="text-dark font-semibold ms-2">
                     Sign Up for Free
                   </Link>
                 </p>
@@ -151,7 +135,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </section>
+     </div>
     </div>
   );
 }
