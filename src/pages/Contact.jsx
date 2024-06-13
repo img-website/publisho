@@ -1,8 +1,10 @@
 import React from 'react';
+import {Button, Input} from "@nextui-org/react";
 
 
 
 export default function Contact() {
+  const variants = ["flat", "bordered", "underlined", "faded"];
   return (
     <>
     
@@ -52,13 +54,17 @@ Sign up with Github
 <label for="email"  className="block font-medium text-dark text-custom-sm mb-3">Email</label>
 <input type="email" placeholder="Enter your email"  className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
 </div>
-<div  className="mb-6">
-<label for="password"  className="block font-medium text-dark text-custom-sm mb-3">Password</label>
-<input type="password" placeholder="Confirm password"  className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
-</div>
-<button type="submit"  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200">
-Sign up
-</button>
+<div className="w-full flex flex-col gap-4">
+      {variants.map((variant) => (
+        <div key={variant} className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input type="email" variant={variant} label="Email" />
+          <Input type="email" variant={variant} label="Email" placeholder="Enter your email" />
+        </div>
+      ))}  
+    </div>  
+<Button className='hover:!bg-black  hover:!text-white border-black font-semibold' variant="ghost">
+        Sign in
+      </Button>
 <p  className="text-center mt-5">
 Already a member?
 <a href="signin.html"  className="text-dark">Sign in</a>
@@ -68,65 +74,7 @@ Already a member?
 </div>
 </div>
 </section>
-     {/* blog */}
-<div className='mx-auto max-w-7xl p-6 lg:px-8'>
-<div className='border duration-300 bg-white my-3 rounded-md p-3 hover:drop-shadow-2xl border-gray-300 '>
-<div className="grid grid-cols-12 gap-2">
-<div className="sm:col-span-2 col-span-12">
-  <div className='w-full aspect-[1/.6] overflow-hidden *:object-cover *:rounded-sm *:size-full'>
-  <img src="https://s3.ap-southeast-1.amazonaws.com/prod.anonfeed.net/user/attach_file/1718184177-3059.png" alt="" />
-  </div>
- 
-</div>
-<div className='sm:col-span-10 col-span-12 px-3'>
-<a href="#" className='text-lg block font-semibold hover:text-red-500 duration-300 mb-2'>Exploring the Top Trends Shaping Our World Today</a>
-  <label htmlFor="#" className='px-3 py-1 border-black text-sm border rounded-md hover:bg-black hover:text-white duration-300'>
-    #trendingbrands
-  </label>
-  <p className='mt-2 text-slate-500 text-base'>
-  In the ever-evolving landscape of fashion, technology, and lifestyle, certain brands have emerged as trailblazers, setting trends and redefining standards. This blog post delves into the top 10 beauty ...
-  </p>
-  </div>
-</div>
-<div className="grid mt-4 pt-3 border-t-2 ">
- <div className="flex justify-between items-center">
-  <div className='border-1 border-dashed rounded-md sm:p-2 p-1 flex w-max'>
-    <div className='flex'>
-      <div className='flex items-center pe-4 border-r group border-slate-300 border-dashed'>
-        <img src="https://anonfeedplus.com/front_assets/images/eye.png" alt="" className='size-5 object-contain' />
-        <span className='sm:text-base group-hover:text-red-500 text-sm font-semibold text-black ms-2'>
-          5
-        </span>
-      </div>
-      <div className='flex items-center group ps-4 pe-1'>
-        <img src="https://anonfeedplus.com/front_assets/images/message.png" alt="" className='size-5 object-contain' />
-        <span className='sm:text-base group-hover:text-red-500 text-sm font-semibold text-black ms-2'>
-          5
-        </span>
-      </div>
-    </div>
-    
-  </div>
-  <div className='flex items-center ps-4 pe-1'>
-        <img src="https://anonfeedplus.com/front_assets/images/clock.png" alt="" className='size-4 object-contain' />
-        <span className='sm:text-base text-sm font-semibold text-black ms-2'>
-          1 hr
-        </span>
-      </div>
- </div>
-</div>
-</div>
-</div>
-{/* job details */}
-   <div className='mx-auto max-w-7xl p-6 lg:px-8'>
-    <div className="grid-cols-12 gap-8 grid">
-   <div className="col-span-8">
-   <div className="border p-2 bg-white rounded-md">
 
-   </div>
-   </div>
-    </div>
-   </div>
     </>
   )
 }
