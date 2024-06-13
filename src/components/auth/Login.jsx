@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
-import {Button, Input} from "@nextui-org/react";
-import {Eyeopen, Eyeclose, Google} from "../../component/Icons";
+import { Button, Input } from "@nextui-org/react";
+import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -14,14 +14,13 @@ function Login() {
   const HandleSignUpWithGoogle = async () => {
     setLoading(true);
     try {
-        await allAuth.signInWithGoogle("signUp");
-
+      await allAuth.signInWithGoogle("signUp");
     } catch (error) {
-        // Handle errors
+      // Handle errors
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
+  };
 
   const HandleSignInUserWithEmailAndPassword = async (e) => {
     e.preventDefault();
@@ -33,26 +32,31 @@ function Login() {
       setLoading(false);
     }
   };
-  
-    const [isVisible, setIsVisible] = React.useState(false);
-  
-    const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
   console.log(allAuth, "login");
   return (
     <div>
       {/* {loading && <Loading />} */}
-     <div className="h-dvh  flex justify-center items-center">
-     <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
+      <div className="h-dvh  flex justify-center items-center">
+        <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
           <div className="rounded-xl bg-white w-full shadow-box p-4 sm:p-7.5 xl:p-12.5">
             <div className="text-center mb-">
-            <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-black">
-                                Sign In
-                            </h1> 
+              <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-black">
+                Sign In
+              </h1>
               <p className="text-body my-2">Sign in your account</p>
             </div>
-            <Button onClick={HandleSignUpWithGoogle } className="w-full !border-black hover:!bg-black/10 text-sm font-semibold" variant="bordered" startContent={<Google/>}>
-        Login With Google
-      </Button>
+            <Button
+              onClick={HandleSignUpWithGoogle}
+              className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
+              variant="bordered"
+              startContent={<Google />}
+            >
+              Login With Google
+            </Button>
             {/* <button className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
               <svg
                 width="22"
@@ -68,54 +72,64 @@ function Login() {
               </svg>
               Sign in with Github
             </button> */}
-           <span className="relative block text-custom-sm text-center mt-4 mb-2">
-                            <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
-                            <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
-                           <div className="bg-white w-max mx-auto font-semibold text-sm px-4 relative z-30"> Or sign In with email</div>
-                        </span>
+            <span className="relative block text-custom-sm text-center mt-4 mb-2">
+              <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
+              <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
+              <div className="bg-white w-max mx-auto font-semibold text-sm px-4 relative z-30">
+                {" "}
+                Or sign In with email
+              </div>
+            </span>
             <div className="mt-6">
               <form onSubmit={HandleSignInUserWithEmailAndPassword}>
                 <div className="mb-4">
-                  
-                <div className="mb-4 w-full">
-                                <Input
-                                
-                                
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                                    isClearable
-                                    type="email"
-                                    label="Email"
-                                    variant="bordered"
-                                    placeholder=""
-                                    defaultValue="junior@nextui.org"
-                                    onClear={() => console.log("input cleared")}
-                                    className="w-full"
-                                    />
-                                </div>
-                  
-                </div>
-                  <div className="mb-4 !w-full">
-                  <Input
-                  
-      label="Password"
-      variant="bordered"
-      placeholder=""
-      endContent={
-        <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
-          {isVisible ? (
-            <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
-          ) : (
-            <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
-          )}
-        </button>
-      }
-      type={isVisible ? "text" : "password"}
-      className="w-full"
-    />
+                  <div className="mb-4 w-full">
+                    <Input
+                      onValueChange={setEmail}
+                      value={email}
+                      isRequired
+                      isClearable
+                      type="email"
+                      label="Email"
+                      variant="bordered"
+                      placeholder=""
+                      validationBehavior="native"
+                      onClear={() => console.log("input cleared")}
+                      className="w-full"
+                    />
                   </div>
+                </div>
+                <div className="mb-4 !w-full">
+                  <Input
+                    onValueChange={setPassword}
+                    value={password}
+                    isRequired
+                    label="Password"
+                    variant="bordered"
+                    placeholder=""
+                    validationBehavior="native"
+                    endContent={
+                      <button
+                        className="focus:outline-none"
+                        type="button"
+                        onClick={toggleVisibility}
+                      >
+                        {isVisible ? (
+                          <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+                        ) : (
+                          <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+                        )}
+                      </button>
+                    }
+                    type={isVisible ? "text" : "password"}
+                    className="w-full"
+                  />
+                </div>
                 <div className="mb-6 text-right w-full">
-                  <a href="/forget-Password" className="text-black/80 yexy-base font-medium">
+                  <a
+                    href="/forget-Password"
+                    className="text-black/80 yexy-base font-medium"
+                  >
                     Forgot Password?
                   </a>
                 </div>
@@ -123,7 +137,15 @@ function Login() {
                   type="submit"
                   className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
                 >
-                  {loading?<Loading color="secondary"  size="sm" area-label="Loading..." />:"Sign in" } 
+                  {loading ? (
+                    <Loading
+                      color="secondary"
+                      size="sm"
+                      area-label="Loading..."
+                    />
+                  ) : (
+                    "Sign in"
+                  )}
                 </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
@@ -135,7 +157,7 @@ function Login() {
             </div>
           </div>
         </div>
-     </div>
+      </div>
     </div>
   );
 }

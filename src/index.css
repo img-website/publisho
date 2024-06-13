@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body{
-    background: #f9fafb;
-    /* font-family: 'Harabara'; */
-  }
 /* 
 @font-face {
     font-family: 'Harabara';
