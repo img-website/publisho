@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Button, Input} from "@nextui-org/react";
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useAuthentication } from '../../context/AuthContext';
@@ -35,28 +36,31 @@ function ForgetPass() {
             <div className="mt-6">
               <form onSubmit={handleResetPassword}>
                 <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="block font-medium text-dark text-custom-sm mb-3"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="rounded-md border border-gray-4 bg-white placeholder:text-dark-2 w-full py-3.5 px-6 outline-none duration-200 focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                <div className="mb-4 w-full">
+                                <Input
+                                
+                                
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                    isClearable
+                                    type="email"
+                                    label="Email"
+                                    variant="bordered"
+                                    placeholder=""
+                                    defaultValue="junior@nextui.org"
+                                    onClear={() => console.log("input cleared")}
+                                    className="w-full"
+                                    />
+                                </div>
                 </div>
 
-                <button
+                <Button
                   type="submit"
                   className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
                 >
                  {loading?<Loading color="secondary"  size="sm" area-label="Loading..." />:"Verify" } 
 
-                </button>
+                </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
                   <Link to="/login" className="text-dark">
