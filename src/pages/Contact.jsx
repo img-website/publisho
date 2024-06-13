@@ -10,7 +10,7 @@ export default function Contact() {
 <div  className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
 <div  className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
 <div  className="text-center mb-9">
-<h1  className="font-bold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
+<h1  className="font-semibold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
 Sign up
 </h1>
 <p  className="text-body">Create your account</p>
@@ -68,6 +68,65 @@ Already a member?
 </div>
 </div>
 </section>
+     {/* blog */}
+<div className='mx-auto max-w-7xl p-6 lg:px-8'>
+<div className='border duration-300 bg-white my-3 rounded-md p-3 hover:drop-shadow-2xl border-gray-300 '>
+<div className="grid grid-cols-12 gap-2">
+<div className="sm:col-span-2 col-span-12">
+  <div className='w-full aspect-[1/.6] overflow-hidden *:object-cover *:rounded-sm *:size-full'>
+  <img src="https://s3.ap-southeast-1.amazonaws.com/prod.anonfeed.net/user/attach_file/1718184177-3059.png" alt="" />
+  </div>
+ 
+</div>
+<div className='sm:col-span-10 col-span-12 px-3'>
+<a href="#" className='text-lg block font-semibold hover:text-red-500 duration-300 mb-2'>Exploring the Top Trends Shaping Our World Today</a>
+  <label htmlFor="#" className='px-3 py-1 border-black text-sm border rounded-md hover:bg-black hover:text-white duration-300'>
+    #trendingbrands
+  </label>
+  <p className='mt-2 text-slate-500 text-base'>
+  In the ever-evolving landscape of fashion, technology, and lifestyle, certain brands have emerged as trailblazers, setting trends and redefining standards. This blog post delves into the top 10 beauty ...
+  </p>
+  </div>
+</div>
+<div className="grid mt-4 pt-3 border-t-2 ">
+ <div className="flex justify-between items-center">
+  <div className='border-1 border-dashed rounded-md sm:p-2 p-1 flex w-max'>
+    <div className='flex'>
+      <div className='flex items-center pe-4 border-r group border-slate-300 border-dashed'>
+        <img src="https://anonfeedplus.com/front_assets/images/eye.png" alt="" className='size-5 object-contain' />
+        <span className='sm:text-base group-hover:text-red-500 text-sm font-semibold text-black ms-2'>
+          5
+        </span>
+      </div>
+      <div className='flex items-center group ps-4 pe-1'>
+        <img src="https://anonfeedplus.com/front_assets/images/message.png" alt="" className='size-5 object-contain' />
+        <span className='sm:text-base group-hover:text-red-500 text-sm font-semibold text-black ms-2'>
+          5
+        </span>
+      </div>
+    </div>
+    
+  </div>
+  <div className='flex items-center ps-4 pe-1'>
+        <img src="https://anonfeedplus.com/front_assets/images/clock.png" alt="" className='size-4 object-contain' />
+        <span className='sm:text-base text-sm font-semibold text-black ms-2'>
+          1 hr
+        </span>
+      </div>
+ </div>
+</div>
+</div>
+</div>
+{/* job details */}
+   <div className='mx-auto max-w-7xl p-6 lg:px-8'>
+    <div className="grid-cols-12 gap-8 grid">
+   <div className="col-span-8">
+   <div className="border p-2 bg-white rounded-md">
+
+   </div>
+   </div>
+    </div>
+   </div>
     </>
   )
 }
