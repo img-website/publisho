@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Input, ScrollShadow } from "@nextui-org/react";
+import { Button, Input, ScrollShadow, Spinner } from "@nextui-org/react";
 
 import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
 
@@ -59,7 +59,7 @@ function Signup() {
   const toggleVisibility2 = () => setIsVisible2(!isVisible2);
 
   return (
-    <div className="bg-default-50">
+    <div className={loading ? "pointer-events-none" : ""}>
       {/* {loading && <Loading />} */}
       <ScrollShadow className="h-dvh flex flex-col overflow-auto">
         <div className="grow py-5"></div>
@@ -184,21 +184,19 @@ function Signup() {
                   </div>
                 </div>
 
-                <Button
-                  type="submit"
-                  className="hover:!bg-black mt-5 w-full  hover:!text-white border-black font-semibold"
-                  variant="ghost"
-                >
-                  {loading ? (
-                    <Loading
-                      color="secondary"
-                      size="sm"
-                      area-label="Loading..."
-                    />
-                  ) : (
-                    "Sign up"
-                  )}
-                </Button>
+               <Button
+                    type="submit"
+                    startContent={
+                      loading ? (
+                        <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
+                      ) : (
+                        <>Icon</>
+                      )
+                    }
+                    className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 mt-5 ${loading && "pointer-events-none"}`}
+                  >
+                    {!loading && " Sign Up"}
+                  </Button>
                 <p className="text-center mt-5">
                   Already a member?
                   <Link to="/login" className="text-dark font-semibold ms-2">
