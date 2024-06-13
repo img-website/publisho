@@ -24,22 +24,20 @@ function ForgetPass() {
   return (
     <div>
         {/* {loading && <Loading />} */}
-      <section className="pt-34 lg:pt-39 pb-15 lg:pb-20 bg-gray my-5">
-        <div className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
-          <div className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
+        <div className='h-dvh  flex justify-center items-center'>
+        <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
+          <div className="rounded-xl bg-white w-full shadow-box p-4 sm:p-7.5 xl:p-12.5">
             <div className="text-center mb-9">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
+              <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-black mb-3">
                 Forget Password
               </h1>
             </div>
           
-            <div className="mt-6">
+            <div className="mt-3">
               <form onSubmit={handleResetPassword}>
                 <div className="mb-4">
                 <div className="mb-4 w-full">
                                 <Input
-                                
-                                
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                     isClearable
@@ -63,7 +61,7 @@ function ForgetPass() {
                 </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
-                  <Link to="/login" className="text-dark">
+                  <Link to="/login" className="text-dark font-semibold ms-2">
                     SignIn
                   </Link>
                 </p>
@@ -71,7 +69,7 @@ function ForgetPass() {
             </div>
           </div>
         </div>
-      </section>
+        </div>
     </div>
   );
 }
