@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
+import {Button} from "@nextui-org/react";
 
 
 function Home() {
@@ -299,9 +300,9 @@ function Home() {
                       className="rounded-md border border-gray-3 bg-white placeholder:text-dark-5 w-full py-3.5 px-5 outline-none focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
                     />
                   </div>
-                  <button className="font-medium rounded-md text-white bg-black flex py-3 px-5 hover:opacity-90 transition-all ease-linear duration-300">
+                  <Button className="hover:!bg-black  hover:!text-white border-black font-semibold ">
                     Subscribe
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
