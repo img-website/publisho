@@ -16,7 +16,7 @@ function QuillForm() {
     console.log("Content:", value);
 
     setHeading("");
-    setTitle("");
+    setTitle(""); 
     setValue("");
   };
 
