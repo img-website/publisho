@@ -32,7 +32,6 @@ function ForgetPass() {
                 Forget Password
               </h1>
             </div>
-
             <div className="mt-6">
               <form onSubmit={handleResetPassword}>
                 <div className="mb-4">
