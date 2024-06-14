@@ -101,7 +101,7 @@ export const AuthProvider = (props) => {
         navigate("/");
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log("error", error); 
         switch (error.code) {
           case "auth/user-not-found":
             toast.error("user-not-found", {
@@ -179,11 +179,17 @@ export const AuthProvider = (props) => {
           email: user.email,
         });
       }
+
+      const idToken = await getIdToken(user);
+      // console.log("ID Token:", idToken);
+
+      // Store the token 
+      localStorage.setItem("accessToken", idToken);
       toast.success("Google Sign-In Successful", {
         description: "Welcome to the app",
       });
 
-      navigate("/home"); 
+      navigate("/"); 
     } catch (error) {
       console.error("Google Sign-In Error:", error);
       toast.error("An error occurred during Google Sign-In. Please try again.");

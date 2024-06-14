@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
-import { Button, Input } from "@nextui-org/react";
-import { Eyeopenicon, Eyecloseicon, Googleicon,Loginicon } from "../../component/Icons";
+import { Button, Input, Spinner } from "@nextui-org/react";
+import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
 import { Link } from "react-router-dom";
-import {} from "../../component/Icons";
 
 function Login() {
   const allAuth = useAuthentication();
@@ -39,7 +38,7 @@ function Login() {
   const toggleVisibility = () => setIsVisible(!isVisible);
   console.log(allAuth, "login");
   return (
-    <div>
+    <div className={loading ? "pointer-events-none" : ""}>
       {/* {loading && <Loading />} */}
       <div className="h-dvh  flex justify-center items-center">
         <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
@@ -54,7 +53,7 @@ function Login() {
               onClick={HandleSignUpWithGoogle}
               className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
               variant="bordered"
-              startContent={<Googleicon />}
+              startContent={<Google />}
             >
               Login With Google
             </Button>
@@ -110,17 +109,19 @@ function Login() {
                     placeholder=""
                     validationBehavior="native"
                     endContent={
-                      <button
-                        className="focus:outline-none"
-                        type="button"
-                        onClick={toggleVisibility}
-                      >
-                        {isVisible ? (
-                          <Eyeopenicon className="text-2xl text-default-400 pointer-events-none" />
-                        ) : (
-                          <Eyecloseicon className="text-2xl text-default-400 pointer-events-none" />
-                        )}
-                      </button>
+                      password && (
+                        <button
+                          className="focus:outline-none"
+                          type="button"
+                          onClick={toggleVisibility}
+                        >
+                          {isVisible ? (
+                            <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+                          ) : (
+                            <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+                          )}
+                        </button>
+                      )
                     }
                     type={isVisible ? "text" : "password"}
                     className="w-full"
@@ -134,22 +135,37 @@ function Login() {
                     Forgot Password?
                   </a>
                 </div>
-                <Button
-                  type="submit"
-                  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                  endContent={<Loginicon className="text-white"/>}
-              >
-                  
-                  {loading ? (
-                    <Loading
-                      color="secondary"
-                      size="sm"
-                      area-label="Loading..."
-                    />
-                  ) : (
-                    "Sign in"
-                  )}
-                </Button>
+                  <Button
+                    type="submit"
+                    startContent={
+                      loading ? (
+                        <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
+                      ) : (
+                        <>Icon</>
+                      )
+                    }
+                    className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 ${loading && "pointer-events-none"}`}
+                  >
+                    {!loading && " Sign In"}
+                  </Button>
+                {/* {!loading ? (
+                  <Button
+                    type="submit"
+                    startContent={<i>Icon</i>}
+                    className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
+                  >
+                    Sign In
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    isDisabled
+                    isLoading
+                    className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
+                  >
+                    Loading...
+                  </Button>
+                )} */}
                 <p className="text-center mt-5">
                   Don't have an account?
                   <Link to="/signUp" className="text-dark font-semibold ms-2">

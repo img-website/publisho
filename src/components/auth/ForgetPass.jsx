@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Spinner } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuthentication } from "../../context/AuthContext";
@@ -54,21 +54,20 @@ function ForgetPass() {
                 </div>
 
                 <Button
-                  type="submit"
-                  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                >
-                  {loading ? (
-                    <Loading
-                      color="secondary"
-                      size="sm"
-                      area-label="Loading..."
-                    />
-                  ) : (
-                    "Verify"
-                  )}
-                </Button>
+                    type="submit"
+                    startContent={
+                      loading ? (
+                        <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
+                      ) : (
+                        <>Icon</>
+                      )
+                    }
+                    className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 ${loading && "pointer-events-none"}`}
+                  >
+                    {!loading && " Verify"}
+                  </Button>
                 <p className="text-center mt-5">
-                  Don't have an account?
+                  Don't have an account?    
                   <Link to="/login" className="text-dark">
                     SignIn
                   </Link>
