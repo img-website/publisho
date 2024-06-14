@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input, ScrollShadow, Spinner } from "@nextui-org/react";
 
-import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
+import { Googleicon, Eyeopenicon, Eyecloseicon, Loginicon } from "../../component/Icons";
 
 import { db } from "../../context/Firebase";
 import Loading from "../Loading";
@@ -76,7 +76,7 @@ function Signup() {
                 onClick={HandleSignUpWithGoogle}
                 className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
                 variant="bordered"
-                startContent={<Google />}
+                startContent={<Googleicon />}
               >
                 Login With Google
               </Button>
@@ -141,9 +141,9 @@ function Signup() {
                             onClick={toggleVisibility}
                           >
                             {isVisible ? (
-                              <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+                              <Eyeopenicon className="text-2xl text-default-400 pointer-events-none" />
                             ) : (
-                              <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+                              <Eyecloseicon className="text-2xl text-default-400 pointer-events-none" />
                             )}
                           </button>
                         )
@@ -185,12 +185,13 @@ function Signup() {
                 </div>
 
                <Button
+                endContent={<Loginicon className="text-white"/>}
                     type="submit"
                     startContent={
                       loading ? (
                         <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
                       ) : (
-                        <>Icon</>
+                        <></>
                       )
                     }
                     className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 mt-5 ${loading && "pointer-events-none"}`}

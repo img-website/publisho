@@ -134,15 +134,14 @@ function Header() {
           {!token ? (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/login">Login</Link>
+                <Link href="/login" className='text-black'>Login</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button
                   as={Link}
-                  color="primary"
                   href="/signUp"
                   variant="flat"
-                  className="hidden sm:flex"
+                  className="hidden sm:flex hover:text-white border-black border-2 font-semibold hover:!bg-black bg-red-50/10 text-black"
                 >
                   Sign Up
                 </Button>

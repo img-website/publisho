@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
-import { Button, Input, Spinner } from "@nextui-org/react";
-import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
+import { Button, Input, ScrollShadow } from "@nextui-org/react";
+import { Eyeopenicon, Eyecloseicon, Googleicon,Loginicon } from "../../component/Icons";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -38,9 +38,10 @@ function Login() {
   const toggleVisibility = () => setIsVisible(!isVisible);
   console.log(allAuth, "login");
   return (
-    <div className={loading ? "pointer-events-none" : ""}>
+    <div>
       {/* {loading && <Loading />} */}
-      <div className="h-dvh  flex justify-center items-center">
+      <div className="h-dvh flex flex-col overflow-auto">
+      <div className="grow py-5"></div>
         <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
           <div className="rounded-xl bg-white w-full shadow-box p-4 sm:p-7.5 xl:p-12.5">
             <div className="text-center mb-">
@@ -53,7 +54,7 @@ function Login() {
               onClick={HandleSignUpWithGoogle}
               className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
               variant="bordered"
-              startContent={<Google />}
+              startContent={<Googleicon />}
             >
               Login With Google
             </Button>
@@ -72,14 +73,14 @@ function Login() {
               </svg>
               Sign in with Github
             </button> */}
-            <span className="relative block text-custom-sm text-center mt-4 mb-2">
+            <ScrollShadow className="relative block text-custom-sm text-center mt-4 mb-2">
               <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
               <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
               <div className="bg-white w-max mx-auto font-semibold text-sm px-4 relative z-30">
                 {" "}
                 Or sign In with email
               </div>
-            </span>
+            </ScrollShadow>
             <div className="mt-6">
               <form onSubmit={HandleSignInUserWithEmailAndPassword}>
                 <div className="mb-4">
@@ -109,19 +110,17 @@ function Login() {
                     placeholder=""
                     validationBehavior="native"
                     endContent={
-                      password && (
-                        <button
-                          className="focus:outline-none"
-                          type="button"
-                          onClick={toggleVisibility}
-                        >
-                          {isVisible ? (
-                            <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
-                          ) : (
-                            <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
-                          )}
-                        </button>
-                      )
+                      <button
+                        className="focus:outline-none"
+                        type="button"
+                        onClick={toggleVisibility}
+                      >
+                        {isVisible ? (
+                          <Eyeopenicon className="text-2xl text-default-400 pointer-events-none" />
+                        ) : (
+                          <Eyecloseicon className="text-2xl text-default-400 pointer-events-none" />
+                        )}
+                      </button>
                     }
                     type={isVisible ? "text" : "password"}
                     className="w-full"
@@ -135,37 +134,22 @@ function Login() {
                     Forgot Password?
                   </a>
                 </div>
-                  <Button
-                    type="submit"
-                    startContent={
-                      loading ? (
-                        <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
-                      ) : (
-                        <>Icon</>
-                      )
-                    }
-                    className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 ${loading && "pointer-events-none"}`}
-                  >
-                    {!loading && " Sign In"}
-                  </Button>
-                {/* {!loading ? (
-                  <Button
-                    type="submit"
-                    startContent={<i>Icon</i>}
-                    className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                  >
-                    Sign In
-                  </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    isDisabled
-                    isLoading
-                    className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                  >
-                    Loading...
-                  </Button>
-                )} */}
+                <Button
+                  type="submit"
+                  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
+                  endContent={<Loginicon className="text-white"/>}
+              >
+                  
+                  {loading ? (
+                    <Loading
+                      color="secondary"
+                      size="sm"
+                      area-label="Loading..."
+                    />
+                  ) : (
+                    "Sign in"
+                  )}
+                </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
                   <Link to="/signUp" className="text-dark font-semibold ms-2">
@@ -176,6 +160,8 @@ function Login() {
             </div>
           </div>
         </div>
+        <div className="grow py-5"></div>
+        
       </div>
     </div>
   );
