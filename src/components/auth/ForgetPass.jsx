@@ -51,7 +51,6 @@ function ForgetPass() {
                     />
                   </div>
                 </div>
-
                 <Button
                     type="submit"
                     startContent={
