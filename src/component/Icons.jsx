@@ -63,10 +63,11 @@ export const Icon = ({
 	size,
 	 width = 53,
 	 height = 43, 
-	fill = "currentcolor", ...props
+	...props
 }) =>{
 	return (
 		<svg
+		fill = "currentcolor"
 			height={size || height}
 			viewBox="0 0 43 53"
 			width={size || width}
@@ -109,7 +110,7 @@ export const FbIcon = ({
 		</svg>
 	);
 };
-export const Book = ({
+export const Bookicon = ({
 	size,
 	 width = 16,
 	 height = 16, 
@@ -127,7 +128,7 @@ export const Book = ({
 </svg>
 	);
 };
-export const Twitter = ({
+export const Twittericon = ({
 	size,
 	 width = 20,
 	 height = 20, 
@@ -144,7 +145,7 @@ export const Twitter = ({
 </svg>
 	);
 };
-export const Linkdin = ({
+export const Linkdinicon = ({
 	size,
 	 width = 19,
 	 height = 18, 
@@ -161,7 +162,7 @@ export const Linkdin = ({
 </svg>
 	);
 };
-export const Print = ({
+export const Printicon = ({
 	size,
 	 width = 19,
 	 height = 18, 
@@ -179,7 +180,7 @@ export const Print = ({
 	);
 };
 
-export const Eyeopen = ({
+export const Eyeopenicon = ({
 	size,
 	 width = 16,
 	 height = 18, 
@@ -197,7 +198,7 @@ export const Eyeopen = ({
 </svg>
 	);
 };
-export const Eyeclose = ({
+export const Eyecloseicon = ({
 	size,
 	 width = 16,
 	 height = 18, 
@@ -214,7 +215,7 @@ export const Eyeclose = ({
 </svg>
 	);
 };
-export const Google = ({
+export const Googleicon = ({
 	size,
 	 width = 40,
 	 height = 24, 
@@ -236,20 +237,25 @@ export const Google = ({
 </svg>
 	);
 };
+export const Loginicon = ({
+	size,
+	 width = 40,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 256 256"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+<path d="M141.66,133.66l-40,40a8,8,0,0,1-11.32-11.32L116.69,136H24a8,8,0,0,1,0-16h92.69L90.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,141.66,133.66ZM200,32H136a8,8,0,0,0,0,16h56V208H136a8,8,0,0,0,0,16h64a8,8,0,0,0,8-8V40A8,8,0,0,0,200,32Z"></path>
+</svg>
+	);
+};
 
-
-
-
-
-
-
-<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-<path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
-	c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
-	c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
-	C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
-	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
-	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
-	</svg>
 
 

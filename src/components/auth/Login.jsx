@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
 import { Button, Input } from "@nextui-org/react";
-import { Eyeopen, Eyeclose, Google } from "../../component/Icons";
+import { Eyeopenicon, Eyecloseicon, Googleicon,Loginicon } from "../../component/Icons";
 import { Link } from "react-router-dom";
+import {} from "../../component/Icons";
 
 function Login() {
   const allAuth = useAuthentication();
@@ -53,7 +54,7 @@ function Login() {
               onClick={HandleSignUpWithGoogle}
               className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
               variant="bordered"
-              startContent={<Google />}
+              startContent={<Googleicon />}
             >
               Login With Google
             </Button>
@@ -115,9 +116,9 @@ function Login() {
                         onClick={toggleVisibility}
                       >
                         {isVisible ? (
-                          <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+                          <Eyeopenicon className="text-2xl text-default-400 pointer-events-none" />
                         ) : (
-                          <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+                          <Eyecloseicon className="text-2xl text-default-400 pointer-events-none" />
                         )}
                       </button>
                     }
@@ -136,7 +137,9 @@ function Login() {
                 <Button
                   type="submit"
                   className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                >
+                  endContent={<Loginicon className="text-white"/>}
+              >
+                  
                   {loading ? (
                     <Loading
                       color="secondary"

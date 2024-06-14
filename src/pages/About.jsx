@@ -1,5 +1,4 @@
 import React from 'react'
-import { FbIcon, Icon, } from '../component/Icons'
 
 
 export default function About() {
@@ -8,7 +7,7 @@ export default function About() {
    <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5 mb-4">
 <div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
 <div className="lg:max-w-[570px] w-full">
-<img src="https://clarity-tailwind.preview.uideck.com/images/about.png" alt="about" className="w-full" />
+<img src="https://images.unsplash.com/photo-1664574654700-75f1c1fad74e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXxlbnwwfHwwfHx8MA%3D%3D" alt="about" className="w-full" />
 </div>
 <div className="lg:max-w-[490px] w-full">
 <span className="inline-flex text-primary font-medium md:text-6xl text-3xl mt-3  [font-family:'Painting_With_Chocolate'] mb-1 sm:mb-3">Who we are</span>

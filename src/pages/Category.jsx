@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {Checkbox} from "@nextui-org/react";
 export class Category extends Component {
   render() {
     return (
@@ -131,7 +131,7 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Books
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
@@ -142,7 +142,7 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Gadget
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
@@ -153,7 +153,7 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Automobile
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
@@ -164,7 +164,7 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Bollywood
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
@@ -175,7 +175,7 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Fitness
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
@@ -186,21 +186,10 @@ export class Category extends Component {
                       className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
                     >
                       <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Health
+                      <Checkbox color="default">Option</Checkbox>
                       </p>
                       <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
                         23
-                      </span>
-                    </a>
-                    <a
-                      href="#"
-                      className="group/edit flex items-center justify-between group:hover/edit:bg-white gap-2 my-2"
-                    >
-                      <p className="ease-in duration-200 group-hover/edit:text-black">
-                        Travel
-                      </p>
-                      <span className="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3 ease-in duration-200 group-hover/edit:text-white group-hover/edit:bg-black group-hover/edit:border-dark">
-                        66
                       </span>
                     </a>
                   </details>
