@@ -37,12 +37,37 @@ function Header() {
     navigate('/login');
   };
     const menuItems = [
-      "home",
-      "About us",
-      "Category",
-      "Sign In",
-      "Sign UP",
-      "log Out",
+        {
+            heading:"Home",
+            href:"/"
+        },
+        {
+            heading:"About Us",
+            href:"/about"
+        },
+        {
+            heading:"Category",
+            href:"/category"
+        },
+        {
+            heading:"Sign In",
+            href:"/login"
+        },
+        {
+            heading:"Sign UP",
+            href:"/signup"
+        },
+        {
+            
+            heading:"log Out",
+            href:"#"
+        },
+    //   "home",
+    //   "About us",
+    //   "Category",
+    //   "Sign In",
+    //   "Sign UP",
+    //   "log Out",
     ];
   return (
     <div>
@@ -173,10 +198,10 @@ function Header() {
                     : "foreground"
                 }
                 className="w-full"
-                href="#"
+                href={item.href}
                 size="lg"
               >
-                {item}
+                {item.heading}
               </Link>
             </NavbarMenuItem>
           ))}
