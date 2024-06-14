@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, ScrollShadow } from "@nextui-org/react";
 import { Eyeopenicon, Eyecloseicon, Googleicon,Loginicon } from "../../component/Icons";
 import { Link } from "react-router-dom";
 
@@ -40,7 +40,8 @@ function Login() {
   return (
     <div>
       {/* {loading && <Loading />} */}
-      <div className="h-dvh  flex justify-center items-center">
+      <div className="h-dvh flex flex-col overflow-auto">
+      <div className="grow py-5"></div>
         <div className="max-w-[400px] h-max rounded-xl  flex flex-col justify-center items-center w-full mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
           <div className="rounded-xl bg-white w-full shadow-box p-4 sm:p-7.5 xl:p-12.5">
             <div className="text-center mb-">
@@ -72,14 +73,14 @@ function Login() {
               </svg>
               Sign in with Github
             </button> */}
-            <span className="relative block text-custom-sm text-center mt-4 mb-2">
+            <ScrollShadow className="relative block text-custom-sm text-center mt-4 mb-2">
               <span className="block absolute left-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
               <span className="block absolute right-0 top-1/2 h-px max-w-30 w-full bg-gray-300"></span>
               <div className="bg-white w-max mx-auto font-semibold text-sm px-4 relative z-30">
                 {" "}
                 Or sign In with email
               </div>
-            </span>
+            </ScrollShadow>
             <div className="mt-6">
               <form onSubmit={HandleSignInUserWithEmailAndPassword}>
                 <div className="mb-4">
@@ -159,6 +160,8 @@ function Login() {
             </div>
           </div>
         </div>
+        <div className="grow py-5"></div>
+        
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
 import {Button} from "@nextui-org/react";
-import { FbIcon, Printicon } from "../component/Icons";
+import { FbIcon, Printicon, Twittericon, Linkdinicon } from "../component/Icons";
 
 
 function Home() {
@@ -394,7 +394,7 @@ function Home() {
                     href="#"
                     className="flex items-center justify-center w-7.5 h-7.5 rounded-full hover:bg-gray-2 lg:transition-all lg:ease-linear lg:duration-300 hover:text-dark"
                   >
-                    <Linkdinicon/>
+                    <Twittericon/>
                   </a>
                   <a
                     id="linkedinFooterBtn"
@@ -402,19 +402,7 @@ function Home() {
                     href="#"
                     className="flex items-center justify-center w-7.5 h-7.5 rounded-full hover:bg-gray-2 lg:transition-all lg:ease-linear lg:duration-300 hover:text-dark"
                   >
-                    <svg
-                      className="fill-current"
-                      width="19"
-                      height="18"
-                      viewBox="0 0 19 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.50004 3.50068C5.49976 4.11141 5.12924 4.661 4.56318 4.89028C3.99713 5.11957 3.34858 4.98277 2.92335 4.54439C2.49812 4.10601 2.38114 3.45359 2.62755 2.89478C2.87397 2.33597 3.43458 1.98236 4.04504 2.00068C4.85584 2.02502 5.5004 2.68951 5.50004 3.50068ZM5.54504 6.11068H2.54504V15.5007H5.54504V6.11068ZM10.2851 6.11068H7.30004V15.5007H10.2551V10.5732C10.2551 7.82816 13.8326 7.57316 13.8326 10.5732V15.5007H16.7951V9.55316C16.7951 4.92568 11.5001 5.09818 10.2551 7.37066L10.2851 6.11068Z"
-                        fill=""
-                      ></path>
-                    </svg>
+                    <Linkdinicon/>
                   </a>
                   <a
                     id="pinterestFooterBtn"
