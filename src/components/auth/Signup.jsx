@@ -171,9 +171,9 @@ function Signup() {
                             onClick={toggleVisibility2}
                           >
                             {isVisible2 ? (
-                              <Eyeopen className="text-2xl text-default-400 pointer-events-none" />
+                              <Eyeopenicon className="text-2xl text-default-400 pointer-events-none" />
                             ) : (
-                              <Eyeclose className="text-2xl text-default-400 pointer-events-none" />
+                              <Eyecloseicon className="text-2xl text-default-400 pointer-events-none" />
                             )}
                           </button>
                         )

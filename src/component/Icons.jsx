@@ -259,3 +259,37 @@ export const Loginicon = ({
 
 
 
+
+
+
+
+
+
+
+
+
+export const Verifyicon = ({
+	size,
+	 width = 20,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 25 25"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+<path d="M18 8L22 12L18 16"></path>
+<path d="M2 12H22"></path>
+</svg>
+	);
+};
+
+
+
+
+

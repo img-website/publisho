@@ -10,7 +10,7 @@ function Home() {
  
   return (
     <>
-      <div className="relative pb-12 bg-black xl:py-40 py-12 sm:py-20 md:py-28 ">
+      <div className=" pb-12 bg-black xl:py-40 py-20 sm:py-20 md:py-28 ">
         <div className="absolute inset-0">
           <img
             className="object-cover w-full h-full"

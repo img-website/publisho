@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Input, Spinner } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import { Verifyicon } from "../../component/Icons";
+import { FbIcon } from "../../component/Icons";
 import { toast } from "sonner";
 import { useAuthentication } from "../../context/AuthContext";
 import Loading from "../Loading";
@@ -52,6 +54,7 @@ function ForgetPass() {
                   </div>
                 </div>
                 <Button
+                endContent={<Verifyicon className=""/>}
                     type="submit"
                     startContent={
                       loading ? (
