@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Loading from "../Loading";
 import { useAuthentication } from "../../context/AuthContext";
-import { Button, Input, ScrollShadow } from "@nextui-org/react";
+import { Button, Input, ScrollShadow, Spinner } from "@nextui-org/react";
 import { Eyeopenicon, Eyecloseicon, Googleicon,Loginicon } from "../../component/Icons";
 import { Link } from "react-router-dom";
 
@@ -135,21 +135,19 @@ function Login() {
                   </a>
                 </div>
                 <Button
-                  type="submit"
-                  className="w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200"
-                  endContent={<Loginicon className="text-white"/>}
-              >
-                  
-                  {loading ? (
-                    <Loading
-                      color="secondary"
-                      size="sm"
-                      area-label="Loading..."
-                    />
-                  ) : (
-                    "Sign in"
-                  )}
-                </Button>
+                endContent={<Loginicon className="text-white"/>}
+                    type="submit"
+                    startContent={
+                      loading ? (
+                        <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
+                      ) : (
+                        <></>
+                      )
+                    }
+                    className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 mt-5 ${loading && "pointer-events-none"}`}
+                  >
+                    {!loading && " Login"}
+                  </Button>
                 <p className="text-center mt-5">
                   Don't have an account?
                   <Link to="/signUp" className="text-dark font-semibold ms-2">

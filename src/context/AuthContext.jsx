@@ -30,10 +30,14 @@ export const AuthProvider = (props) => {
     await createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then( async(res) => {
         const { user } =  res;
-        console.log("user", user);
+        console.log("usersignup", user);
         await setDoc(doc(collection(db, "Users"), user.uid), {
             displayName: user.displayName || displayName,
             email: user.email,
+            createdAt:user.metadata.createdAt,
+            creationTime:user.metadata.creationTime,
+            lastLoginAt:user.metadata.lastLoginAt,
+            lastSignInTime:user.metadata.lastSignInTime,
           });
 
            // Get the user's ID token
