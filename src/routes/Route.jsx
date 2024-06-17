@@ -48,18 +48,18 @@ const RouteComp = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/category"
           element={
             <ProtectedRoute>
               <Category />
             </ProtectedRoute>
           }
-        /> */}
+        />
         
         <Route path="/detail" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/category" element={<Category />} />
+        {/* <Route path="/category" element={<Category />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<Signin />} />
       </Routes>

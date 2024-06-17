@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {
-    Navbar,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    Link,
-    Button,
-    NavbarMenuToggle,
-    NavbarMenu,
-    NavbarMenuItem,
-  } from "@nextui-org/react";
-  import {
-    Dropdown,
-    DropdownTrigger,
-    DropdownMenu,
-    DropdownItem,
-    Avatar,
-  } from "@nextui-org/react";
-  import { Input } from "@nextui-org/react";
-  import { SearchIcon } from "../component/Icons";
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Avatar,
+} from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
+import { SearchIcon } from "../component/Icons";
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [token, setToken] = useState(null);
+  const {currentUser} = useUser();
   const navigate = useNavigate();
+
+  console.log(currentUser,"user")
+  // if(!currentUser){
+  //   return <p>Please SignIn</p>
+  // }
 
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
@@ -36,42 +43,19 @@ function Header() {
     setToken(null);
     navigate('/login');
   };
-    const menuItems = [
-        {
-            heading:"Home",
-            href:"/"
-        },
-        {
-            heading:"About Us",
-            href:"/about"
-        },
-        {
-            heading:"Category",
-            href:"/category"
-        },
-        {
-            heading:"Sign In",
-            href:"/login"
-        },
-        {
-            heading:"Sign UP",
-            href:"/signup"
-        },
-        {
-            
-            heading:"log Out",
-            href:"#"
-        },
-    //   "home",
-    //   "About us",
-    //   "Category",
-    //   "Sign In",
-    //   "Sign UP",
-    //   "log Out",
-    ];
+
+  const menuItems = [
+    { heading: "Home", href: "/" },
+    { heading: "About Us", href: "/about" },
+    { heading: "Category", href: "/category" },
+    { heading: "Sign In", href: "/login", authRequired: false },
+    { heading: "Sign Up", href: "/signup", authRequired: false },
+    { heading: "Log Out", href: "#", authRequired: true, action: handleLogout },
+  ];
+
   return (
     <div>
-          <Navbar
+      <Navbar
         onMenuOpenChange={setIsMenuOpen}
         maxWidth="xl"
         className="mx-auto fixed top-0 w-full bg-indigo-50 shadow-xl"
@@ -86,7 +70,6 @@ function Header() {
               Home
             </Link>
           </NavbarItem>
-
           <NavbarItem isActive>
             <Link href="/about" aria-current="page">
               About Us
@@ -162,7 +145,7 @@ function Header() {
                   <DropdownMenu aria-label="Profile Actions" variant="flat">
                     <DropdownItem key="profile" className="h-14 gap-2">
                       <p className="font-semibold">Signed in as</p>
-                      <p className="font-semibold">zoey@example.com</p>
+                      <p className="font-semibold">{currentUser ? currentUser.email : 'Loading...'}</p>
                     </DropdownItem>
                     <DropdownItem key="settings">My Settings</DropdownItem>
                     <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -185,29 +168,35 @@ function Header() {
             />
           </NavbarItem>
         </NavbarContent>
+
         <NavbarMenu>
-          {menuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
-                className="w-full"
-                href={item.href}
-                size="lg"
-              >
-                {item.heading}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+          {menuItems.map((item, index) => {
+            if ((!token && item.authRequired) || (token && !item.authRequired)) {
+              return null;
+            }
+            return (
+              <NavbarMenuItem key={index} onClick={item.action ? item.action : null}>
+                <Link
+                  color={
+                    index === 2
+                      ? "primary"
+                      : index === menuItems.length - 1
+                      ? "danger"
+                      : "foreground"
+                  }
+                  className="w-full"
+                  href={item.href}
+                  size="lg"
+                >
+                  {item.heading}
+                </Link>
+              </NavbarMenuItem>
+            );
+          })}
         </NavbarMenu>
       </Navbar>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
