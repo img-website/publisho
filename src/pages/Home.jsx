@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
-import {Button} from "@nextui-org/react";
-import { FbIcon, Printicon, Twittericon, Linkdinicon } from "../component/Icons";
+import {Button , Input} from "@nextui-org/react";
+import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon } from "../component/Icons";
 
 
 function Home() {
@@ -293,15 +293,16 @@ function Home() {
               <form>
                 <div className="flex items-center gap-5">
                   <div className="max-w-[350px] w-full">
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      placeholder="Enter your Email"
-                      className="rounded-md border border-gray-3 bg-white placeholder:text-dark-5 w-full py-3.5 px-5 outline-none focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                    />
+                  <Input
+      isClearable
+      type="email"
+      variant="bordered"
+      placeholder="Enter your email"
+      onClear={() => console.log("input cleared")}
+      className=""
+    />
                   </div>
-                  <Button className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
+                  <Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
                     Subscribe
                   </Button>
                 </div>

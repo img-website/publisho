@@ -7,8 +7,8 @@ export class Category extends Component {
     return (
       <>
         <div className="h-dvh overflow-y-auto">
-        <div className="max-w-7xl px-6 lg:px-8 z-10 mx-auto w-max py-1 bg-white  fixed top-0">
-       <div className="mt-16 ">
+        <div className="max-w-7xl px-6 lg:px-8 z-10 mx-auto w-full  py-1 bg-white  fixed top-0">
+       <div className="mt-16  md:ps-8">
        <Breadcrumbs>
       <BreadcrumbItem>Home</BreadcrumbItem>
       <BreadcrumbItem className="font-semibold text-base">Fashion</BreadcrumbItem>
@@ -16,8 +16,8 @@ export class Category extends Component {
        </div>
         </div>
         <div>
-          <div className="grid mt-20   grid-cols-12 gap-4 w-full mx-auto h-[calc(100vh-100px)] overflow-hidden">
-          <div className="md:col-span-3 lg:ps-6 mb-4 h-[calc(100vh-100px)] overflow-y-auto">
+          <div className="grid mt-20 md:ps-8  grid-cols-12 gap-4 w-full mx-auto h-[calc(100vh-100px)] overflow-hidden">
+          <div className="md:col-span-3 md:ps-6 mb-4 h-[calc(100vh-100px)] overflow-y-auto md:static md:translate-x-0 absolute bg-white -translate-x-[400px]">
 
          <div className="">
          <Accordion selectionMode="multiple">
@@ -303,8 +303,8 @@ export class Category extends Component {
     </Accordion>
          </div>
           </div>
-          <div className="col-span-9  h-[calc(100vh-100px)] overflow-y-auto">
-            <div className="mx-auto gap-4 mb-4 grid sm:grid-cols-2 grid-cols-1  w-full mt-3">
+          <div className="md:col-span-9 col-span-12 h-[calc(100vh-100px)] px-6 overflow-y-auto">
+            <div className="mx-auto max-w-7xl md:px-16 gap-4 mb-4 grid sm:grid-cols-2 grid-cols-1  w-full mt-3">
               <div className="group shadow-xl p-3">
                 <div className="mb-6 overflow-hidden aspect-[1/.6] rounded-[10px] *:*:transition-all *:*:group-hover:scale-105">
                   <a href="blog-single.html">

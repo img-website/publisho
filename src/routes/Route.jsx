@@ -6,11 +6,13 @@ import Contact from "../pages/Contact";
 import Category from "../pages/Category";
 import About from "../pages/About";
 import Signin from "../pages/Signin";
+import Auther from "../pages/Auther";
 import Signup from "../components/auth/Signup";
 import Login from "../components/auth/Login";
 import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
 import ProtectedRoute from "./ProtectedRoute";
+import { AuthErrorCodes } from "firebase/auth";
 
 const RouteComp = () => {
   const location = useLocation();
@@ -62,6 +64,7 @@ const RouteComp = () => {
         <Route path="/category" element={<Category />} />
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/auther" element={<Auther/>}/>
       </Routes>
     </>
   );

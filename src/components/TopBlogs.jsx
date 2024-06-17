@@ -111,7 +111,7 @@ function TopBlogs() {
             </div>
             <a
               href="category.html"
-              className="inline-flex text-green-dark bg-green/[0.08] font-medium text-sm py-1 px-3 rounded-full"
+              className="inline-flex text-green-900 bg-green-100 font-medium text-sm py-1 px-3 rounded-full"
             >
               {blog.category}
             </a>

@@ -30,7 +30,7 @@ function ForgetPass() {
         <div className="max-w-[520px] mx-auto px-4 sm:px-8 xl:px-0 shadow-2xl">
           <div className="rounded-xl bg-white shadow-box p-4 sm:p-7.5 xl:p-12.5">
             <div className="text-center mb-9">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-black mb-3">
+              <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-black mb-3">
                 Forget Password
               </h1>
             </div>
@@ -59,8 +59,8 @@ function ForgetPass() {
                     startContent={
                       loading ? (
                         <Spinner size="sm" color="white" classNames={{ base: "flex flex-row items-center", label: "text-white"}} label="Loading..." />
-                      ) : (
-                        <>Icon</>
+                      ) :(
+                        <></>
                       )
                     }
                     className={`w-full rounded-md text-white font-medium flex justify-center py-3.5 px-5 bg-black hover:opacity-90 transition-all duration-200 ${loading && "pointer-events-none"}`}
@@ -69,7 +69,7 @@ function ForgetPass() {
                   </Button>
                 <p className="text-center mt-5">
                   Don't have an account?    
-                  <Link to="/login" className="text-dark">
+                  <Link to="/login" className="text-dark font-semibold ms-2">
                     SignIn
                   </Link>
                 </p>
