@@ -11,6 +11,7 @@ import Login from "../components/auth/Login";
 import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
 import ProtectedRoute from "./ProtectedRoute";
+import AddBlog from "../pages/AddBlog";
 
 const RouteComp = () => {
   const location = useLocation();
@@ -56,12 +57,19 @@ const RouteComp = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/blog/add"
+          element={
+            <ProtectedRoute>
+              <AddBlog />
+            </ProtectedRoute>
+          }
+        />
         
         <Route path="/detail" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/category" element={<Category />} /> */}
         <Route path="/about" element={<About />} />
-        <Route path="/signin" element={<Signin />} />
       </Routes>
     </>
   );

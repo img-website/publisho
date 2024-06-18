@@ -1,24 +1,24 @@
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  getIdToken,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { createContext, useContext } from "react";
 import { db, useFirebase } from "./Firebase";
 import { toast } from "sonner";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext(null);
 
 export const useAuthentication = () => useContext(AuthContext);
 
 export const AuthProvider = (props) => {
-  const navigate = useNavigate();
   const { firebaseAuth } = useFirebase();
+  const navigate = useNavigate();
 
   //   console.log("firebaseAuth", firebaseAuth);
 
@@ -31,26 +31,17 @@ export const AuthProvider = (props) => {
       .then( async(res) => {
         const { user } =  res;
         console.log("usersignup", user);
-        await setDoc(doc(collection(db, "Users"), user.uid), {
+        await setDoc(doc(collection(db, "users"), user.uid), {
             displayName: user.displayName || displayName,
             email: user.email,
-            createdAt:user.metadata.createdAt,
-            creationTime:user.metadata.creationTime,
-            lastLoginAt:user.metadata.lastLoginAt,
-            lastSignInTime:user.metadata.lastSignInTime,
+            creationAt:user.metadata.creationTime,
+            lastSignInAt:user.metadata.lastSignInTime,
+            isAdmin: false,
           });
-
-           // Get the user's ID token
-        const idToken = await getIdToken(user);
-        // console.log("ID Token:", idToken);
-
-        // Store the token 
-        localStorage.setItem("accessToken", idToken);
-
+          navigate("/")
         toast.success("Signup Successful , Login Please", {
           description: "Welcome to the app",
         });
-        navigate("/");
       })
       .catch((error) => {
         console.log("error", error);
@@ -82,7 +73,6 @@ export const AuthProvider = (props) => {
             toast.error("An error occurred during signup. Please try again.");
         }
       })
-      .finally(() => {});
   };
 
   //   SignIn function
@@ -92,17 +82,13 @@ export const AuthProvider = (props) => {
       .then(async(res) => {
         const { user } =  res;
         console.log(res.user);
-           // Get the user's ID token
-        const idToken = await getIdToken(user);
-        // console.log("ID Token:", idToken);
-
-        // Store the token 
-        localStorage.setItem("accessToken", idToken);
-
+        await setDoc(doc(collection(db, "users"), user.uid), {
+          lastSignInAt:user.metadata.lastSignInTime,
+        }, {merge: true});
+        navigate("/")
         toast.success("Login Successful", {
           description: "Welcome to the app",
         });
-        navigate("/");
       })
       .catch((error) => {
         console.log("error", error); 
@@ -129,7 +115,6 @@ export const AuthProvider = (props) => {
             toast.error("An error occurred during signup. Please try again.");
         }
       })
-      .finally(() => {});
   };
 
   // Password reset function
@@ -178,27 +163,38 @@ export const AuthProvider = (props) => {
         //     displayName:user.displayName,
         //     email:user.email
         //   });
-        await setDoc(doc(collection(db, "Users"), user.uid), {
-          displayName: user.displayName,
+        await setDoc(doc(collection(db, "users"), user.uid), {
+          displayName: user.displayName || displayName,
           email: user.email,
+          creationAt:user.metadata.creationTime,
+          lastSignInAt:user.metadata.lastSignInTime,
+          isAdmin: false,
         });
+      }else {
+        await setDoc(doc(collection(db, "users"), user.uid), {
+          lastSignInAt:user.metadata.lastSignInTime,
+        },{merge: true});
       }
-
-      const idToken = await getIdToken(user);
-      // console.log("ID Token:", idToken);
-
-      // Store the token 
-      localStorage.setItem("accessToken", idToken);
+      navigate("/")
       toast.success("Google Sign-In Successful", {
         description: "Welcome to the app",
       });
 
-      navigate("/"); 
     } catch (error) {
       console.error("Google Sign-In Error:", error);
       toast.error("An error occurred during Google Sign-In. Please try again.");
     }
   };
+
+
+  const handleLogout = async () => {
+    await signOut(firebaseAuth).then(()=> {
+      toast.success("Logout Successfully")
+    }).catch((error)=>{
+      toast.error(error?.message)
+    })
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -206,6 +202,7 @@ export const AuthProvider = (props) => {
         signInUserWithEmailAndPassword,
         sendPasswordReset,
         signInWithGoogle,
+        handleLogout
       }}
     >
       {props.children}

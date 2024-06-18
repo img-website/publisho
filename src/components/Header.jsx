@@ -19,30 +19,13 @@ import {
 } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../component/Icons";
-import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { useAuthentication } from '../context/AuthContext';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [token, setToken] = useState(null);
-  const {currentUser} = useUser();
-  const navigate = useNavigate();
-
-  console.log(currentUser,"user")
-  // if(!currentUser){
-  //   return <p>Please SignIn</p>
-  // }
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem('accessToken');
-    setToken(storedToken);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    setToken(null);
-    navigate('/login');
-  };
+  const {currentUser, isAuthenticated} = useUser();
+  const {handleLogout} = useAuthentication();
 
   const menuItems = [
     { heading: "Home", href: "/" },
@@ -114,7 +97,8 @@ function Header() {
         </NavbarItem>
 
         <NavbarContent justify="end">
-          {!token ? (
+          
+          {!isAuthenticated ? (
             <>
               <NavbarItem className="hidden lg:flex">
                 <Link href="/login" className='text-black'>Login</Link>
@@ -171,7 +155,7 @@ function Header() {
 
         <NavbarMenu>
           {menuItems.map((item, index) => {
-            if ((!token && item.authRequired) || (token && !item.authRequired)) {
+            if ((!isAuthenticated && item.authRequired) || (isAuthenticated && !item.authRequired)) {
               return null;
             }
             return (
