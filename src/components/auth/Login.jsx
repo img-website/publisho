@@ -14,7 +14,7 @@ function Login() {
   const HandleSignUpWithGoogle = async () => {
     setLoading(true);
     try {
-      await allAuth.signInWithGoogle("signUp");
+      await allAuth.signInWithGoogle();
     } catch (error) {
       // Handle errors
     } finally {
