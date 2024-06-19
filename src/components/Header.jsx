@@ -4,7 +4,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
+  // Link,
   Button,
   NavbarMenuToggle,
   NavbarMenu,
@@ -21,6 +21,7 @@ import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../component/Icons";
 import { useUser } from '../context/UserContext';
 import { useAuthentication } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,17 +50,17 @@ function Header() {
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="/">
+            <Link color="foreground" to="/">
               Home
             </Link>
           </NavbarItem>
           <NavbarItem >
-            <Link color="foreground" href="/About" >
+            <Link color="foreground" to="/About" >
               About Us
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="/category">
+            <Link color="foreground" to="/category">
               Category
             </Link>
           </NavbarItem>
@@ -169,7 +170,7 @@ function Header() {
                       : "foreground"
                   }
                   className="w-full"
-                  href={item.href}
+                  to={item.href}
                   size="lg"
                 >
                   {item.heading}

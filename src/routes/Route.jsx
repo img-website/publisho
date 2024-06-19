@@ -13,6 +13,8 @@ import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
 import ProtectedRoute from "./ProtectedRoute";
 import Admin from "../pages/Admin"
+import AddBlog from "../pages/AddBlog";
+import DashboardTable from "../components/dashboardTable/Table";
 
 
 const RouteComp = () => {
@@ -75,6 +77,7 @@ const RouteComp = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/auther" element={<Auther/>}/>
         <Route path="/admin" element={<Admin/>}/>
+        <Route path="/adminTable" element={<DashboardTable/>}/>
         
       </Routes>
     </>
