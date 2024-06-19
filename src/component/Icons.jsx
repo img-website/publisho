@@ -258,4 +258,176 @@ export const Loginicon = ({
 };
 
 
+export const Verifyicon = ({
+	size,
+	 width = 20,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 25 25"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+<path d="M18 8L22 12L18 16"></path>
+<path d="M2 12H22"></path>
+</svg>
+	);
+};
+export const Subscribeicon = ({
+	size,
+	 width = 20,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 25 25"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+<path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4-6-3.27v6.53L16 16z"></path>
+</svg>
+	);
+};
+
+export const Aeroicon = ({
+	size,
+	 width = 24,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 25 25"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+	<path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path>
+</svg>
+	);
+};
+export const Usericon = ({
+	size,
+	 width = 24,
+	 height = 24, 
+	 ...props
+	 }) =>{
+		 return (
+			 <svg
+			 height={size || height}
+			 viewBox="0 0 25 25"
+			 width={size || width}
+			 fill="currentColor"
+			 stroke="currentColor"
+			{...props}
+		>
+	<path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+</svg>
+	);
+};
+export const PlusIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+    >
+      <path d="M6 12h12" />
+      <path d="M12 18V6" />
+    </g>
+  </svg>
+);
+export const SearchIcon2 = (props) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height="1em"
+    role="presentation"
+    viewBox="0 0 24 24"
+    width="1em"
+    {...props}
+  >
+    <path
+      d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
+    <path
+      d="M22 22L20 20"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
+  </svg>
+);
+export const ChevronDownIcon = ({strokeWidth = 1.5, ...otherProps}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height="1em"
+    role="presentation"
+    viewBox="0 0 24 24"
+    width="1em"
+    {...otherProps}
+  >
+    <path
+      d="m19.92 8.95-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const VerticalDotsIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+
+
+
+
 

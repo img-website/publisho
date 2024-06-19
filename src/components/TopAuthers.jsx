@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bookicon } from '../component/Icons';
+import { Aeroicon, Bookicon } from '../component/Icons';
 
 function TopAuthers() {
     const authorsData = [
@@ -34,7 +34,7 @@ function TopAuthers() {
         <a href="#" className="group text-dark leading-none">
           <span className="flex items-center gap-2 bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
             All Author
-            <Bookicon/>
+            <Aeroicon/>
           </span>
         </a>
       </div>

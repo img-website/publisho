@@ -53,8 +53,8 @@ function Header() {
               Home
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="/about" aria-current="page">
+          <NavbarItem >
+            <Link color="foreground" href="/About" >
               About Us
             </Link>
           </NavbarItem>

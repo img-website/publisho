@@ -1,10 +1,11 @@
 import React from 'react'
-
+import {Button , Input} from "@nextui-org/react";
+ 
 
 export default function About() {
   return (
    <>
-   <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5 mb-4">
+   <div className="max-w-7xl  px-6 lg:px-8 w-full pt-20 mx-auto border-b py-5 mb-4">
 <div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
 <div className="lg:max-w-[570px] w-full rounded-md overflow-hidden aspect-[1/.6] *:h-full">
 <img src="https://images.unsplash.com/photo-1664574654700-75f1c1fad74e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXxlbnwwfHwwfHx8MA%3D%3D" alt="about" className="size-full object-cover" />
@@ -96,7 +97,7 @@ Interior Space
 </a>
 </div>
 <div className=" w-full">
-<a href="category.html" className="inline-flex text-yellow-900 bg-yellow-100/50 font-medium text-sm py-1 px-3 rounded-full mb-4">Technology</a>
+<a href="category.html" className="inline-flex text-yellow-900 bg-yellow-100/50 font-medium text-sm py-1 px-3 rounded-full mb-4">Food</a>
 <h2 className="font-semibold text-custom-lg text-dark mb-3">
 <a href="blog-single.html">
 14 Innovative Architectural Designs to Create a Vast
@@ -133,11 +134,18 @@ products or publish new articles
 <form>
 <div className="flex items-center gap-5">
 <div className="max-w-[350px] w-full">
-<input id="email" type="email" name="email" placeholder="Enter your Email" className="rounded-md border border-gray-3 bg-white placeholder:text-dark-5 w-full py-3.5 px-5 outline-none focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent" />
+<Input
+                      isClearable
+                      type="email"
+                      variant="bordered"
+                      placeholder="Enter your email"
+                      onClear={() => console.log("input cleared")}
+                      className=""
+                 />
 </div>
-<button className="font-medium rounded-md text-white bg-black flex py-3 px-5 hover:opacity-90 transition-all ease-linear duration-300">
+<Button className="font-medium rounded-md text-white bg-black flex py-3 px-5 hover:opacity-90 transition-all ease-linear duration-300">
 Subscribe
-</button>
+</Button>
 </div>
 </form>
 </div>
