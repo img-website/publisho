@@ -117,42 +117,27 @@ Interior Space
 </div>
 </div>
 {/* blog-ui end */}
-{/* newsletter */}
-<div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mb-3 mx-auto">
-<div className="bg-white shadow-2xl rounded-[10px] py-9 px-4 sm:px-8 xl:px-10">
-<div className="flex flex-wrap items-center justify-between gap-10">
-<div className="max-w-[455px] w-full">
-<h3 className="font-semibold text-heading-6 text-dark mb-3">
-Subscribe to Newsletter
-</h3>
-<p>
-Provide your email to get email notification when we launch new
-products or publish new articles
-</p>
-</div>
-<div className="max-w-[494px] w-full">
-<form>
-<div className="flex items-center gap-5">
-<div className="max-w-[350px] w-full">
-<Input
-                      isClearable
-                      type="email"
-                      variant="bordered"
-                      placeholder="Enter your email"
-                      onClear={() => console.log("input cleared")}
-                      className=""
-                 />
-</div>
-<Button className="font-medium rounded-md text-white bg-black flex py-3 px-5 hover:opacity-90 transition-all ease-linear duration-300">
-Subscribe
-</Button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-{/* newsletter end */}
+{/* choose */}
+ <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+      {list.map((item, index) => (
+        <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
+          <CardBody className="overflow-visible p-0">
+            <Image
+              shadow="sm"
+              radius="lg"
+              width="100%"
+              alt={item.title}
+              className="w-full object-cover h-[140px]"
+              src={item.img}
+            />
+          </CardBody>
+          <CardFooter className="text-small justify-between">
+            <b>{item.title}</b>
+            <p className="text-default-500">{item.price}</p>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
    </>
   )
 }
