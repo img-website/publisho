@@ -1,48 +1,171 @@
-import { Timestamp, addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { db } from "../context/Firebase";
 import { useUser } from "../context/UserContext";
-import { Button } from "@nextui-org/react";
-
+import { Button, Input } from "@nextui-org/react";
 
 const AddBlog = () => {
-    const {currentUser} = useUser();
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState(null);
-    
-    const addblogData = async () => {
+    const { currentUser } = useUser();
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState({
+        title: "",
+        shortDescription: "",
+        description: "",
+        authorImgUrl: "",
+        authorName: "",
+        bannerImgUrl: "",
+        metaTitle: "",
+        metaDescription: "",
+        slug: "",
+    });
+
+    console.log(data,"data form")
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const addBlogData = async () => {
+        setIsLoading(true);
         try {
             const res = await addDoc(collection(db, "blogs"), {
                 authorID: currentUser?.uid,
-                title: "Hello world",
-                shortDescription: "short hi hai",
-                description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis deleniti rerum quibusdam. Est amet eveniet officiis autem veniam suscipit illum voluptatibus voluptatum, dolorum mollitia, quo earum ut perspiciatis, ex iste.",
-                authorImgUrl: "",
-                authorName: "",
+                ...data,
                 createdAt: Timestamp.fromDate(new Date()),
                 modifiedAt: Timestamp.fromDate(new Date()),
+            });
+            console.log(res);
+            setData({
+                title: "",
+                shortDescription: "",
+                description: "",
+                authorImgUrl: "",
+                authorName: "",
                 bannerImgUrl: "",
                 metaTitle: "",
                 metaDescription: "",
-                slug: "https:google.com/"
-              })
-
-              console.log(res.id)
-            //   setData(res);
+                slug: "",
+            });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
-    }
-
+    };
 
     return (
-        <div className="pt-20">
-            {isLoading && data}
-            <Button onClick={addblogData} variant="bordered" color="primary" size="lg">Add Blogwa</Button>
+        <div className="pt-20 flex flex-col items-center">
+            <form className="w-full max-w-lg p-4 border rounded shadow-md" onSubmit={(e) => {
+                e.preventDefault();
+                addBlogData();
+            }}>
+                <Input 
+                    clearable 
+                    underlined
+                    fullWidth
+                    name="title"
+                    label="Title" 
+                    placeholder="Enter blog title"
+                    onChange={handleChange}
+                    value={data.title} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="shortDescription" 
+                    label="Short Description" 
+                    placeholder="Enter short description" 
+                    onChange={handleChange} 
+                    value={data.shortDescription} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="description" 
+                    label="Description" 
+                    placeholder="Enter blog description" 
+                    onChange={handleChange} 
+                    value={data.description} 
+                />
+                <Input 
+                    clearable 
+                    underlined
+                    fullWidth 
+                    name="authorImgUrl" 
+                    label="Author Image URL" 
+                    placeholder="Enter author image URL" 
+                    onChange={handleChange} 
+                    value={data.authorImgUrl} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="authorName" 
+                    label="Author Name" 
+                    placeholder="Enter author name" 
+                    onChange={handleChange} 
+                    value={data.authorName} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="bannerImgUrl" 
+                    label="Banner Image URL" 
+                    placeholder="Enter banner image URL" 
+                    onChange={handleChange} 
+                    value={data.bannerImgUrl} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="metaTitle" 
+                    label="Meta Title" 
+                    placeholder="Enter meta title" 
+                    onChange={handleChange} 
+                    value={data.metaTitle} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="metaDescription" 
+                    label="Meta Description" 
+                    placeholder="Enter meta description" 
+                    onChange={handleChange} 
+                    value={data.metaDescription} 
+                />
+                <Input 
+                    clearable 
+                    underlined 
+                    fullWidth 
+                    name="slug" 
+                    label="Slug" 
+                    placeholder="Enter blog slug" 
+                    onChange={handleChange} 
+                    value={data.slug} 
+                />
+                <Button 
+                    type="submit" 
+                    disabled={isLoading} 
+                    variant="bordered" 
+                    color="primary" 
+                    size="lg" 
+                    className="mt-4"
+                >
+                    {isLoading ? "Adding Blog..." : "Add Blog"}
+                </Button>
+            </form>
         </div>
-    )
+    );
 };
 
 export default AddBlog;

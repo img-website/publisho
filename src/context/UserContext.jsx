@@ -28,7 +28,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
 
-
+console.log({ isAuthenticated })
   return (
     <UserContext.Provider value={{ currentUser, isAuthenticated }}>
       {children}
