@@ -69,48 +69,9 @@ function Home() {
                         Get started
                     </a> */}
 
-                <Button
-                  href="#"
-                  title=""
-                  className="
-                            inline-flex
-                            items-center
-                            justify-center
-                            px-5
-                            py-2
-                            font-sans
-                            text-base
-                            font-semibold
-                            transition-all
-                            duration-200
-                            bg-transparent
-                            border-2
-                            rounded-xl
-                            sm:leading-8
-                            text-white
-                            border-white
-                            hover:bg-white
-                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
-                            hover:text-black
-                            sm:text-lg
-                            focus:ring-offset-secondary
-                        "
-                  role="button"
-                >
-                  <svg
-                    className="w-6 h-6 mr-2"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M8.0416 4.9192C7.37507 4.51928 6.5271 4.99939 6.5271 5.77669L6.5271 18.2232C6.5271 19.0005 7.37507 19.4806 8.0416 19.0807L18.4137 12.8574C19.061 12.469 19.061 11.5308 18.4137 11.1424L8.0416 4.9192Z"
-                    />
-                  </svg>
-                  Get Started
-                </Button>
+<Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
+                    Explore
+                  </Button>
               </div>
             </div>
           </div>
@@ -294,13 +255,13 @@ function Home() {
                 <div className="flex items-center gap-5">
                   <div className="max-w-[350px] w-full">
                   <Input
-      isClearable
-      type="email"
-      variant="bordered"
-      placeholder="Enter your email"
-      onClear={() => console.log("input cleared")}
-      className=""
-    />
+                      isClearable
+                      type="email"
+                      variant="bordered"
+                      placeholder="Enter your email"
+                      onClear={() => console.log("input cleared")}
+                      className=""
+                 />
                   </div>
                   <Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
                     Subscribe

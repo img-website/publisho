@@ -1,5 +1,7 @@
 import React from "react";
-import { FbIcon, Linkdinicon, Printicon, Twittericon } from "../component/Icons";
+import { FbIcon, Linkdinicon, Printicon, Twittericon, Subscribeicon } from "../component/Icons";
+import {Button , Input} from "@nextui-org/react";
+
 
 function Detail() {
   return (
@@ -433,16 +435,17 @@ function Detail() {
                   Join 70,000 subscribers!
                 </p>
                 <form>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    placeholder="Enter your Email"
-                    className="rounded-md border border-gray-3 bg-white placeholder:text-black-5 w-full py-3.5 px-5 outline-none text-center focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
-                  />
-                  <button className="font-medium rounded-md text-white bg-black flex justify-center text-center w-full py-3 px-5 hover:opacity-90 transition-all duration-200 mt-4">
-                    Subscribe Now
-                  </button>
+                <Input
+      isClearable
+      type="email"
+      variant="bordered"
+      placeholder="Enter your email"
+      onClear={() => console.log("input cleared")}
+      className=""
+    />
+                    <Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white w-full mt-2 hover:!text-white border-2 !border-black font-semibold ">
+                    Subscribe
+                  </Button>
                 </form>
                 <p className="text-custom-sm mt-5 text-center">
                   By signing up, you agree to our
