@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
+import DashboardTable from '../components/dashboardTable/Table';
 
  function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -8,8 +9,8 @@ export default function Admin ()  {
   return (
     <>
   <div>
-    <div className="grid grid-cols-12">
-    <div class="flex flex-col col-span-2 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+    <div className="grid grid-cols-12 ps-0 lg:ps-12">
+    <div class="flex flex-col absolute -translate-x-[800px] md:static md:translate-x-0  col-span-2 md:col-span-3 lg:col-span-2 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
     <a href="#">
         <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/logo.svg" alt="" />
     </a>
@@ -88,10 +89,11 @@ export default function Admin ()  {
         </a>
     </div>
     </div>
-    <div className="col-span-10 mt-20 px-10">
-    <div className='grid grid-cols-12'>
-      <div className="col-span-8">
-        <div className='grid-cols-3 grid gap-5'>
+    <div className='h-[calc(100vh-68px)] mt-[64px] col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto'>
+    <div className="pt-5 lg:px-16 px-6">
+    <div className='grid grid-cols-12 items-stretch gap-3'>
+      <div className="lg:col-span-8 col-span-12 lg:mb-10 mb-4 h-full">
+        <div className='lg:grid-cols-3 md:grid-cols-2 *:h-full grid gap-5'>
          <div className='border p-4 rounded-sm shadow-xl   '>
            <div className='*:size-6 p-2  bg-purple-50 text-purple-500 w-max rounded-full aspect-[1/1]'>
            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112z"></path><circle cx="256" cy="256" r="80" fill="none" stroke-miterlimit="10" stroke-width="32"></circle></svg>
@@ -144,42 +146,36 @@ export default function Admin ()  {
           
         </div>
       </div>
-      <div className="col-span-2">
+      <div className="lg:col-span-4 col-span-12  items-stretch">
+        <div className='border p-3 grid grid-cols-12 bg-sky-50/30 shadow-2xl mb-20 lg:mb-0'>
+          <div className="col-span-7 flex flex-col">
+          <div className='flex-1'>
+          <a href="#" className='text-lg font-semibold'>John Doe</a>
+          <p className='text-xs leading-tight font-semibold text-slate-500'>Author / Writter</p>
+          </div>
+          <div>
+          <div className="flex mt-auto">
+                <div className="text-3xl font-bold text-slate-400">32 <span className='text-sm text-slate-500 font-semibold'>Total Post</span></div>
+              </div>
+          </div>
+            
+          </div>
+          <div className='col-span-5'>
+            <div className='size-full *:size-full *:scale-[1.9]' >
+              <img src="../src/assets/img/auther.png" alt="" />
+           
+            </div>
+
+          </div>
+        </div>
 
       </div>
       
   
 
     </div>
-    <Table isStriped aria-label="Example static collection table" className='12'>
-      <TableHeader>
-        <TableColumn>NAME</TableColumn>
-        <TableColumn>ROLE</TableColumn>
-        <TableColumn>STATUS</TableColumn>
-      </TableHeader>
-      <TableBody>
-        <TableRow key="1">
-          <TableCell>Tony Reichert</TableCell>
-          <TableCell>CEO</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-        <TableRow key="2">
-          <TableCell>Zoey Lang</TableCell>
-          <TableCell>Technical Lead</TableCell>
-          <TableCell>Paused</TableCell>
-        </TableRow>
-        <TableRow key="3">
-          <TableCell>Jane Fisher</TableCell>
-          <TableCell>Senior Developer</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-        <TableRow key="4">
-          <TableCell>William Howard</TableCell>
-          <TableCell>Community Manager</TableCell>
-          <TableCell>Vacation</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <DashboardTable/>
+    </div>
     </div>
     </div>
   </div>

@@ -245,7 +245,7 @@ function Home() {
       <h2 className="text-xl font-bold text-gray-900 md:text-2xl lg:text-4xl">Trip of Ladakh</h2>
       <a href="" className="mt-2 text-sm  font-semibold">By Arina Jons </a>
       <p className="mt-4 mb-8 max-w-md text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam iusto, cumque dolores sit odio ex.</p>
-       <Button startContent={<Loginicon/>} className="w-max hover:!bg-black hover:text-white border-2 border-black bg-white font-semibold">Read blog</Button>
+       <Button endContent={<Loginicon/>} className="w-max hover:!bg-black hover:text-white border-2 border-black bg-white font-semibold">Read Blog</Button>
     </div>
 
     <div className="order-first ml-auto h-48 w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">

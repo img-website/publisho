@@ -55,7 +55,7 @@ function Header() {
             </Link>
           </NavbarItem>
           <NavbarItem >
-            <Link color="foreground" to="/About" >
+            <Link color="foreground" to="/about" >
               About Us
             </Link>
           </NavbarItem>

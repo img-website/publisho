@@ -183,7 +183,7 @@ export default function DashboardTable() {
           <div className="flex gap-3">
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+                <Button className="text-white bg-black" endContent={<ChevronDownIcon className="text-small" />} variant="flat">
                   Status
                 </Button>
               </DropdownTrigger>
@@ -204,7 +204,7 @@ export default function DashboardTable() {
             </Dropdown>
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+                <Button className="bg-black text-white" endContent={<ChevronDownIcon className="text-small" />} variant="flat">
                   Columns
                 </Button>
               </DropdownTrigger>
@@ -223,7 +223,7 @@ export default function DashboardTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
+            <Button className="hover:bg-black text-black bg-white border-2 border-black hover:text-white  hover:font-semibld" endContent={<PlusIcon />}>
               Add New
             </Button>
           </div>
@@ -266,16 +266,16 @@ export default function DashboardTable() {
           isCompact
           showControls
           showShadow
-          color="primary"
+          color="default"
           page={page}
           total={pages}
           onChange={setPage}
         />
         <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
+          <Button className="bg-black text-white" isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
             Previous
           </Button>
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
+          <Button className="bg-black text-white" isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
             Next
           </Button>
         </div>
@@ -316,6 +316,7 @@ export default function DashboardTable() {
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
           </TableRow>
+          
         )}
       </TableBody>
     </Table>
