@@ -16,6 +16,7 @@ import Admin from "../pages/Admin";
 import AddBlog from "../pages/AddBlog";
 import DashboardTable from "../components/dashboardTable/Table";
 import Footer from "../components/Footer";
+import { Newblog } from "../pages/Newblog";
 
 
 const RouteComp = () => {
@@ -79,6 +80,7 @@ const RouteComp = () => {
         <Route path="/auther" element={<Auther/>}/>
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/adminTable" element={<DashboardTable/>}/>
+        <Route path="/newblog" element={<Newblog/>}/>
         
       </Routes>
           {!noHeaderPaths.includes(location.pathname) && <Footer />}

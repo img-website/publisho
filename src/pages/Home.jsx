@@ -3,15 +3,15 @@ import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
 import {Button , Input} from "@nextui-org/react";
-import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon } from "../component/Icons";
+import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon, ChevronDownIcon, Loginicon } from "../component/Icons";
 
 
 function Home() {
  
   return (
     <>
-      <div className=" pb-12 bg-black xl:py-40 py-20 sm:py-20 md:py-28 ">
-        <div className="absolute inset-0">
+      <div className=" xl:py-40 py-20 sm:py-20 md:py-28 ">
+        <div className="absolute w-full h-full inset-0">
           <img
             className="object-cover w-full h-full"
             src="https://images.unsplash.com/photo-1610827776753-8c668b92d732?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -19,8 +19,8 @@ function Home() {
           />
         </div>
 
-        <div className="relative">
-          <div className="px-5 mx-auto max-w-7xl">
+        <div className="relative h-full">
+          <div className="px-5 mx-auto max-w-7xl w-full">
             <div className="w-full lg:w-2/3 xl:w-1/2">
               <h1 className="font-sans text-base font-normal tracking-tight text-white text-opacity-70">
                 Master the basics of baking
@@ -80,11 +80,11 @@ function Home() {
 
       <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
         <div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
-          <div className="lg:max-w-[570px] w-full">
+          <div className="lg:max-w-[570px] h-full w-full">
             <img
               src="https://clarity-tailwind.preview.uideck.com/images/about.png"
               alt="about"
-              className="w-full"
+              className="-full"
             />
           </div>
           <div className="lg:max-w-[490px] w-full">
@@ -238,40 +238,23 @@ function Home() {
     </div>
       {/* top auther end */}
       {/* newsletter */}
-      <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mb-3 mx-auto">
-        <div className="bg-white shadow-2xl rounded-[10px] py-9 px-4 sm:px-8 xl:px-10">
-          <div className="flex flex-wrap items-center justify-between gap-10">
-            <div className="max-w-[455px] w-full">
-              <h3 className="font-semibold text-heading-6 text-dark mb-3">
-                Subscribe to Newsletter
-              </h3>
-              <p>
-                Provide your email to get email notification when we launch new
-                products or publish new articles
-              </p>
-            </div>
-            <div className="max-w-[494px] w-full">
-              <form>
-                <div className="flex items-center gap-5">
-                  <div className="max-w-[350px] w-full">
-                  <Input
-                      isClearable
-                      type="email"
-                      variant="bordered"
-                      placeholder="Enter your email"
-                      onClear={() => console.log("input cleared")}
-                      className=""
-                 />
-                  </div>
-                  <Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
-                    Subscribe
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-7xl mx-auto p-6 lg:px-8">
+      <div className=" bg-white rounded-xl border shadow-lg">
+  <div className="flex flex-col overflow-hidden  sm:flex-row md:h-80 w-full">
+    <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+      <h2 className="text-xl font-bold text-gray-900 md:text-2xl lg:text-4xl">Trip of Ladakh</h2>
+      <a href="" className="mt-2 text-sm  font-semibold">By Arina Jons </a>
+      <p className="mt-4 mb-8 max-w-md text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam iusto, cumque dolores sit odio ex.</p>
+       <Button endContent={<Loginicon/>} className="w-max hover:!bg-black hover:text-white border-2 border-black bg-white font-semibold">Read Blog</Button>
+    </div>
+
+    <div className="order-first ml-auto h-48 w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+      <img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1599751449128-eb7249c3d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" loading="lazy" />
+    </div>
+  </div>
+     </div>
       </div>
+
       {/* newsletter end */}
     </>
   );

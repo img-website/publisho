@@ -45,7 +45,7 @@ function Header() {
         className="mx-auto fixed top-0 w-full bg-indigo-50 shadow-xl"
       >
         <NavbarBrand>
-          <p className="font-bold text-inherit">BLOGERA</p>
+          <Link href="/"className="font-bold text-inherit ">BLOGERA</Link>
         </NavbarBrand>
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
