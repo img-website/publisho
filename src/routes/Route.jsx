@@ -12,9 +12,10 @@ import Login from "../components/auth/Login";
 import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
 import ProtectedRoute from "./ProtectedRoute";
-import Admin from "../pages/Admin"
+import Admin from "../pages/Admin";
 import AddBlog from "../pages/AddBlog";
 import DashboardTable from "../components/dashboardTable/Table";
+import Footer from "../components/Footer";
 
 
 const RouteComp = () => {
@@ -36,7 +37,7 @@ const RouteComp = () => {
               <Signup />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/login"
           element={
@@ -44,7 +45,7 @@ const RouteComp = () => {
               <Login />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/forget-Password"
           element={
@@ -52,7 +53,7 @@ const RouteComp = () => {
               <ForgetPass />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/category"
           element={
@@ -60,7 +61,7 @@ const RouteComp = () => {
               <Category />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/blog/add"
           element={
@@ -68,9 +69,9 @@ const RouteComp = () => {
               <AddBlog />
             </ProtectedRoute>
           }
-        />
+          />
         
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:slug" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/category" element={<Category />} /> */}
         <Route path="/about" element={<About />} />
@@ -80,6 +81,7 @@ const RouteComp = () => {
         <Route path="/adminTable" element={<DashboardTable/>}/>
         
       </Routes>
+          {!noHeaderPaths.includes(location.pathname) && <Footer />}
     </>
   );
 };

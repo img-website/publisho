@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import{Aeroicon} from'../component/Icons'
+import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../context/Firebase';
 
 function TopBlogs() {
+
+  const [blogsData, setBlogsData] = useState([])
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const blogContent = await getDocs(collection(db, 'blogs'));
+      const blogsList = blogContent.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setBlogsData(blogsList);
+      console.log(blogsList, "ajoidjasodijiodjio")
+    };
+
+    fetchBlogs();
+  }, []);
 
   
     const blogData = [
@@ -49,49 +65,49 @@ function TopBlogs() {
         <h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-3xl md:text-5xl text-dark">
           Top Blogs
         </h2>
-        <a href="#" className="group text-dark leading-none">
+        <Link to="/category" className="group text-dark leading-none">
           <span className="flex items-center gap-2 bg-gradient-to-r from-dark to-dark bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px]">
             All Blogs
             <Aeroicon/>
           </span>
-        </a>
+        </Link>
       </div>
       <div className="mx-auto gap-4 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-w-7xl px-6 lg:px-8 w-full mt-3">
-      {blogData.map((blog) => (
-        <div key={blog.id} className="group shadow-xl p-3">
+      {blogsData?.map((blog) => (
+        <div key={blog?.id} className="group shadow-xl p-3">
           <div className="mb-6 overflow-hidden aspect-[1/.6] rounded-[10px] *:*:transition-all *:*:group-hover:scale-105">
-            <a href="blog-single.html">
+            <Link to={`/blog/${blog?.slug}`}>
               <img
-                src={blog.imageSrc}
+                src={blog?.bannerImgUrl}
                 alt="image"
                 className="size-full object-cover"
               />
-            </a>
+            </Link>
           </div>
           <h4>
-            <a
-              href="blog-single.html"
+            <Link
+              to={`/blog/${blog?.slug}`}
               className="block text-dark font-bold text-xl mb-3.5"
             >
               <span className="bg-gradient-to-r from-primary/50 to-primary/40 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
                 {blog.title}
               </span>
-            </a>
+            </Link>
           </h4>
-          <p>{blog.description}</p>
+          <p>{blog.shortDescription}</p>
           <div className="flex flex-wrap gap-3 items-center justify-between mt-4.5">
             <div className="flex items-center gap-2.5">
-              <a href="author.html" className="flex items-center gap-3">
+              <Link to="" className="flex items-center gap-3">
                 <div className="flex w-6 h-6 rounded-full overflow-hidden *:object-cover *:size-full">
                   <img
-                    src={blog.author.imageSrc}
+                   src={blog.authorImgUrl}
                     alt="user"
                   />
                 </div>
-                <p className="text-sm">{blog.author.name}</p>
-              </a>
+                <p className="text-sm">{blog.authorName}</p>
+              </Link>
               <span className="flex w-[3px] h-[3px] rounded-full bg-dark-2"></span>
-              <p className="text-sm">{blog.date}</p>
+              <p className="text-sm">{new Date(blog.createdAt.seconds * 1000).toLocaleDateString()}</p>
             </div>
             <a
               href="category.html"

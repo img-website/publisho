@@ -42,7 +42,7 @@ export default function DashboardTable() {
     direction: "ascending",
   });
   const [page, setPage] = useState(1);
-
+  
   const hasSearchFilter = Boolean(filterValue);
 
   const headerColumns = useMemo(() => {

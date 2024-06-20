@@ -30,13 +30,13 @@ export const AuthProvider = (props) => {
     await createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then( async(res) => {
         const { user } =  res;
-        console.log("usersignup", user);
+        // console.log("usersignup", user);
         await setDoc(doc(collection(db, "users"), user.uid), {
-            displayName: user.displayName || displayName,
-            email: user.email,
-            creationAt:user.metadata.creationTime,
-            lastSignInAt:user.metadata.lastSignInTime,
-            isAdmin: false,
+          displayName: user.displayName || displayName,
+          email: user.email,
+          creationAt:user.metadata.creationTime,
+          lastSignInAt:user.metadata.lastSignInTime,
+          isAdmin: false,
           });
           navigate("/")
         toast.success("Signup Successful , Login Please", {
@@ -159,10 +159,6 @@ export const AuthProvider = (props) => {
       console.log("Google Sign-In Successful:", user);
       //   return user
       if (signUp) {
-        // const docRef = await addDoc(collection(db, "Users"), {
-        //     displayName:user.displayName,
-        //     email:user.email
-        //   });
         await setDoc(doc(collection(db, "users"), user.uid), {
           displayName: user.displayName || displayName,
           email: user.email,
