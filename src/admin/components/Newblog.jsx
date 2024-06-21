@@ -766,7 +766,7 @@ export const Newblog = () => {
     />
         </div>
         <div className='flex gap-6 mt-1'>
-        <Button className='bg-white border-2 border-black font-semibold hover:bg-black hover:text-white' variant="bordered">
+        <Button className='bg-white border-2  border-black font-semibold hover:bg-black hover:text-white' variant="bordered">
         Add
       </Button>
       <Button className='bg-white border-2 border-red-600 font-semibold hover:bg-red-600 hover:text-white text-red-600' variant="bordered">
