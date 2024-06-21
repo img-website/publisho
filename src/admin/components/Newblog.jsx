@@ -718,28 +718,82 @@ export const Newblog = () => {
               }}
             />
           </div>
+        </div>
+         <div>
+          <Textarea
+      label="Meta Description"
+      variant="bordered"
+      placeholder="Enter your description"
+      disableAnimation
+      disableAutosize
+      classNames={{
+        base: "w-full mt-4",
+        input: "resize-y min-h-[40px]",
+      }}
+    />
+        </div>
+         <div>
+         <Input
+      isClearable
+      type="text"
+      label="Meta keyword"
+      variant="bordered"
+      placeholder="Meta keyword"
+      className="w-full mt-3"
+    />
+        </div>
+           <div>
+         <Input
+      isClearable
+      type="text"
+      label="FAQ quection"
+      variant="bordered"
+      placeholder="Add quection here"
+      className="w-full mt-3"
+    />
+        </div>
+        <div>
+          <Textarea
+      label=" FAQ answer"
+      variant="bordered"
+      placeholder=" FAQ answer"
+      disableAnimation
+      disableAutosize
+      classNames={{
+        base: "w-full mt-4",
+        input: "resize-y min-h-[40px]",
+      }}
+    />
+        </div>
+        <div className='flex gap-6 mt-1'>
+        <Button className='bg-white border-2 border-black font-semibold hover:bg-black hover:text-white' variant="bordered">
+        Add
+      </Button>
+      <Button className='bg-white border-2 border-red-600 font-semibold hover:bg-red-600 hover:text-white text-red-600' variant="bordered">
+        Delete
+      </Button>
 
-          <div>
-            <Input
-              isClearable
-              type="color"
-              label="color"
-              variant="bordered"
-              className="w-full mt-3"
-            />
-          </div>
+        </div>
+        
+           <div>
+         <Input
+      isClearable
+      type="color"
+      label="color"
+      variant="bordered"
+      className="w-full mt-3"
+    />
+        </div>
 
-          <div></div>
-          <div className="flex items-center mt-4 justify-end">
-            <Button
-              className="bg-white border-2 border-black text-semibold hover:bg-black hover:text-white"
-              variant="bordered"
-            >
-              Submit
-            </Button>
-          </div>
-        </form>
-      </div>
+<div>
+</div>
+<div className='flex items-center mt-4 justify-end'>
+<Button className='bg-white border-2 border-black font-semibold hover:bg-black hover:text-white' variant="bordered">
+        Submit
+      </Button> 
+</div>
+      </form>
+    </div>
     </>
   );
 };
