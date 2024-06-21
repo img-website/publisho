@@ -1,7 +1,7 @@
 import React from 'react'
 import { PlusIcon } from '../component/Icons'
 
-import { Select, SelectItem, Avatar, Input,DatePicker,Textarea, Chip} from "@nextui-org/react";
+import { Select, SelectItem, Avatar, Input,DatePicker,Textarea, Chip, Button } from "@nextui-org/react";
 export const users2 = [
   {
     id: 1,
@@ -432,13 +432,14 @@ export const Newblog = () => {
   };
   return (
     <>
-      <div className='mt-16 p-4 text-lg font-semibold flex items-center gap-2'>
+    <div>
+      <div className='mt-16 p-4 text-lg font-semibold flex items-center gap-2 ' >
         <PlusIcon className=" size-5 border-black border rounded-full" />
         Add Blog <span>
         </span>
       </div>
       <form className="bg-white p-4 shadow-lg">
-        <div className='grid grid-cols-2 gap-4 items-stretch'>
+        <div className='grid sm:grid-cols-2 gap-4 items-stretch'>
           <div className='w-full h-full'>
             <Select
               label="Select category"
@@ -571,7 +572,7 @@ export const Newblog = () => {
       }}
     />
         </div>
-        <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="grid sm:grid-cols-2 gap-4 mt-4">
         <div >
          <Select
       items={users}
@@ -700,15 +701,21 @@ export const Newblog = () => {
          <Input
       isClearable
       type="color"
-      label="FAQ quection"
+      label="color"
       variant="bordered"
-      placeholder="Add quection here"
       className="w-full mt-3"
     />
         </div>
 
-
+<div>
+</div>
+<div className='flex items-center mt-4 justify-end'>
+<Button className='bg-white border-2 border-black text-semibold hover:bg-black hover:text-white' variant="bordered">
+        Submit
+      </Button> 
+</div>
       </form>
+    </div>
     </>
   )
 }
