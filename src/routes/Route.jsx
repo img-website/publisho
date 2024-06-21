@@ -18,7 +18,6 @@ import DashboardTable from "../components/dashboardTable/Table";
 import Footer from "../components/Footer";
 import { Newblog } from "../pages/Newblog";
 
-
 const RouteComp = () => {
   const location = useLocation();
   const noHeaderPaths = ["/signUp", "/login", "/forget-Password"];
@@ -28,9 +27,6 @@ const RouteComp = () => {
       {!noHeaderPaths.includes(location.pathname) && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/signUp" element={<Signup />} /> */}
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/forget-Password" element={<ForgetPass />} /> */}
         <Route
           path="/signUp"
           element={
@@ -38,7 +34,7 @@ const RouteComp = () => {
               <Signup />
             </ProtectedRoute>
           }
-          />
+        />
         <Route
           path="/login"
           element={
@@ -46,7 +42,7 @@ const RouteComp = () => {
               <Login />
             </ProtectedRoute>
           }
-          />
+        />
         <Route
           path="/forget-Password"
           element={
@@ -54,7 +50,7 @@ const RouteComp = () => {
               <ForgetPass />
             </ProtectedRoute>
           }
-          />
+        />
         <Route
           path="/category"
           element={
@@ -62,7 +58,7 @@ const RouteComp = () => {
               <Category />
             </ProtectedRoute>
           }
-          />
+        />
         <Route
           path="/blog/add"
           element={
@@ -70,20 +66,17 @@ const RouteComp = () => {
               <AddBlog />
             </ProtectedRoute>
           }
-          />
-        
-        <Route path="/detail/:slug" element={<Detail />} />
+        />
+        <Route path="/blog/:slug" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/category" element={<Category />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/auther" element={<Auther/>}/>
-        <Route path="/admin" element={<Admin/>}/>
-        <Route path="/adminTable" element={<DashboardTable/>}/>
-        <Route path="/newblog" element={<Newblog/>}/>
-        
+        <Route path="/auther" element={<Auther />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/adminTable" element={<DashboardTable />} />
+        <Route path="/newblog" element={<Newblog />} />
       </Routes>
-          {!noHeaderPaths.includes(location.pathname) && <Footer />}
+      {!noHeaderPaths.includes(location.pathname) && <Footer />}
     </>
   );
 };
