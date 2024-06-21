@@ -20,7 +20,7 @@ import { Newblog } from "../pages/Newblog";
 
 const RouteComp = () => {
   const location = useLocation();
-  const noHeaderPaths = ["/signUp", "/login", "/forget-Password"];
+  const noHeaderPaths = ["/signUp", "/login", "/forget-Password","/admin"];
 
   return (
     <>
