@@ -2,25 +2,23 @@ import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
-import Contact from "../pages/Contact";
 import Category from "../pages/Category";
 import About from "../pages/About";
-import Signin from "../pages/Signin";
 import Auther from "../pages/Auther";
 import Signup from "../components/auth/Signup";
 import Login from "../components/auth/Login";
 import Header from "../components/Header";
 import ForgetPass from "../components/auth/ForgetPass";
 import ProtectedRoute from "./ProtectedRoute";
-import Admin from "../pages/Admin";
+import Admin from "../admin/components/Admin";
 import AddBlog from "../pages/AddBlog";
-import DashboardTable from "../components/dashboardTable/Table";
+import DashboardTable from "../admin/components/dashboardTable/Table";
 import Footer from "../components/Footer";
-import { Newblog } from "../pages/Newblog";
+import { Newblog } from "../admin/components/Newblog";
 
 const RouteComp = () => {
   const location = useLocation();
-  const noHeaderPaths = ["/signUp", "/login", "/forget-Password"];
+  const noHeaderPaths = ["/signUp", "/login", "/forget-Password", "/admin"];
 
   return (
     <>
@@ -68,9 +66,7 @@ const RouteComp = () => {
           }
         />
         <Route path="/blog/:slug" element={<Detail />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/signin" element={<Signin />} />
         <Route path="/auther" element={<Auther />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/adminTable" element={<DashboardTable />} />
