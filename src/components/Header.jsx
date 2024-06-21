@@ -102,12 +102,12 @@ function Header() {
           {!isAuthenticated ? (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/login" className='text-black'>Login</Link>
+                <Link to="/login" className='text-black'>Login</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button
                   as={Link}
-                  href="/signUp"
+                  to="/signUp"
                   variant="flat"
                   className="hidden sm:flex hover:text-white border-black border-2 font-semibold hover:!bg-black bg-red-50/10 text-black"
                 >
@@ -132,8 +132,8 @@ function Header() {
                       <p className="font-semibold">Signed in as</p>
                       <p className="font-semibold">{currentUser ? currentUser.email : 'Loading...'}</p>
                     </DropdownItem>
-                    <DropdownItem key="settings">My Settings</DropdownItem>
-                    <DropdownItem key="team_settings">Team Settings</DropdownItem>
+                    <DropdownItem key="settings"><Link to="/">Dashboard</Link></DropdownItem>
+                    <DropdownItem key="team_settings">My Settings</DropdownItem>
                     <DropdownItem key="analytics">Analytics</DropdownItem>
                     <DropdownItem key="system">System</DropdownItem>
                     <DropdownItem key="configurations">Configurations</DropdownItem>

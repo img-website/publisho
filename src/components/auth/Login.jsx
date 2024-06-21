@@ -10,15 +10,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const HandleSignUpWithGoogle = async () => {
-    setLoading(true);
+    setGoogleLoading(true);
     try {
-      await allAuth.signInWithGoogle();
+      await allAuth.signInWithGoogle("signUp");
     } catch (error) {
       // Handle errors
     } finally {
-      setLoading(false);
+      setGoogleLoading(false);
     }
   };
 
@@ -38,7 +39,7 @@ function Login() {
   const toggleVisibility = () => setIsVisible(!isVisible);
   console.log(allAuth, "login");
   return (
-    <div>
+    <div className={loading || googleLoading ? "pointer-events-none" : ""}>
       {/* {loading && <Loading />} */}
       <div className="h-dvh flex flex-col overflow-auto">
       <div className="grow py-5"></div>
@@ -54,9 +55,14 @@ function Login() {
               onClick={HandleSignUpWithGoogle}
               className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
               variant="bordered"
-              startContent={<Googleicon />}
+              startContent={ googleLoading ? (
+                <Spinner size="sm" color="default" classNames={{ base: "flex flex-row items-center", label: "text-Black"}} label="Loading..." />
+              ) : (
+                <></>
+              )}
             >
-              Login With Google
+              <Googleicon />
+              {!googleLoading && " Login With Google"}
             </Button>
             {/* <button className="mt-4 w-full flex items-center justify-center gap-2.5 text-dark p-3.5 rounded-lg border border-gray-4 ease-in duration-200 hover:border-gray-5 hover:bg-gray">
               <svg

@@ -1,7 +1,7 @@
 import React from 'react'
-import { PlusIcon } from '../component/Icons'
 
 import { Select, SelectItem, Avatar, Input,DatePicker,Textarea, Chip, Button } from "@nextui-org/react";
+import { PlusIcon } from '../../component/Icons';
 export const users2 = [
   {
     id: 1,

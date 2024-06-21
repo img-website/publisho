@@ -17,6 +17,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const HandleSignUpUserWithEmailAndPassword = async (e) => {
     e.preventDefault();
@@ -42,13 +43,13 @@ function Signup() {
   };
 
   const HandleSignUpWithGoogle = async () => {
-    setLoading(true);
+    setGoogleLoading(true);
     try {
       await allAuth.signInWithGoogle("signUp");
     } catch (error) {
       // Handle errors
     } finally {
-      setLoading(false);
+      setGoogleLoading(false);
     }
   };
 
@@ -59,7 +60,7 @@ function Signup() {
   const toggleVisibility2 = () => setIsVisible2(!isVisible2);
 
   return (
-    <div className={loading ? "pointer-events-none" : ""}>
+    <div className={loading || googleLoading ? "pointer-events-none" : ""}>
       {/* {loading && <Loading />} */}
       <ScrollShadow className="h-dvh flex flex-col overflow-auto">
         <div className="grow py-5"></div>
@@ -76,9 +77,14 @@ function Signup() {
                 onClick={HandleSignUpWithGoogle}
                 className="w-full !border-black hover:!bg-black/10 text-sm font-semibold"
                 variant="bordered"
-                startContent={<Googleicon />}
+                startContent={ googleLoading ? (
+                  <Spinner size="sm" color="default" classNames={{ base: "flex flex-row items-center", label: "text-Black"}} label="Loading..." />
+                ) : (
+                  <></>
+                )}
               >
-                Login With Google
+                <Googleicon />
+                {!googleLoading && " SignUp With Google"}
               </Button>
             </div>
 
