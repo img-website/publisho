@@ -1,10 +1,7 @@
 import React from 'react';
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 import DashboardTable from '../components/dashboardTable/Table';
 
- function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+ 
 export default function Admin ()  {
   return (
     <>
