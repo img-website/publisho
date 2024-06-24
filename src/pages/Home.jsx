@@ -3,14 +3,15 @@ import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
 import {Button , Input} from "@nextui-org/react";
-import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon, ChevronDownIcon, Loginicon } from "../component/Icons";
+import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon, ChevronDownIcon, Loginicon, BackIcon } from "../component/Icons";
 
 
 function Home() {
  
   return (
     <>
-      <div className=" xl:py-40 py-20 sm:py-20 md:py-28 ">
+    <div>
+        <div className=" xl:py-40 py-20 sm:py-20 md:py-28 ">
         <div className="absolute w-full h-full inset-0">
           <img
             className="object-cover w-full h-full"
@@ -78,7 +79,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
+      <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto py-5">
         <div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
           <div className="lg:max-w-[570px] h-full w-full">
             <img
@@ -111,7 +112,8 @@ function Home() {
 
       <div></div>
       {/* blog-card */}
-      <div>
+      <div className="relative z-50">
+        
         <TopBlogs/>
       </div>
       {/* blog ui */}
@@ -256,6 +258,7 @@ function Home() {
       </div>
 
       {/* newsletter end */}
+    </div>
     </>
   );
 }

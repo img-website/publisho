@@ -39,12 +39,13 @@ function Detail() {
   return (
     <>
       <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
-        <div className="flex flex-wrap justify-between">
+        <div className="flex mt-10
+         flex-wrap justify-between">
           <div className="xl:max-w-[770px] w-full">
             <img
               src={blogData.bannerImgUrl}
               alt="blog"
-              className="w-full mb-10"
+              className="w-full aspect-[1/.5] mb-10"
             />
             <h1 className="font-bold text-2xl sm:text-4xl lg:text-4xl   text-black mb-5">
               {blogData.title}

@@ -124,6 +124,7 @@ export default function SkeletonLoa() {
           </div>
         </div>
       </Card>
+      
     </>
   );
 }
