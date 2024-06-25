@@ -73,7 +73,7 @@ function TopBlogs() {
     <div>
       <div>
         <div className="flex flex-wrap items-center justify-between gap-8 mb-6 max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto border-b py-5">
-          <h2 className="font-medium text-heading-5 [font-family:'Painting_With_Chocolate'] text-3xl md:text-5xl text-dark">
+          <h2 className="font-medium text-heading-5  [font-family:'Painting_With_Chocolate'] text-3xl md:text-5xl text-dark">
             Top Blogs
           </h2>
           <Link to="/category" className="group text-dark leading-none">
@@ -83,12 +83,12 @@ function TopBlogs() {
             </span>
           </Link>
         </div>
-        <div className="mx-auto gap-4 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-w-7xl px-6 lg:px-8 w-full mt-3">
+        <div className="mx-auto relative gap-4 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-w-7xl px-6 lg:px-8 w-full mt-3">
           {skeletonLoading ? (
             <SkeletonLoader />
           ) : (
             blogsData?.map((blog) => (
-              <div key={blog?.id} className="group shadow-xl p-3">
+              <div key={blog?.id} className="group bg-white shadow-xl p-3">
                 <Link to={`/blog/${blog?.slug}`}>
                   <div className="mb-6 overflow-hidden aspect-[1/.6] rounded-[10px] *:*:transition-all *:*:group-hover:scale-105">
                     <img

@@ -42,7 +42,7 @@ function Header() {
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
         maxWidth="xl"
-        className="mx-auto fixed top-0 w-full bg-indigo-50 shadow-xl"
+        className="mx-auto fixed z-[9999] top-0 w-full bg-indigo-50 shadow-xl"
       >
         <NavbarBrand>
           <Link href="/"className="font-bold text-inherit ">BLOGERA</Link>

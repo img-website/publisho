@@ -425,6 +425,39 @@ export const VerticalDotsIcon = ({size = 24, width, height, ...props}) => (
     />
   </svg>
 );
+export const InsideIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 40 40"
+    width={size || width}
+    {...props}
+  >
+    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"></path>
+  </svg>
+);
+export const BackIcon = ({size = 128, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0"
+    width={size || width}
+    {...props}
+  >
+    <defs>
+            <pattern id="nhgh" width="128" height="128" patternUnits="userSpaceOnUse" x="50%" patternTransform="translate(0 80)">
+                <path d="M0 128V.5H128" fill="none" stroke="currentColor"></path>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#nhgh)"></rect>
+  </svg>
+);
 
 
 

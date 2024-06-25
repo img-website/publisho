@@ -15,6 +15,9 @@ import AddBlog from "../pages/AddBlog";
 import DashboardTable from "../admin/components/dashboardTable/Table";
 import Footer from "../components/Footer";
 import { Newblog } from "../admin/components/Newblog";
+import { Newcard } from "../components/Blogcard/Newcard";
+import HeaderSkeleton from "../components/skeleton/HeaderSkeleton";
+import DetailPageSkeleton from "../components/skeleton/DetailPageSkeleton";
 
 const RouteComp = () => {
   const location = useLocation();
@@ -71,6 +74,8 @@ const RouteComp = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/adminTable" element={<DashboardTable />} />
         <Route path="/newblog" element={<Newblog />} />
+        <Route path="/newcard" element={<Newcard/>}/>
+        <Route path="/detailpageskeleton" element={<DetailPageSkeleton/>}/>
       </Routes>
       {!noHeaderPaths.includes(location.pathname) && <Footer />}
     </>

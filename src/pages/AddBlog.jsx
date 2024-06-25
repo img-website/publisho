@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { db } from "../context/Firebase";
 import { useUser } from "../context/UserContext";
 import { Button, Input } from "@nextui-org/react";
+import { BackIcon } from "../component/Icons";
 
 const AddBlog = () => {
     const { currentUser } = useUser();
@@ -58,7 +59,8 @@ const AddBlog = () => {
     };
 
     return (
-        <div className="pt-20 flex flex-col items-center">
+        <div className="pt-20 flex flex-col items-center relatve">
+            <BackIcon/>
             <form className="w-full max-w-lg p-4 border rounded shadow-md" onSubmit={(e) => {
                 e.preventDefault();
                 addBlogData();
