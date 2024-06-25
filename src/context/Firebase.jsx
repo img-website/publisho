@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB_pkRfSNouS62FH8lOI3PyqPaEo5YSSxk",
@@ -15,6 +16,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig)
 const firebaseAuth = getAuth(firebaseApp)
 export const db = getFirestore(firebaseApp);
+const firebaseStorage = getStorage(firebaseApp);
 
 const FirebaseContext = createContext(null)
 
@@ -22,7 +24,7 @@ export  const useFirebase = () => useContext(FirebaseContext)
 
 export const FirebaseProvider = (props) =>{
     return (
-        <FirebaseContext.Provider value={{ firebaseAuth }}>
+        <FirebaseContext.Provider value={{ firebaseAuth, firebaseStorage }}>
             {props.children}
         </FirebaseContext.Provider>
     )

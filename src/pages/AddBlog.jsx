@@ -84,7 +84,7 @@ const AddBlog = () => {
                     value={data.shortDescription} 
                 />
                 <Input 
-                    clearable 
+                    isClearable 
                     underlined 
                     fullWidth 
                     name="description" 
