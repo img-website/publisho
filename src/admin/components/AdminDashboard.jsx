@@ -4,7 +4,7 @@ import DashboardTable from './dashboardTable/Table'
 const AdminDashboard = () => {
   return (
     <div>
-        <div className="h-[calc(100vh-68px)] mt-[64px] col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto">
+        <div className="h-[calc(100vh-68px)] mt-[64px] overflow-hidden col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto">
             <div className="pt-5 lg:px-16 px-6">
               <div className="grid grid-cols-12 items-stretch gap-3">
                 <div className="lg:col-span-8 col-span-12 lg:mb-10 mb-4 h-full">

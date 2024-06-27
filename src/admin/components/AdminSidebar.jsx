@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 const AdminSidebar = () => {
   return (
     <div>
-        <div class="flex flex-col absolute -translate-x-[800px] md:static md:translate-x-0  col-span-2 md:col-span-3 lg:col-span-2 h-screen px-2 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 overflow-hidden">
-            <Link to="/">
+        <div class="flex flex-col absolute -translate-x-[800px] md:static md:translate-x-0   col-span-2 md:col-span-3 lg:col-span-2 h-screen px-2 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 overflow-hidden">
+            {/* <Link to="/">
               <img
                 class="w-auto h-6 sm:h-7"
                 src="https://merakiui.com/images/logo.svg"
                 alt=""
               />
-            </Link>
+            </Link> */}
             <div class="relative mt-6">
               <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg

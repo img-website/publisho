@@ -1,113 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
 import {Button , Input} from "@nextui-org/react";
+import { Stars } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon, ChevronDownIcon, Loginicon, BackIcon } from "../component/Icons";
-
-
+import {
+  useMotionTemplate,
+  useMotionValue,
+  motion,
+  animate,
+} from "framer-motion";
+const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 function Home() {
+
+  const color = useMotionValue(COLORS_TOP[0]);
+
+  useEffect(() => {
+    animate(color, COLORS_TOP, {
+      ease: "easeInOut",
+      duration: 30,
+      repeat: Infinity,
+      repeatType: "mirror",
+    });
+  }, []);
+
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+  const border = useMotionTemplate`1px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
  
   return (
     <>
     <div>
-        <div className=" xl:py-40 py-20 sm:py-20 md:py-28 ">
-        <div className="absolute w-full h-full inset-0">
-          <img
-            className="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1535868463750-c78d9543614f?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-        </div>
-
-        <div className="relative h-full">
-          <div className="px-5 mx-auto max-w-7xl w-full">
-            <div className="w-full lg:w-2/3 xl:w-1/2">
-              <h1 className="font-sans text-base font-normal tracking-tight text-white text-opacity-70">
-                Master the basics of baking
-              </h1>
-              <p className="mt-6 tracking-tighter text-white">
-                <span className=" font-normal [font-family:'Painting_With_Chocolate'] text-6xl">
-                  Unlock the World of{" "}
-                </span>
-                <br />
-                <span className="font-serif italic font-normal text-7xl">
-                  blogera
-                </span>
-              </p>
-              <p className="mt-12 font-sans text-base font-normal leading-7 text-white text-opacity-70">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu
-                penatibus pellentesque dolor consequat ligula egestas massa
-                gravida. Porttitor venenatis enim praesent.
-              </p>
-
-              <div className="flex items-center mt-5 space-x-3 sm:space-x-4">
-                {/* <a
-                        href="#"
-                        title=""
-                        className="
-                            inline-flex
-                            items-center
-                            justify-center
-                            px-5
-                            py-2
-                            font-sans
-                            text-base
-                            font-semibold
-                            transition-all
-                            duration-200
-                            border-2 border-transparent
-                            rounded-full
-                            sm:leading-8
-                            bg-white
-                            sm:text-lg
-                            text-black
-                            hover:bg-opacity-90
-                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-secondary
-                        "
-                        role="button"
-                    >
-                        Get started
-                    </a> */}
-
-<Button endContent={<Subscribeicon/>} className="hover:!bg-black bg-white  hover:!text-white border-2 !border-black font-semibold ">
-                    Explore
-                  </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <motion.section
+      style={{
+        backgroundImage,
+      }}
+      className="relative grid min-h-screen place-content-center overflow-hidden bg-gray-950 px-4 py-24 text-gray-200"
+    >
+      <div className="relative z-10 flex flex-col items-center">
+        <span className="mb-1.5 inline-block rounded-full bg-gray-600/50 px-3 py-1.5 text-sm">
+        Join Us
+        </span>
+        <h1 className="max-w-3xl bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
+        "Explore, Learn, and Grow with Us"
+        </h1>
+        <p className="my-6 max-w-xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
+        "Words and Wisdom:
+        Navigating Life Together with Stories, Tips, and Inspiration for Every Journey"
+        </p>
+        <motion.button
+          style={{
+            border,
+            boxShadow,
+          }}
+          whileHover={{
+            scale: 1.015,
+          }}
+          whileTap={{
+            scale: 0.985,
+          }}
+          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
+        >
+          Read Now
+          <FbIcon className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+        </motion.button>
       </div>
 
-      <div className="max-w-7xl px-6 lg:px-8 w-full mt-10 mx-auto py-5">
-        <div className="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14">
-          <div className="lg:max-w-[570px] h-full w-full">
-            <img
-              src="https://clarity-tailwind.preview.uideck.com/images/about.png"
-              alt="about"
-              className="-full"
-            />
-          </div>
-          <div className="lg:max-w-[490px] w-full">
-            <span className="inline-flex text-primary font-medium md:text-6xl text-3xl mt-3  [font-family:'Painting_With_Chocolate'] mb-1 sm:mb-3">
-              Who we are
-            </span>
-            <h1 className="font-bold text-heading-6 sm:text-heading-4 lg:text-heading-3 text-dark mb-5">
-              We provide high quality Articles &amp; blogs
-            </h1>
-            <p>
-              Sed ullamcorper dui at risus viverra, nec cursus leo ullamcorper.
-              Class aptent taciti sociosqu ad litora torquent per conubia
-              nostra, per inceptos himenaeos congue dui nec dui lobortis
-              maximus.
-            </p>
-            <p className="mt-4.5">
-              Curabitur pretium, libero vitae pharetra rhoncus, tellus urna
-              auctor orci, eu dictum diam diam nec neque. Pellentesque.
-            </p>
-          </div>
-        </div>
+      <div className="absolute inset-0 z-0">
+        <Canvas>
+          <Stars radius={50} count={2500} factor={4} fade speed={2} />
+        </Canvas>
       </div>
+    </motion.section>
       {/* blog-card */}
 
       <div></div>
