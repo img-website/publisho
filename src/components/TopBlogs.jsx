@@ -135,7 +135,7 @@ function TopBlogs() {
                   <SwiperSlide key={blog.id}>
                     <div className="rounded-2xl group/blog relative">
                       <Link to={`/blog/${blog?.slug}`}>
-                        <div className="flex flex-col items-start justify-between w-full bg-white rounded-2xl rounded-br-none shadow-xl shadow-gray-300">
+                        <div className="flex flex-col items-start relative justify-between w-full bg-white rounded-2xl rounded-br-none shadow-xl shadow-gray-300">
                           <img
                             className="w-full aspect-[385/221] object-cover rounded-2xl rounded-br-none"
                             width="385"
@@ -143,6 +143,7 @@ function TopBlogs() {
                             src={blog.bannerImgUrl}
                             alt={blog.title}
                           />
+                          <a href="" className="text-xs font-semibold absolute bg-red-50 right-3 top-3  px-4 py-1 rounded-xl text-red-900">food</a>
                           <div className="w-full p-6">
                             <div className="flex items-center gap-x-4 text-xs">
                               <time className="text-gray-500">
@@ -152,23 +153,24 @@ function TopBlogs() {
                               </time>
                               <a
                                 href="#"
-                                className="relative z-20 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                                className="relative z-20 rounded-full bg-gray-50 px-3 py-1 font-medium text-gray-600 hover:bg-gray-100"
                               >
                                 {blog.Select_category}
                               </a>
                             </div>
-                            <div className="group">
+                            <div className="group relative">
+                              
                               <a
                                 href="#"
-                                className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 line-clamp-2 before:absolute before:inset-0 before:z-10"
+                                className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600 line-clamp-2 before:absolute before:inset-0 before:z-10"
                               >
                                 {blog.title}
                               </a>
-                              <p className="mt-5 line-clamp-1 text-sm leading-6 text-gray-600">
+                              <p className="mt-3 line-clamp-1 text-sm leading-6 text-gray-600">
                                 {blog.shortDescription}
                               </p>
                             </div>
-                            <div className="relative mt-8 flex items-center gap-x-4">
+                            <div className="relative mt-6 flex items-center gap-x-4">
                               <img
                                 src={blog.authorImgUrl}
                                 className="h-10 w-10 rounded-full bg-gray-50 object-cover"
