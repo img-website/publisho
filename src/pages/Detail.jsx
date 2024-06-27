@@ -7,6 +7,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../context/Firebase";
+import DetailPageSkeleton from "../components/skeleton/DetailPageSkeleton";
 
 function Detail() {
   const [blogData, setBlogData] = useState(null);
@@ -34,7 +35,7 @@ function Detail() {
   }, [slug]);
 
   if (!blogData) {
-    return <div>Loading...</div>; // Show a loading indicator while fetching data
+    return <div><DetailPageSkeleton/></div>; // Show a loading indicator while fetching data
   }
   return (
     <>
@@ -45,7 +46,7 @@ function Detail() {
             <img
               src={blogData.bannerImgUrl}
               alt="blog"
-              className="w-full aspect-[1/.5] mb-10"
+              className="w-full object-cover aspect-[1/.5] mb-10"
             />
             <h1 className="font-bold text-2xl sm:text-4xl lg:text-4xl   text-black mb-5">
               {blogData.title}
@@ -63,7 +64,7 @@ function Detail() {
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <h4 className="text-custom-sm">
-                    <a href="author.html">{blogData.authorName}</a>
+                    <a href="author.html">{blogData.Select_Author}</a>
                   </h4>
                   <span className="flex w-[3px] h-[3px] rounded-full bg-black-2"></span>
                   <p className="text-custom-sm">   {new Date(
@@ -76,19 +77,14 @@ function Detail() {
                   href="javascript:;"
                   className="inline-flex text-teal-900 bg-teal-100 font-medium text-sm py-1 px-3 rounded-full"
                 >
-                  Health
+                  {blogData.Select_category}
                 </a>
               </div>
             </div>
             <div className="mt-9">
-              <p className="mb-5 text-body">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
-                hidden in the middle of text. All the Lorem Ipsum generators on
-                the Internet tend to.
+              <p className="mb-5 text-body" dangerouslySetInnerHTML={{
+                __html: blogData?.description,
+              }}>
               </p>
               <p className="mb-5 text-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla

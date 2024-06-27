@@ -182,7 +182,7 @@ const DetailPageSkeleton = () => {
           </div>
           <div className="flex flex-wrap mt-4 items-center justify-between gap-10 mt-18">
             <ul className="flex items-center gap-3">
-              <li className="text-base font-semibold">Tags:</li>
+              <Skeleton className="text-base font-semibold">Tags:</Skeleton>
               <li className="text-black hover:text-blue-600 ease-in duration-200">
                 <Skeleton href="category.html">#travel</Skeleton>
               </li>
@@ -199,7 +199,7 @@ const DetailPageSkeleton = () => {
               <div className="flex items-center gap-2">
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#364E8F] ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full  ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -216,7 +216,7 @@ const DetailPageSkeleton = () => {
                 </Skeleton>
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#52A2EC] ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full  ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -233,7 +233,7 @@ const DetailPageSkeleton = () => {
                 </Skeleton>
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#B1151D] ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -371,9 +371,9 @@ const DetailPageSkeleton = () => {
         <div className="max-w-[370px] w-full">
           <div className="flex flex-col gap-10">
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <h4 className="font-semibold text-custom-4 text-black mb-7">
+              <Skeleton className="font-semibold text-custom-4 text-black mb-7">
                 Recent Posts
-              </h4>
+              </Skeleton>
               <div className="flex flex-col gap-7">
                 <Skeleton href="blog-single-3.html" className="group flex gap-2">
                   <div className="max-w-[70px] w-full h-17 rounded-full">
@@ -435,9 +435,9 @@ const DetailPageSkeleton = () => {
             </div>
 
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <h4 className="font-semibold text-custom-4 text-black mb-8">
-                Explore Topics
-              </h4>
+              <Skeleton Topics className="font-semibold text-custom-4 text-black mb-8">
+                xxxxxxxxxx
+              </Skeleton>
               <div className="flex flex-col gap-3">
                 <Skeleton
                   href="#"
@@ -526,23 +526,20 @@ const DetailPageSkeleton = () => {
             </div>
 
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <h4 className="font-semibold text-custom-4 text-black mb-7">
+              <Skeleton className="font-semibold text-custom-4 text-black mb-7">
                 Newsletter
-              </h4>
+              </Skeleton>
               <Skeleton className="font-medium text-custom-lg mb-5.5">
                 Join 70,000 subscribers!
               </Skeleton>
               <form>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Enter your Email"
+                <Skeleton
+                 
                   className="rounded-md border border-gray-3 bg-white placeholder:text-black-5 w-full py-3.5 px-5 outline-none text-center focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
                 />
-                <button className="font-medium rounded-md text-white bg-black flex justify-center text-center w-full py-3 px-5 hover:opacity-90 transition-all duration-200 mt-4">
+                <Skeleton className="font-medium rounded-md text-white  flex justify-center text-center w-full py-3 px-5 hover:opacity-90 transition-all duration-200 mt-4">
                   Subscribe Now
-                </button>
+                </Skeleton>
               </form>
               <Skeleton className="text-custom-sm mt-5 text-center">
                 By signing up, you agree to our

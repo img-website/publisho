@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
-
 import {
   Select,
   SelectItem,
@@ -15,6 +14,9 @@ import { PlusIcon } from "../../component/Icons";
 import { useUser } from "../../context/UserContext";
 import { db, useFirebase } from "../../context/Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.bubble.css";
+
 export const users2 = [
   {
     id: 1,
@@ -440,10 +442,11 @@ export const Newblog = () => {
   const { currentUser } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState(null);
+  const [QillValue, setQillValue] = useState("");
+  console.log(QillValue,"iojsdaiojdoiasjdiajz")
   const [data, setData] = useState({
     title: "",
     shortDescription: "",
-    description: "",
     authorImgUrl: "",
     authorName: "",
     bannerImgUrl: "",
@@ -454,11 +457,13 @@ export const Newblog = () => {
     Select_Author: "",
     Select_Tag: "",
   });
+
+
   const [faqs, setFaqs] = useState([
     { id: Math.random() * 1000, question: "", answer: "" },
   ]);
 
-  // console.log(data, "data form");
+  console.log(data, "data form");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -482,40 +487,54 @@ export const Newblog = () => {
         return getDownloadURL(storageRef);
       })
       .then(async (downloadURL) => {
+        // console.log(downloadURL,"wsjdlkasjlkd")
         // Now you can use the downloadURL as needed, like saving it to your database
-        try {
-          const res = await addDoc(collection(db, "blogs"), {
-            authorID: currentUser?.uid,
-            ...data,
-            faqs,
-            createdAt: Timestamp.fromDate(new Date()),
-            modifiedAt: Timestamp.fromDate(new Date()),
-          });
-          // console.log(res);
-          setData({
-            title: "",
-            shortDescription: "",
-            description: "",
-            authorImgUrl: "",
-            authorName: "",
-            bannerImgUrl: downloadURL,
-            metaTitle: "",
-            metaDescription: "",
-            slug: "",
-            faqs: [{ id: Math.random() * 1000, question: "", answer: "" }],
-            Select_category: "",
-            Select_Author: "",
-            Select_Tag: "",
-          });
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setIsLoading(false);
-        }
+        setData((prev) => ({
+          ...prev,
+          bannerImgUrl: downloadURL,
+        }));
+        submitFormData(downloadURL);
       })
       .catch((error) => {
         console.error("Error uploading the file:", error);
       });
+  };
+  // console.log('data outside', data)
+
+  const submitFormData = async (downloadURL) => {
+    try {
+      // console.log('data', data)
+      const { bannerImgUrl, ...payload } = data;
+      const res = await addDoc(collection(db, "blogs"), {
+        authorID: currentUser?.uid,
+        ...payload,
+        bannerImgUrl: downloadURL,
+        description: QillValue,
+        faqs,
+        createdAt: Timestamp.fromDate(new Date()),
+        modifiedAt: Timestamp.fromDate(new Date()),
+      });
+      // console.log('data', payload)
+      console.log("res", res);
+      setData({
+        title: "",
+        shortDescription: "",
+        authorImgUrl: "",
+        authorName: "",
+        bannerImgUrl: "",
+        metaTitle: "",
+        metaDescription: "",
+        slug: "",
+        faqs: [{ id: Math.random() * 1000, question: "", answer: "" }],
+        Select_category: "",
+        Select_Author: "",
+        Select_Tag: "",
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const uploadImage = (e) => {
@@ -552,7 +571,7 @@ export const Newblog = () => {
   // console.log({ faqs });
   return (
     <>
-      <div>
+      <div className="h-[calc(100vh-68px)] mt-[64px] col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto">
         <div className="mt-16 p-4 text-lg font-semibold flex items-center gap-2 ">
           <PlusIcon className=" size-5 border-black border rounded-full" />
           Add Blog <span></span>
@@ -570,6 +589,8 @@ export const Newblog = () => {
                 label="Select category"
                 name="Select_category"
                 variant="bordered"
+                validationBehavior="native"
+                isRequired
                 placeholder="Select an category"
                 // selectedKeys={[value]}
                 className="w-full"
@@ -580,7 +601,7 @@ export const Newblog = () => {
                   trigger: "h-12",
                 }}
               >
-                {animals.map((animal) => (
+                {animals.map((animal) => ( 
                   <SelectItem key={animal.key}>{animal.label}</SelectItem>
                 ))}
               </Select>
@@ -592,6 +613,8 @@ export const Newblog = () => {
                 label="Select a Author"
                 name="Select_Author"
                 placeholder="Select a Author"
+                validationBehavior="native"
+                isRequired
                 variant="bordered"
                 classNames={{
                   base: "w-full !bg-white",
@@ -619,7 +642,7 @@ export const Newblog = () => {
                 value={data.Select_Author}
               >
                 {(user) => (
-                  <SelectItem key={user.id} textValue={user.name}>
+                  <SelectItem key={user.name} textValue={user.name}>
                     <div className="flex gap-2   items-center">
                       <Avatar
                         alt={user.name}
@@ -640,9 +663,10 @@ export const Newblog = () => {
             </div>
             <div>
               <Input
-                isClearable
                 type="text"
                 name="title"
+                validationBehavior="native"
+                isRequired
                 // labelPlacement="outside"
                 label="Title"
                 variant="bordered"
@@ -657,9 +681,10 @@ export const Newblog = () => {
             </div>
             <div>
               <Input
-                isClearable
                 type="text"
                 name="slug"
+                validationBehavior="native"
+                isRequired
                 // labelPlacement="outside"
                 label="Slug"
                 variant="bordered"
@@ -701,7 +726,6 @@ export const Newblog = () => {
           </div>
           <div>
             <Input
-              isClearable
               type="short description"
               name="shortDescription"
               label="short description"
@@ -709,12 +733,23 @@ export const Newblog = () => {
               placeholder="Enter your short description"
               className="w-full mt-3"
               onChange={handleChange}
+              validationBehavior="native"
+              isRequired
               value={data.shortDescription}
             />
           </div>
           <div>
+            <h2 className="text-gray-400">Description :-</h2>
+            <ReactQuill
+              className="[&_.ql-editor]:h-48 [&_.ql-editor]:border [&_.ql-editor]:rounded-lg "
+              theme="bubble"
+              onChange={setQillValue}
+              value={QillValue}
+              name="description"
+            />
+          </div>
+          {/* <div>
             <Textarea
-              isClearable
               label="Description"
               name="description"
               variant="bordered"
@@ -728,7 +763,7 @@ export const Newblog = () => {
               onChange={handleChange}
               value={data.description}
             />
-          </div>
+          </div> */}
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div>
               <Select
@@ -837,7 +872,6 @@ export const Newblog = () => {
           </div>
           <div>
             <Input
-              isClearable
               type="text"
               label="Meta keyword"
               variant="bordered"
@@ -898,11 +932,12 @@ export const Newblog = () => {
 
           <div>
             <Input
-              isClearable
               type="color"
               label="color"
               variant="bordered"
               className="w-full mt-3"
+              onChange={handleChange}
+              value={data.color}
             />
           </div>
 

@@ -132,7 +132,7 @@ function Header() {
                       <p className="font-semibold">Signed in as</p>
                       <p className="font-semibold">{currentUser ? currentUser.email : 'Loading...'}</p>
                     </DropdownItem>
-                    <DropdownItem key="settings"><Link to="/">Dashboard</Link></DropdownItem>
+                    <DropdownItem key="settings"><Link to="/admin">Dashboard</Link></DropdownItem>
                     <DropdownItem key="team_settings">My Settings</DropdownItem>
                     <DropdownItem key="analytics">Analytics</DropdownItem>
                     <DropdownItem key="system">System</DropdownItem>

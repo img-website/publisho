@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Input } from "@nextui-org/react";
 import formimg from "../assets/contact-us-2.webp";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.bubble.css';
+import "react-quill/dist/quill.bubble.css";
 
 function QuillForm() {
   const [heading, setHeading] = useState("");
@@ -16,7 +16,7 @@ function QuillForm() {
     console.log("Content:", value);
 
     setHeading("");
-    setTitle(""); 
+    setTitle("");
     setValue("");
   };
 
@@ -52,11 +52,17 @@ function QuillForm() {
             />
           </div>
           <div>
-            <Button type="submit" color="default">Submit</Button>
+            <Button type="submit" color="default">
+              Submit
+            </Button>
           </div>
         </div>
         <div className="w-full md:w-1/3">
-          <img className="w-full h-auto" src={formimg} alt="Form Illustration" />
+          <img
+            className="w-full h-auto"
+            src={formimg}
+            alt="Form Illustration"
+          />
         </div>
       </div>
     </form>
