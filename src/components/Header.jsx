@@ -21,7 +21,7 @@ import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../component/Icons";
 import { useUser } from '../context/UserContext';
 import { useAuthentication } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,19 +50,19 @@ function Header() {
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" to="/">
+            <NavLink  to="/" className={({isActive}) => ` ${isActive ? "text-primary-300" : ""} flex items-center lg:text-base text-sm font-medium duration-300 hover:text-primary-200`}>
               Home
-            </Link>
+            </NavLink>
           </NavbarItem>
           <NavbarItem >
-            <Link color="foreground" to="/about" >
+            <NavLink  to="/about" className={({isActive}) => ` ${isActive ? "text-primary-300" : ""} flex items-center lg:text-base text-sm font-medium duration-300 hover:text-primary-200`} >
               About Us
-            </Link>
+            </NavLink>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" to="/category">
+            <NavLink  to="/category" className={({isActive}) => ` ${isActive ? "text-primary-300" : ""} flex items-center lg:text-base text-sm font-medium duration-300 hover:text-primary-200`}>
               Category
-            </Link>
+            </NavLink>
           </NavbarItem>
         </NavbarContent>
 

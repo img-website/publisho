@@ -60,7 +60,6 @@ const AddBlog = () => {
 
     return (
         <div className="pt-20 flex flex-col items-center relatve">
-            <BackIcon/>
             <form className="w-full max-w-lg p-4 border rounded shadow-md" onSubmit={(e) => {
                 e.preventDefault();
                 addBlogData();
