@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import {
   Select,
@@ -443,7 +443,7 @@ export const Newblog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [QillValue, setQillValue] = useState("");
-  console.log(QillValue,"iojsdaiojdoiasjdiajz")
+  const formRef = useRef(null);
   const [data, setData] = useState({
     title: "",
     shortDescription: "",
@@ -456,14 +456,14 @@ export const Newblog = () => {
     Select_category: "",
     Select_Author: "",
     Select_Tag: "",
+    color:"",
   });
-
 
   const [faqs, setFaqs] = useState([
     { id: Math.random() * 1000, question: "", answer: "" },
   ]);
 
-  console.log(data, "data form");
+  // console.log(data, "data form");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -475,47 +475,63 @@ export const Newblog = () => {
 
   const addBlogData = async () => {
     setIsLoading(true);
-    const timestamp = Date.now();
-    const originalFileName = image.name;
-    const extension = originalFileName.split(".").pop();
-    const newFileName = `${timestamp}.${extension}`;
-    const storage = firebase.firebaseStorage;
-    const storageRef = ref(storage, `blogImages/${newFileName}`);
-    uploadBytes(storageRef, image)
-      .then((snapshot) => {
-        console.log("Uploaded a blob or file!");
-        return getDownloadURL(storageRef);
-      })
-      .then(async (downloadURL) => {
-        // console.log(downloadURL,"wsjdlkasjlkd")
-        // Now you can use the downloadURL as needed, like saving it to your database
-        setData((prev) => ({
-          ...prev,
-          bannerImgUrl: downloadURL,
-        }));
-        submitFormData(downloadURL);
-      })
-      .catch((error) => {
-        console.error("Error uploading the file:", error);
-      });
+    if (image) {
+      const timestamp = Date.now();
+      const originalFileName = image.name;
+      const extension = originalFileName.split(".").pop();
+      const newFileName = `${timestamp}.${extension}`;
+      const storage = firebase.firebaseStorage;
+      const storageRef = ref(storage, `blogImages/${newFileName}`);
+      uploadBytes(storageRef, image)
+        .then((snapshot) => {
+          console.log("Uploaded a blob or file!");
+          return getDownloadURL(storageRef);
+        })
+        .then(async (downloadURL) => {
+          console.info("downloadURL", downloadURL);
+          // Now you can use the downloadURL as needed, like saving it to your database
+          setData((prev) => ({
+            ...prev,
+            bannerImgUrl: downloadURL,
+          }));
+          submitFormData(downloadURL);
+        })
+        .catch((error) => {
+          console.error("Error uploading the file:", error);
+        });
+    } else {
+      submitFormData();
+    }
   };
   // console.log('data outside', data)
 
   const submitFormData = async (downloadURL) => {
     try {
-      // console.log('data', data)
       const { bannerImgUrl, ...payload } = data;
+
+      console.log('data', {
+        authorID: currentUser?.uid,
+        ...payload,
+        ...downloadURL ? {bannerImgUrl: downloadURL} : {},
+        description: QillValue,
+        faqs,
+        createdAt: Timestamp.fromDate(new Date()),
+        modifiedAt: Timestamp.fromDate(new Date()),
+      })
       const res = await addDoc(collection(db, "blogs"), {
         authorID: currentUser?.uid,
         ...payload,
-        bannerImgUrl: downloadURL,
+        ...downloadURL ? {bannerImgUrl: downloadURL} : {},
         description: QillValue,
         faqs,
         createdAt: Timestamp.fromDate(new Date()),
         modifiedAt: Timestamp.fromDate(new Date()),
       });
+
+      console.info("res", res);
+      console.info("Uploaded Data:", payload, res.id);
       // console.log('data', payload)
-      console.log("res", res);
+      // console.log("res", res);
       setData({
         title: "",
         shortDescription: "",
@@ -525,15 +541,19 @@ export const Newblog = () => {
         metaTitle: "",
         metaDescription: "",
         slug: "",
-        faqs: [{ id: Math.random() * 1000, question: "", answer: "" }],
         Select_category: "",
         Select_Author: "",
         Select_Tag: "",
+        color:""
       });
+      setFaqs([{ id: Math.random() * 1000, question: "", answer: "" }])
+      setQillValue("");
+      formRef.current.reset();
     } catch (error) {
-      console.log(error);
+      console.info("form submit error", error);
     } finally {
       setIsLoading(false);
+
     }
   };
 
@@ -572,34 +592,51 @@ export const Newblog = () => {
   return (
     <>
       <div className="  col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto">
-      <div class="top-0 left-0 w-full z-50 bg-white border-b backdrop-blur-lg bg-opacity-80">
-    <div class="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8 ">
-        <div class="relative flex h-16 justify-between">
-            <div class="flex flex-1 items-stretch justify-start">
+        <div class="top-0 left-0 w-full z-50 bg-white border-b backdrop-blur-lg bg-opacity-80">
+          <div class="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8 ">
+            <div class="relative flex h-16 justify-between">
+              <div class="flex flex-1 items-stretch justify-start">
                 <a class="flex md:hidden flex-shrink-0 items-center" href="#">
-                     <div href="/"className="font-bold text-inherit ">BLOGERA</div>
+                  <div href="/" className="font-bold text-inherit ">
+                    BLOGERA
+                  </div>
                 </a>
+              </div>
             </div>
-          
+          </div>
         </div>
-    </div>
-</div>
-        <div className="flex justify-between p-4"> 
+        <div className="flex justify-between p-4">
           <div className="text-lg font-semibold flex items-center gap-2 ">
-          <PlusIcon className=" size-5 border-black border rounded-full" />
-          Add Blog <span></span>
+            <PlusIcon className=" size-5 border-black border rounded-full" />
+            Add Blog <span></span>
+          </div>
+          <div>
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="0"
+              viewBox="0 0 15 15"
+              height="20px"
+              width="20px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
         </div>
-        <div>
-        <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 15 15" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z" fill="currentColor"></path></svg>
-        </div>
-        </div>
-       
+
         <form
           className="bg-white p-4 shadow-lg"
           onSubmit={(e) => {
             e.preventDefault();
             addBlogData();
           }}
+          ref={formRef}
         >
           <div className="grid sm:grid-cols-2 gap-4 items-stretch">
             <div className="w-full h-full">
@@ -607,8 +644,8 @@ export const Newblog = () => {
                 label="Select category"
                 name="Select_category"
                 variant="bordered"
-                validationBehavior="native"
-                isRequired
+                // validationBehavior="native"
+                // isRequired
                 placeholder="Select an category"
                 // selectedKeys={[value]}
                 className="w-full"
@@ -619,7 +656,7 @@ export const Newblog = () => {
                   trigger: "h-12",
                 }}
               >
-                {animals.map((animal) => ( 
+                {animals.map((animal) => (
                   <SelectItem key={animal.key}>{animal.label}</SelectItem>
                 ))}
               </Select>
@@ -631,8 +668,8 @@ export const Newblog = () => {
                 label="Select a Author"
                 name="Select_Author"
                 placeholder="Select a Author"
-                validationBehavior="native"
-                isRequired
+                // validationBehavior="native"
+                // isRequired
                 variant="bordered"
                 classNames={{
                   base: "w-full !bg-white",
@@ -683,8 +720,8 @@ export const Newblog = () => {
               <Input
                 type="text"
                 name="title"
-                validationBehavior="native"
-                isRequired
+                // validationBehavior="native"
+                // isRequired
                 // labelPlacement="outside"
                 label="Title"
                 variant="bordered"
@@ -701,8 +738,8 @@ export const Newblog = () => {
               <Input
                 type="text"
                 name="slug"
-                validationBehavior="native"
-                isRequired
+                // validationBehavior="native"
+                // isRequired
                 // labelPlacement="outside"
                 label="Slug"
                 variant="bordered"
@@ -751,8 +788,8 @@ export const Newblog = () => {
               placeholder="Enter your short description"
               className="w-full mt-3"
               onChange={handleChange}
-              validationBehavior="native"
-              isRequired
+              // validationBehavior="native"
+              // isRequired
               value={data.shortDescription}
             />
           </div>
@@ -808,7 +845,7 @@ export const Newblog = () => {
                 value={data.Select_Tag}
               >
                 {(user) => (
-                  <SelectItem key={user.id} textValue={user.name}>
+                  <SelectItem key={user.name} textValue={user.name}>
                     <div className="flex gap-2 items-center">
                       <Avatar
                         alt={user.name}
@@ -952,6 +989,7 @@ export const Newblog = () => {
             <Input
               type="color"
               label="color"
+              name="color"
               variant="bordered"
               className="w-full mt-3"
               onChange={handleChange}

@@ -143,7 +143,7 @@ function TopBlogs() {
                             src={blog.bannerImgUrl}
                             alt={blog.title}
                           />
-                          <a href="" className="text-xs font-semibold absolute bg-red-50 right-3 top-3  px-4 py-1 rounded-xl text-red-900">food</a>
+                          <div className="text-xs font-semibold absolute bg-red-50 right-3 top-3  px-4 py-1 rounded-xl text-red-900">{blog.Select_Tag}</div>
                           <div className="w-full p-6">
                             <div className="flex items-center gap-x-4 text-xs">
                               <time className="text-gray-500">
