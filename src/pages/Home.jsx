@@ -4,6 +4,7 @@ import TopBlogs from "../components/TopBlogs";
 import TopAuthers from "../components/TopAuthers";
 import {Button , Input} from "@nextui-org/react";
 import { Stars } from "@react-three/drei";
+import {Accordion, AccordionItem} from "@nextui-org/react";
 import { Canvas } from "@react-three/fiber";
 import { FbIcon, Printicon, Twittericon, Linkdinicon, Subscribeicon, ChevronDownIcon, Loginicon, BackIcon } from "../component/Icons";
 import {
@@ -14,10 +15,13 @@ import {
 } from "framer-motion";
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 function Home() {
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["1"]));
 
+  const defaultContent =
+    "This blog covers [your blog's main topics, e.g., technology, travel, lifestyle, etc.]. We aim to provide informative and engaging content to help you [your blog's purpose, e.g., stay updated on the latest trends, improve your skills, etc.].";
   const color = useMotionValue(COLORS_TOP[0]);
 
-  useEffect(() => {
+   useEffect(() => {
     animate(color, COLORS_TOP, {
       ease: "easeInOut",
       duration: 30,
@@ -64,7 +68,7 @@ function Home() {
           className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
         >
           Read Now
-          <FbIcon className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          <FbIcon className="transition-transform text-white group-hover:-rotate-45 group-active:-rotate-12" />
         </motion.button>
       </div>
 
@@ -224,6 +228,23 @@ function Home() {
       </div>
 
       {/* newsletter end */}
+    </div>
+    {/* faq */}
+    <div className="max-w-7xl mx-auto lg:px-8 px-6 mt-4">
+    <Accordion
+      selectedKeys={selectedKeys}
+      onSelectionChange={setSelectedKeys}
+    >
+      <AccordionItem key="1" aria-label="Accordion 1" title="What is this blog about?">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="2" aria-label="Accordion 2" title=" How often do you update the blog?">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="3" aria-label="Accordion 3" title="How can I subscribe to the blog?">
+        {defaultContent}
+      </AccordionItem>
+    </Accordion>
     </div>
     </>
   );
