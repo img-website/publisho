@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import {
   Select,
@@ -473,6 +473,12 @@ export const Newblog = () => {
     }));
   };
 
+  // useEffect(()=>{
+  
+
+  // },[data.Select_Author])
+  // const ss =  data.Select_Author.split('-')
+  //  console.log( ss[0], ss[1] ,"qwdioasjosdj")
   const addBlogData = async () => {
     setIsLoading(true);
     if (image) {
@@ -697,7 +703,7 @@ export const Newblog = () => {
                 value={data.Select_Author}
               >
                 {(user) => (
-                  <SelectItem key={user.name} textValue={user.name}>
+                 <SelectItem key={user.name} textValue={user.name}>
                     <div className="flex gap-2   items-center">
                       <Avatar
                         alt={user.name}
