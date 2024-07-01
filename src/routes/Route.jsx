@@ -19,6 +19,7 @@ import AdminSidebar from "../admin/components/AdminSidebar";
 import AdminDashboard from "../admin/components/AdminDashboard";
 import AdminLayout from "../admin/adminLayout/AdminLayout";
 import MainLayout from "./MainLayout";
+import { Addtag } from "../admin/components/Addtag";
 
 const RouteComp = () => {
   
@@ -86,6 +87,7 @@ const RouteComp = () => {
           <Route index element={<AdminDashboard />}/>
           <Route path="AdminSidebar" element={<AdminSidebar />} />
           <Route path="add_New_Blog" element={<Newblog />} />
+          <Route path="addtag" element={<Addtag/>}/>
         </Route>
       </Routes>
      
