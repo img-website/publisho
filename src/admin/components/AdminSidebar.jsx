@@ -58,13 +58,13 @@ const AdminSidebar = () => {
                   <Loginicon />
                   <span class="mx-4 text-sm font-semibold ">View Category</span>
                 </a>
-                <a
+                <Link
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
+                  to="addtag"
                 >
                   <Loginicon />
                   <span class="mx-4 text-sm font-semibold ">Add Tag</span>
-                </a>
+                </Link>
                 <a
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   href="#"

@@ -9,6 +9,7 @@ import {
   Textarea,
   Chip,
   Button,
+  Spinner,
 } from "@nextui-org/react";
 import { PlusIcon } from "../../component/Icons";
 import { useUser } from "../../context/UserContext";
@@ -16,6 +17,7 @@ import { db, useFirebase } from "../../context/Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
+import { Link } from "react-router-dom";
 
 export const users2 = [
   {
@@ -597,15 +599,15 @@ export const Newblog = () => {
   // console.log({ faqs });
   return (
     <>
-      <div className="  col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto">
+      <div className={`col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto ${isLoading ?  "pointer-events-none" : ""}`}>
         <div class="top-0 left-0 w-full z-50 bg-white border-b backdrop-blur-lg bg-opacity-80">
           <div class="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8 ">
             <div class="relative flex h-16 justify-between">
               <div class="flex flex-1 items-stretch justify-start">
                 <a class="flex md:hidden flex-shrink-0 items-center" href="#">
-                  <div href="/" className="font-bold text-inherit ">
+                  <Link to="/" className="font-bold text-inherit ">
                     BLOGERA
-                  </div>
+                  </Link>
                 </a>
               </div>
             </div>
@@ -1006,11 +1008,18 @@ export const Newblog = () => {
           <div></div>
           <div className="flex items-center mt-4 justify-end">
             <Button
-              className="bg-white border-2 border-black font-semibold hover:bg-black hover:text-white"
+              className={`bg-white border-2 border-black font-semibold hover:bg-black hover:text-white ${isLoading && "pointer-events-none"}`}
               variant="bordered"
               type="submit"
+              startContent={
+                isLoading ? (
+                  <Spinner size="sm" color="current" classNames={{ base: "flex flex-row items-center font-semibold", label: "text-Black"}} label="Submitting..." />
+                ) : (
+                  <></>
+                )
+              }
             >
-              Submit
+              {!isLoading && "Submit"}
             </Button>
           </div>
         </form>

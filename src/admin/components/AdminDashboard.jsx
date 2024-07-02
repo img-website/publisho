@@ -169,7 +169,7 @@ const AdminDashboard = () => {
                   </div>
                 </div>
               </div>
-              <DashboardTable />
+              <DashboardTable  />
             </div>
           </div>
     </div>
