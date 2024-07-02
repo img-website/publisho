@@ -182,7 +182,7 @@ const DetailPageSkeleton = () => {
           </div>
           <div className="flex flex-wrap mt-4 items-center justify-between gap-10 mt-18">
             <ul className="flex items-center gap-3">
-              <Skeleton className="text-base font-semibold">Tags:</Skeleton>
+              <li className="text-base font-semibold">Tags:</li>
               <li className="text-black hover:text-blue-600 ease-in duration-200">
                 <Skeleton href="category.html">#travel</Skeleton>
               </li>
@@ -199,7 +199,7 @@ const DetailPageSkeleton = () => {
               <div className="flex items-center gap-2">
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full  ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#364E8F] ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -209,14 +209,14 @@ const DetailPageSkeleton = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M7.7 6.6779V4.7263C7.7 3.9708 8.32679 3.35835 9.1 3.35835H10.5V1.30642L8.5995 1.17378C6.97865 1.06066 5.6 2.31497 5.6 3.90273V6.6779H3.5V8.72984Skeleton.6V12.8334H7.7V8.72984H9.8L10.5 6.6779H7.7Z"
+                      d="M7.7 6.6779V4.7263C7.7 3.9708 8.32679 3.35835 9.1 3.35835H10.5V1.30642L8.5995 1.17378C6.97865 1.06066 5.6 2.31497 5.6 3.90273V6.6779H3.5V8.72984Skeleton .6V12.8334H7.7V8.72984H9.8L10.5 6.6779H7.7Z"
                       fill="white"
                     ></path>
                   </svg>
                 </Skeleton>
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full  ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#52A2EC] ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -233,7 +233,7 @@ const DetailPageSkeleton = () => {
                 </Skeleton>
                 <Skeleton
                   href="#"
-                  className="flex items-center justify-center w-7 h-7 rounded-full ease-in duration-200 hover:bg-opacity-95"
+                  className="flex items-center justify-center w-7 h-7 rounded-full bg-[#B1151D] ease-in duration-200 hover:bg-opacity-95"
                 >
                   <svg
                     width="14"
@@ -292,7 +292,7 @@ const DetailPageSkeleton = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M10.4 8.58585V6.07664C10.4 5.10529 11.2059 4.31785 12.2 4.31785H14V1.67966L11.5565 1.50912C9.47255 1.36368 7.7 2.97636 7.7 5.01777V8.58585SkeletonV11.224H7.7V12H10.4V11.224H13.1L14 8.58585H10.4Z"
+                      d="M10.4 8.58585V6.07664C10.4 5.10529 11.2059 4.31785 12.2 4.31785H14V1.67966L11.5565 1.50912C9.47255 1.36368 7.7 2.97636 7.7 5.01777V8.58585Skeleton V11.224H7.7V12H10.4V11.224H13.1L14 8.58585H10.4Z"
                       fill=""
                     ></path>
                   </svg>
@@ -340,7 +340,7 @@ const DetailPageSkeleton = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M5.50004 3.50068C5.49976 4.11141 5.12924 4.661 4.56318 4.89028C3.99713 5.11957 3.34858 4.98277 2.92335 4.54439C2.49812 4.10601 2.38114 3.45359 2.62755 2.89478C2.87397 2.33597 3.43458 1.98236 4.04504 2.00068C4.85584 2.02502 5.5004 2.68951 5.50004 3.50068ZM5.54504 6.11068H2.54504V15.5007Skeleton.54504V6.11068ZM10.2851 6.11068H7.30004V15.5007H10.2551V10.5732C10.2551 7.82816 13.8326 77316 13.8326 10.5732V15.5007H16.7951V9.55316C16.7951 4.92568 11.5001 5.09818 10.2551 7.37066L10.2851 6.11068Z"
+                      d="M5.50004 3.50068C5.49976 4.11141 5.12924 4.661 4.56318 4.89028C3.99713 5.11957 3.34858 4.98277 2.92335 4.54439C2.49812 4.10601 2.38114 3.45359 2.62755 2.89478C2.87397 2.33597 3.43458 1.98236 4.04504 2.00068C4.85584 2.02502 5.5004 2.68951 5.50004 3.50068ZM5.54504 6.11068H2.54504V15.5007Skeleton .54504V6.11068ZM10.2851 6.11068H7.30004V15.5007H10.2551V10.5732C10.2551 7.82816 13.8326 77316 13.8326 10.5732V15.5007H16.7951V9.55316C16.7951 4.92568 11.5001 5.09818 10.2551 7.37066L10.2851 6.11068Z"
                       fill=""
                     ></path>
                   </svg>
@@ -371,9 +371,9 @@ const DetailPageSkeleton = () => {
         <div className="max-w-[370px] w-full">
           <div className="flex flex-col gap-10">
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <Skeleton className="font-semibold text-custom-4 text-black mb-7">
+              <h4 className="font-semibold text-custom-4 text-black mb-7">
                 Recent Posts
-              </Skeleton>
+              </h4>
               <div className="flex flex-col gap-7">
                 <Skeleton href="blog-single-3.html" className="group flex gap-2">
                   <div className="max-w-[70px] w-full h-17 rounded-full">
@@ -383,9 +383,9 @@ const DetailPageSkeleton = () => {
                     />
                   </div>
                   <div>
-                    <Skeleton className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
+                    <Skeleton  className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
                       The Most Beautiful Green Field on Earth
-                    </Skeleton>
+                    </Skeleton >
                     <div className="flex items-center gap-2">
                       <Skeleton className="text-xs ">Rhiel Madsen</Skeleton>
                       <Skeleton className="flex w-[3px] h-[3px] rounded-full bg-black-2"></Skeleton>
@@ -402,9 +402,9 @@ const DetailPageSkeleton = () => {
                     />
                   </div>
                   <div>
-                    <Skeleton className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
+                    <Skeleton  className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
                       Facts About Business That Will Help You Success
-                    </Skeleton>
+                    </Skeleton >
                     <div className="flex items-center gap-2">
                       <Skeleton className="text-xs ">Jordyn Culhne</Skeleton>
                       <Skeleton className="flex w-[3px] h-[3px] rounded-full bg-black-2"></Skeleton>
@@ -421,9 +421,9 @@ const DetailPageSkeleton = () => {
                     />
                   </div>
                   <div>
-                    <Skeleton className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
+                    <Skeleton  className="font-medium text-sm text-black duration-200 ease-in mb-1.5 group-hover:text-blue-600">
                       5 Easy Ways You Can Turn Future Into Success
-                    </Skeleton>
+                    </Skeleton >
                     <div className="flex items-center gap-2">
                       <Skeleton className="text-xs ">Ane Madsen</Skeleton>
                       <Skeleton className="flex w-[3px] h-[3px] rounded-full bg-black-2"></Skeleton>
@@ -435,9 +435,9 @@ const DetailPageSkeleton = () => {
             </div>
 
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <Skeleton Topics className="font-semibold text-custom-4 text-black mb-8">
-                xxxxxxxxxx
-              </Skeleton>
+              <h4 className="font-semibold text-custom-4 text-black mb-8">
+                Explore Topics
+              </h4>
               <div className="flex flex-col gap-3">
                 <Skeleton
                   href="#"
@@ -526,20 +526,23 @@ const DetailPageSkeleton = () => {
             </div>
 
             <div className="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7 lg:p-10">
-              <Skeleton className="font-semibold text-custom-4 text-black mb-7">
+              <h4 className="font-semibold text-custom-4 text-black mb-7">
                 Newsletter
-              </Skeleton>
+              </h4>
               <Skeleton className="font-medium text-custom-lg mb-5.5">
                 Join 70,000 subscribers!
               </Skeleton>
               <form>
-                <Skeleton
-                 
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your Email"
                   className="rounded-md border border-gray-3 bg-white placeholder:text-black-5 w-full py-3.5 px-5 outline-none text-center focus:shadow-input focus:ring-2 focus:ring-dark-4/20 focus:border-transparent"
                 />
-                <Skeleton className="font-medium rounded-md text-white  flex justify-center text-center w-full py-3 px-5 hover:opacity-90 transition-all duration-200 mt-4">
+                <button className="font-medium rounded-md text-white bg-black flex justify-center text-center w-full py-3 px-5 hover:opacity-90 transition-all duration-200 mt-4">
                   Subscribe Now
-                </Skeleton>
+                </button>
               </form>
               <Skeleton className="text-custom-sm mt-5 text-center">
                 By signing up, you agree to our

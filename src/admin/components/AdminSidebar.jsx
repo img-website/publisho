@@ -1,6 +1,7 @@
 import React from 'react'
-import { Loginicon } from '../../component/Icons'
+import { CategoryIcon, Loginicon , TagIcon, DashboardIcon, AddblogIcon, AddimgIcon, Link2Icon, AutherIcon} from '../../component/Icons'
 import { Link } from 'react-router-dom'
+import { LinkIcon } from '@nextui-org/react'
 
 const AdminSidebar = () => {
   return (
@@ -41,104 +42,68 @@ const AdminSidebar = () => {
                   to="/admin"
                   class="flex items-center px-2 py-2 text-gray-700 bg-gray-100 rounded-md dark:bg-gray-800 dark:text-gray-200"
                 >
-                  <Loginicon />
+                  <DashboardIcon />
                   <span class="mx-4 text-sm font-semibold ">Dashboard</span>
                 </Link>
                 <Link
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   to="AdminSidebar"
                 >
-                  <Loginicon />
+                  <CategoryIcon/>
                   <span class="mx-4 text-sm font-semibold ">Add Category</span>
                 </Link>
-                <a
-                  class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <Loginicon />
-                  <span class="mx-4 text-sm font-semibold ">View Category</span>
-                </a>
+               
                 <Link
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   to="addtag"
                 >
-                  <Loginicon />
+                  <TagIcon />
                   <span class="mx-4 text-sm font-semibold ">Add Tag</span>
                 </Link>
+              
                 <a
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   href="#"
                 >
-                  <Loginicon />
-                  <span class="mx-4 text-sm font-semibold  relative">
-                    View Tag
-                  </span>
-                </a>
-                <a
-                  class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <Loginicon />
+                  <Link2Icon />
                   <span class="mx-4 text-sm font-semibold  relative">
                     Add Image Link
                   </span>
                 </a>
+              
                 <a
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   href="#"
                 >
-                  <Loginicon />
-                  <span class="mx-4 text-sm font-semibold  relative">
-                    View Image Link
-                  </span>
-                </a>
-                <a
-                  class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <Loginicon />
+                  <AddimgIcon />
                   <span class="mx-4 text-sm font-semibold  relative">
                     Add Image
                   </span>
                 </a>
-                <a
-                  class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <Loginicon />
-                  <span class="mx-4 text-sm font-semibold  relative">
-                    View Image
-                  </span>
-                </a>
+            
 
                 <a
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   href="#"
                 >
-                  <Loginicon />
+                  <AutherIcon/>
                   <span class="mx-4 text-sm font-semibold ">Add Author</span>
                 </a>
-                <a
-                  class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="#"
-                >
-                  <Loginicon />
-                  <span class="mx-4 text-sm font-semibold ">View Auther</span>
-                </a>
+              
                 <Link
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   to="add_New_Blog"
                 >
-                  <Loginicon />
+                  <AddblogIcon />
                   <span class="mx-4 text-sm font-semibold ">Add Blog</span>
                 </Link>
-                <a
+                {/* <a
                   class="flex items-center px-2 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   href="#"
                 >
                   <Loginicon />
                   <span class="mx-4 text-sm font-semibold ">View Blog</span>
-                </a>
+                </a> */}
               </nav>
             </div>
           </div>

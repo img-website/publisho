@@ -20,6 +20,7 @@ import AdminDashboard from "../admin/components/AdminDashboard";
 import AdminLayout from "../admin/adminLayout/AdminLayout";
 import MainLayout from "./MainLayout";
 import { Addtag } from "../admin/components/Addtag";
+import { Allauthers } from "../components/Allauthers";
 
 const RouteComp = () => {
   
@@ -78,6 +79,7 @@ const RouteComp = () => {
         <Route path="/newcard" element={<Newcard/>}/>
         <Route path="/quillForm" element={<QuillForm/>}/>
         <Route path="/detailpageskeleton" element={<DetailPageSkeleton/>}/>
+        <Route path="/allauthers" element={<Allauthers/>}/>
 
         </Route>
 

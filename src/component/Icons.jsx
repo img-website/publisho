@@ -458,6 +458,117 @@ export const BackIcon = ({size = 128, width, height, ...props}) => (
         <rect width="100%" height="100%" fill="url(#nhgh)"></rect>
   </svg>
 );
+export const CategoryIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+   <path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z"></path>
+  </svg>
+);
+export const TagIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 512 512"
+    width={size || width}
+    {...props}
+  >
+   <path d="M288 16 0 304l176 176 288-288V16zm80 128a32 32 0 1 1 32-32 32 32 0 0 1-32 32z"></path>
+	 <path d="M480 64v144L216.9 471.1 242 496l270-272V64h-32z"></path>
+  </svg>
+);
+
+export const DashboardIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+   <path fill="none" d="M0 0h24v24H0z"></path>
+	 <path d="M11 21H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h6v18zm2 0h6c1.1 0 2-.9 2-2v-7h-8v9zm8-11V5c0-1.1-.9-2-2-2h-6v7h8z"></path>
+  </svg>
+);
+export const AddblogIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+   <path fill="none" d="M0 0h24v24H0z"></path>
+	 <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path>
+  </svg>
+);
+export const AddimgIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 512 512"
+    width={size || width}
+    {...props}
+  >
+  <path d="M448 405.333V106.667C448 83.198 428.802 64 405.333 64H106.667C83.198 64 64 83.198 64 106.667v298.666C64 428.802 83.198 448 106.667 448h298.666C428.802 448 448 428.802 448 405.333zM181.333 288l53.334 64 74.666-96 96 128H106.667l74.666-96z"></path>
+  </svg>
+);
+export const Link2Icon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 512 512"
+    width={size || width}
+    {...props}
+  >
+<path d="M382.7 292.5l2.7 2.7-170-167.3c-3.5-3.5-9.7-3.7-13.8-.5L144.3 171c-4.2 3.2-4.6 8.7-1.1 12.2l68.1 64.3c3.6 3.5 9.9 3.7 14 .5l.1-.1c4.1-3.2 10.4-3 14 .5l84 81.3c3.6 3.5 3.2 9-.9 12.2l-93.2 74c-4.2 3.3-10.5 3.1-14.2-.4L63.2 268c-3.5-3.5-9.7-3.7-13.9-.5L3.5 302.4c-4.2 3.2-4.7 8.7-1.2 12.2L211 510.7s7.4 6.8 17.3-.8l198-163.9c4-3.2 4.4-8.7.7-12.2zm54.5-83.4L226.7 2.5c-1.5-1.2-8-5.5-16.3 1.1L3.6 165.7c-4.2 3.2-4.8 8.7-1.2 12.2l42.3 41.7 171.7 165.1c3.7 3.5 10.1 3.7 14.3.4l50.2-38.8-.3-.3 7.7-6c4.2-3.2 4.6-8.7.9-12.2l-57.1-54.4c-3.6-3.5-10-3.7-14.2-.5l-.1.1c-4.2 3.2-10.5 3.1-14.2-.4L109 180.8c-3.6-3.5-3.1-8.9 1.1-12.2l92.2-71.5c4.1-3.2 10.3-3 13.9.5l160.4 159c3.7 3.5 10 3.7 14.1.5l45.8-35.8c4.1-3.2 4.4-8.7.7-12.2z"></path>
+  </svg>
+);
+export const AutherIcon = ({size = 24, width, height, ...props}) => (
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    focusable="false"
+		stroke-width="2"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+<path d="M16 2L21 7V21.0082C21 21.556 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918C3 2.44405 3.44495 2 3.9934 2H16ZM12 11.5C13.3807 11.5 14.5 10.3807 14.5 9C14.5 7.61929 13.3807 6.5 12 6.5C10.6193 6.5 9.5 7.61929 9.5 9C9.5 10.3807 10.6193 11.5 12 11.5ZM7.52746 17H16.4725C16.2238 14.75 14.3163 13 12 13C9.68372 13 7.77619 14.75 7.52746 17Z"></path>
+  </svg>
+);
+
+
 
 
 
