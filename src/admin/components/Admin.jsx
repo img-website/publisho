@@ -146,7 +146,7 @@ export default function Admin ()  {
             <div className='flex justify-between items-center'>
            <div className='text-xs text-slate-500'>Follwers</div>
            <div className='text-base text-red-400 flex items-center'>0.54% 
-            <span className='rotate-180 '>
+            <span className='rotate-180'>
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>
             </span>
            </div>
