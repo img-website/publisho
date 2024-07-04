@@ -27,7 +27,7 @@ import { capitalize } from "./utils";
 import { collection, deleteDoc, doc, getDocs, orderBy } from 'firebase/firestore';
 import { db } from "../../../context/Firebase";
 import { toast } from "sonner";
-import AddAuthorModal from "./AddAuthorModal";
+import AddCategoryModal from "./AddCategoryModal";
 
 const statusColorMap = {
   active: "success",
@@ -37,7 +37,7 @@ const statusColorMap = {
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "status", "actions"];
 
-export default function AddAuthorTable() {
+export default function AddCategoryTable() {
   const [filterValue, setFilterValue] = useState("");
   const [selectedKeys, setSelectedKeys] = useState(new Set([]));
   const [visibleColumns, setVisibleColumns] = useState(new Set(INITIAL_VISIBLE_COLUMNS));
@@ -49,28 +49,28 @@ export default function AddAuthorTable() {
     direction: "ascending",
   });
   const [page, setPage] = useState(1);
-  const [author, setAuthor] = useState([]);
-  const [editauthor, setEditAuthor] = useState(null);
+  const [category, setCategory] = useState([]);
+  const [editcategory, setEditCategory] = useState(null);
   const [loading, setLoading] = useState(true);
 
-    const fetchAuthor = async () => {
+    const fetchCategory = async () => {
       setLoading(true);
       try {
-        const querySnapshot = await getDocs(collection(db, 'addAuthors'),orderBy("createdAt", "desc"))
-        const authorData = querySnapshot.docs.map(doc => ({
+        const querySnapshot = await getDocs(collection(db, 'addCategory'),orderBy("createdAt", "desc"))
+        const categoryData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
-        setAuthor(authorData);
+        setCategory(categoryData);
       } catch (error) {
-        console.error('Error fetching author: ', error);
+        console.error('Error fetching category: ', error);
       } finally{
         setLoading(false);
       }
     };
 
     useEffect(() => {
-      fetchAuthor();
+      fetchCategory();
     }, []);
 
   const hasSearchFilter = Boolean(filterValue);
@@ -82,21 +82,21 @@ export default function AddAuthorTable() {
   }, [visibleColumns]);
 
   const filteredItems = useMemo(() => {
-    let filteredauthor = [...author];
+    let filteredcategory = [...category];
 
     if (hasSearchFilter) {
-      filteredauthor = filteredauthor.filter((author) =>
-        author.name.toLowerCase().includes(filterValue.toLowerCase()),
+      filteredcategory = filteredcategory.filter((category) =>
+        category.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     if (statusFilter !== "all" && Array.from(statusFilter).length !== statusOptions.length) {
-      filteredauthor = filteredauthor.filter((author) =>
-        Array.from(statusFilter).includes(author.status),
+      filteredcategory = filteredcategory.filter((category) =>
+        Array.from(statusFilter).includes(category.status),
       );
     }
 
-    return filteredauthor;
-  }, [author, filterValue, statusFilter]);
+    return filteredcategory;
+  }, [category, filterValue, statusFilter]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -117,16 +117,16 @@ export default function AddAuthorTable() {
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((author, columnKey) => {
-    const cellValue = author[columnKey];
+  const renderCell = React.useCallback((category, columnKey) => {
+    const cellValue = category[columnKey];
 
     switch (columnKey) {
       case "name":
         return cellValue;
       case "status":
         return (
-          <Chip className="capitalize" color={statusColorMap[author.status ? "active" : "paused"]} size="sm" variant="dot">
-            {author.status ? "Active" : "Paused"}
+          <Chip className="capitalize" color={statusColorMap[category.status ? "active" : "paused"]} size="sm" variant="dot">
+            {category.status ? "Active" : "Paused"}
           </Chip>
         );
       case "actions":
@@ -140,8 +140,8 @@ export default function AddAuthorTable() {
               </DropdownTrigger>
               <DropdownMenu>
                 {/* <DropdownItem>View</DropdownItem> */}
-                <DropdownItem onClick={() => handleEdit(author)}>Edit</DropdownItem>
-                <DropdownItem color="danger" onClick={() => handleDelete(author.id)}>Delete</DropdownItem>
+                <DropdownItem onClick={() => handleEdit(category)}>Edit</DropdownItem>
+                <DropdownItem color="danger" onClick={() => handleDelete(category.id)}>Delete</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
@@ -151,25 +151,25 @@ export default function AddAuthorTable() {
     }
   }, []);
 
-  const handleEdit = (author) => {
-    setEditAuthor(author);
+  const handleEdit = (category) => {
+    setEditCategory(category);
     onOpenChange(true);
   };
 
-  const handleDelete = async (authorId) => {
-    await deleteDoc(doc(db, "addAuthors", authorId));
-    setAuthor(author.filter((author) => author.id !== authorId));
-    toast.success("author deleted successfully");
-    fetchAuthor();
+  const handleDelete = async (categoryId) => {
+    await deleteDoc(doc(db, "addCategory", categoryId));
+    setCategory(category.filter((category) => category.id !== categoryId));
+    toast.success("category deleted successfully");
+    fetchCategory();
   };
 
-  const handleOpenModel = (author) => {
-    setEditAuthor("");
+  const handleOpenModel = (category) => {
+    setEditCategory("");
     onOpenChange(true);
   };
 
   const handleCloseModel = () => {
-    setEditAuthor(null);
+    setEditCategory(null);
     onOpenChange(false);
   };
 
@@ -266,7 +266,7 @@ export default function AddAuthorTable() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {author.length} author</span>
+          <span className="text-default-400 text-small">Total {category.length} category</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -286,7 +286,7 @@ export default function AddAuthorTable() {
     statusFilter,
     visibleColumns,
     onRowsPerPageChange,
-    author.length,
+    category.length,
     onSearchChange,
     hasSearchFilter,
   ]);
@@ -332,7 +332,7 @@ export default function AddAuthorTable() {
         wrapper: "max-h-[382px]",
       }}
       selectedKeys={selectedKeys}
-      // selectionMode="multiple"
+      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
@@ -351,7 +351,7 @@ export default function AddAuthorTable() {
         )}
       </TableHeader>
 
-      <TableBody emptyContent={loading ? <Spinner color="current" size="lg" /> : "No Authors found"} items={sortedItems}>
+      <TableBody emptyContent={loading ? <Spinner color="current" size="lg" /> : "No Categories found"} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
@@ -360,7 +360,7 @@ export default function AddAuthorTable() {
         )}
       </TableBody>
     </Table>
-    {isOpen && <AddAuthorModal isOpen={isOpen}  onOpenChange={onOpenChange} authors={editauthor}  fetchData={fetchAuthor}/>}
+    {isOpen && <AddCategoryModal isOpen={isOpen}  onOpenChange={onOpenChange} category={editcategory}  fetchData={fetchCategory}/>}
     </>
   );
 }

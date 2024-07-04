@@ -1,18 +1,12 @@
 import React from 'react'
-import {Input, Button} from "@nextui-org/react";
-import DashboardTable from './dashboardTable/Table';
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox, Link} from "@nextui-org/react";
-import AddTagTable from './addtagTable/Table';
+import AddCategoryTable from './addCategoryTable/Table'
 
-export const Addtag = () => {
-
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
- 
+const AddCategory = () => {
   return (
-    <>
-    <div className='pt-24 px-4'>
+    <div>
+         <div className='pt-24 px-4'>
       <div className='font-semibold text-xl mb-4'>
-        Add Topic
+        Add Category
       </div>
       {/* <Button onPress={onOpen} className='border-black bg-white border-2 font-semibold hover:bg-black hover:text-white'>Open Modal</Button>
       <Modal 
@@ -41,11 +35,10 @@ export const Addtag = () => {
           )}
         </ModalContent>
       </Modal> */}
-      <AddTagTable />
+      <AddCategoryTable />
     </div>
-    {/* view tag */}
-    
-
-    </>
+    </div>
   )
 }
+
+export default AddCategory

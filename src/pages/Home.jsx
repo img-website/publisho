@@ -13,6 +13,7 @@ import {
   motion,
   animate,
 } from "framer-motion";
+import LatestThreeBlogs from "../components/LatestThreeBlogs";
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 function Home() {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["1"]));
@@ -86,125 +87,12 @@ function Home() {
         
         <TopBlogs/>
       </div>
-      {/* blog ui */}
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full relative z-1">
-        <div className="flex flex-wrap justify-between">
-          <div className="max-w-7xl px-6 lg:px-8 mt-10 mx-auto border-b py-5 overflow-hidden bg-white shadow-2xl p-2 rounded-xl w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 my-10">
-            <div className="lg:max-w-[536px] w-full">
-              <a href="blog-single.html">
-                <img
-                  className="w-full shadow-2xl rounded-xl"
-                  src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fHByb3BlcnR5fGVufDB8fDB8fHww"
-                  alt="hero"
-                />
-              </a>
-            </div>
-            <div className="lg:max-w-[540px] w-full mt-4 lg:mt-0">
-              <a
-                href="category.html"
-                className="inline-flex text-purple-dark bg-purple-200/60 font-medium text-sm py-1 px-3 rounded-full mb-4"
-              >
-                Lifestyle
-              </a>
-              <h1 className="font-bold text-custom-4 xl:text-heading-4 text-dark dark:text-white mb-4 ">
-                <a href="blog-single.html">
-                  Begin here to obtain a brief summary encompassing all the
-                  essential
-                </a>
-              </h1>
-              <p className="max-w-[524px]">
-                This comprehensive post serves as your cheat-sheet to swiftly
-                familiarize yourself with Ghost. Packed with crucial...
-              </p>
-              <div className="flex items-center gap-2.5 mt-5">
-                <a href="author.html" className="flex items-center gap-3">
-                  <div className="flex w-6 h-6 rounded-full overflow-hidden *:object-cover">
-                    <img
-                      src="https://plus.unsplash.com/premium_photo-1682096186855-3f32647abe68?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="user"
-                    />
-                  </div>
-                  <p className="text-sm">Adrio Devid</p>
-                </a>
-                <span className="flex w-[3px] h-[3px] rounded-full bg-dark-2"></span>
-                <p className="text-sm">Sep 10, 2025</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-4 ">
-            <div className=" flex bg-white rounded-xl shadow-2xl p-2 flex-col sm:flex-row sm:items-center gap-6 shadow-1">
-              <div className="w-full">
-                <a href="blog-single.html">
-                  <img
-                    className="w-full rounded-2xl"
-                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
-                    alt="hero"
-                  />
-                </a>
-              </div>
-              <div className=" w-full">
-                <a
-                  href="category.html"
-                  className="inline-flex text-blue bg-blue-400/50 font-medium text-sm py-1 px-3 rounded-full mb-4"
-                >
-                  Technology
-                </a>
-                <h2 className="font-semibold text-custom-lg text-dark mb-3">
-                  <a href="blog-single.html">
-                    14 Innovative Architectural Designs to Create a Vast
-                    Interior Space
-                  </a>
-                </h2>
-                <div className="flex items-center gap-2.5">
-                  <p className="text-sm">
-                    <a href="author.html">By Adrio Devid</a>
-                  </p>
-                  <span className="flex w-[3px] h-[3px] rounded-full bg-dark-2"></span>
-                  <p className="text-sm">Sep 10, 2025</p>
-                </div>
-              </div>
-            </div>
-
-            <div className=" flex bg-white rounded-xl shadow-2xl p-2 flex-col sm:flex-row sm:items-center gap-6 shadow-1">
-              <div className="w-full">
-                <a href="blog-single.html">
-                  <img
-                    className="w-full rounded-2xl"
-                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
-                    alt="hero"
-                  />
-                </a>
-              </div>
-              <div className=" w-full">
-                <a
-                  href="category.html"
-                  className="inline-flex text-blue bg-blue-400/50 font-medium text-sm py-1 px-3 rounded-full mb-4"
-                >
-                  Technology
-                </a>
-                <h2 className="font-semibold text-custom-lg text-dark mb-3">
-                  <a href="blog-single.html">
-                    14 Innovative Architectural Designs to Create a Vast
-                    Interior Space
-                  </a>
-                </h2>
-                <div className="flex items-center gap-2.5">
-                  <p className="text-sm">
-                    <a href="author.html">By Adrio Devid</a>
-                  </p>
-                  <span className="flex w-[3px] h-[3px] rounded-full bg-dark-2"></span>
-                  <p className="text-sm">Sep 10, 2025</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* blog ui start*/}
+     <LatestThreeBlogs/>
       {/* blog-ui end */}
-      {/* top author */}
 
+      {/* top author start*/}
     <div>
       <TopAuthers/>
     </div>

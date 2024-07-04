@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Aeroicon, BackIcon } from "../component/Icons";
 import { Link } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../context/Firebase";
 import SkeletonLoader from "./skeleton/Skeleton";
 import { toast } from "sonner";
@@ -16,13 +16,17 @@ function TopBlogs() {
     const fetchBlogs = async () => {
       setSkeletonLoading(true);
       try {
-        const blogContent = await getDocs(collection(db, "blogs"));
+        const blogsQuery = query(
+          collection(db, "blogs"),
+          orderBy("createdAt", "desc"),
+          limit(6)
+        );
+        const blogContent = await getDocs(blogsQuery);
         const blogsList = blogContent.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setBlogsData(blogsList);
-        console.log(blogsList, "ajoidjasodijiodjio");
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -33,44 +37,6 @@ function TopBlogs() {
     fetchBlogs();
   }, []);
 
-  // const blogData = [
-  //     {
-  //       id: 1,
-  //       imageSrc: "https://images.unsplash.com/photo-1609703048009-d3576872b32c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1lcmNlZGVzfGVufDB8fDB8fHww",
-  //       title: "Stylish Kitchen And Dining Room With Functional Ideas",
-  //       description: "Lorem Ipsum is simply dummy text of the print and typesetting industry...",
-  //       author: {
-  //         name: "Adrio Devid",
-  //         imageSrc: "https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  //       },
-  //       date: "Sep 10, 2025",
-  //       category: "Travel"
-  //     },
-  //     {
-  //       id: 2,
-  //       imageSrc: "https://plus.unsplash.com/premium_photo-1687960117069-567a456fe5f3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //       title: "Stylish Kitchen And Dining Room With Functional Ideas",
-  //       description: "Lorem Ipsum is simply dummy text of the print and typesetting industry...",
-  //       author: {
-  //         name: "Adrio Devid",
-  //         imageSrc: "https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  //       },
-  //       date: "Sep 10, 2025",
-  //       category: "Travel"
-  //     },
-  //     {
-  //       id: 3,
-  //       imageSrc: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBvbGl0aWNzfGVufDB8fDB8fHww",
-  //       title: "Stylish Kitchen And Dining Room With Functional Ideas",
-  //       description: "Lorem Ipsum is simply dummy text of the print and typesetting industry...",
-  //       author: {
-  //         name: "Adrio Devid",
-  //         imageSrc: "https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  //       },
-  //       date: "Sep 10, 2025",
-  //       category: "Travel"
-  //     }
-  //   ];
   return (
     <div>
       <div>
@@ -159,7 +125,6 @@ function TopBlogs() {
                               </a>
                             </div>
                             <div className="group relative">
-                              
                               <a
                                 href="#"
                                 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600 line-clamp-2 before:absolute before:inset-0 before:z-10"

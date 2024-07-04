@@ -21,6 +21,9 @@ import AdminLayout from "../admin/adminLayout/AdminLayout";
 import MainLayout from "./MainLayout";
 import { Addtag } from "../admin/components/Addtag";
 import { Allauthers } from "../components/Allauthers";
+import AddCategory from "../admin/components/AddCategory";
+import AddAuthor from "../admin/components/AddAuthor";
+import AddImagesForTable from "../admin/components/AddImagesForTable";
 
 const RouteComp = () => {
   
@@ -88,8 +91,11 @@ const RouteComp = () => {
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />}/>
           <Route path="AdminSidebar" element={<AdminSidebar />} />
-          <Route path="add_New_Blog" element={<Newblog />} />
-          <Route path="addtag" element={<Addtag/>}/>
+          <Route path="addnewblog" element={<Newblog />} />
+          <Route path="addTopic" element={<Addtag/>}/>
+          <Route path="addCategory" element={<AddCategory/>}/>
+          <Route path="addauthor" element={<AddAuthor/>}/>
+          <Route path="addimagesforblog" element={<AddImagesForTable/>}/>
         </Route>
       </Routes>
      

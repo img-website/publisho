@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { Timestamp, addDoc, collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import {
   Select,
   SelectItem,
@@ -18,6 +18,8 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import { Link } from "react-router-dom";
+import SetUniqueSlug from "./handleSlug/SetUniqueSlug";
+import { toast } from "sonner";
 
 export const users2 = [
   {
@@ -446,6 +448,10 @@ export const Newblog = () => {
   const [image, setImage] = useState(null);
   const [QillValue, setQillValue] = useState("");
   const formRef = useRef(null);
+  const [getTags, setGetTags] = useState([])
+  const [getCategory, setGetCategory] = useState([])
+  const [getAuthors, setGetAuthors] = useState([]);
+  const [isSlugValid, setIsSlugValid] = useState(false);
   const [data, setData] = useState({
     title: "",
     shortDescription: "",
@@ -469,18 +475,13 @@ export const Newblog = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value, "name value")
     setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  // useEffect(()=>{
-  
-
-  // },[data.Select_Author])
-  // const ss =  data.Select_Author.split('-')
-  //  console.log( ss[0], ss[1] ,"qwdioasjosdj")
   const addBlogData = async () => {
     setIsLoading(true);
     if (image) {
@@ -511,12 +512,14 @@ export const Newblog = () => {
       submitFormData();
     }
   };
-  // console.log('data outside', data)
 
   const submitFormData = async (downloadURL) => {
     try {
       const { bannerImgUrl, ...payload } = data;
-
+      if (!isSlugValid) {
+        toast.error("Slug is invalid or already exists. Please fix the slug before submitting.");
+        return;
+      }
       console.log('data', {
         authorID: currentUser?.uid,
         ...payload,
@@ -557,6 +560,7 @@ export const Newblog = () => {
       setFaqs([{ id: Math.random() * 1000, question: "", answer: "" }])
       setQillValue("");
       formRef.current.reset();
+      toast.success("Blog added successfully");
     } catch (error) {
       console.info("form submit error", error);
     } finally {
@@ -582,6 +586,7 @@ export const Newblog = () => {
     });
     setFaqs((prev) => mapped);
   };
+  
   const addFaq = () => {
     setFaqs((prevFaqs) => [
       ...prevFaqs,
@@ -596,7 +601,84 @@ export const Newblog = () => {
     }
   };
 
-  // console.log({ faqs });
+  // data fetch of tags 
+
+  const fetchTags = async () => {
+    
+    try {
+      const tagsQuery = query(
+        collection(db, 'tags'),
+        where('status', '==', true),
+      );
+      const querySnapshot = await getDocs(tagsQuery)
+      const tagsData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setGetTags(tagsData);
+    } catch (error) {
+      console.error('Error fetching tags: ', error);
+    } finally {
+      
+    }
+  };
+
+  useEffect(() => {
+    fetchTags();
+  }, []);
+
+  // data fetch category 
+
+  const fetchCategory = async () => {
+    try {
+      const tagsQuery = query(
+        collection(db, 'addCategory'),
+        where('status', '==', true),
+      );
+      const querySnapshot = await getDocs(tagsQuery)
+      const categoryData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setGetCategory(categoryData);
+    } catch (error) {
+      console.error('Error fetching category: ', error);
+    } finally{
+    }
+  };
+
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+  
+  // data fetch for author 
+
+  const fetchAuthor = async () => {
+    try {
+      const tagsQuery = query(
+        collection(db, 'addAuthors'),
+        where('status', '==', true),
+      );
+      const querySnapshot = await getDocs(tagsQuery)
+      const authorData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setGetAuthors(authorData);
+    } catch (error) {
+      console.error('Error fetching author: ', error);
+    } finally{
+    }
+  };
+
+  useEffect(() => {
+    fetchAuthor();
+  }, []);
+
+  const handleSlugChange = (newSlug) => {
+    setData((prevState) => ({ ...prevState, slug: newSlug }));
+  };
+
   return (
     <>
       <div className={`col-span-12 md:col-span-9 lg:col-span-10 overflow-y-auto ${isLoading ?  "pointer-events-none" : ""}`}>
@@ -654,7 +736,8 @@ export const Newblog = () => {
                 variant="bordered"
                 // validationBehavior="native"
                 // isRequired
-                placeholder="Select an category"
+                // placeholder="Select an category"
+                placeholder={getCategory.length === 0 ? "you don't have any category yet" : "Select an category"}
                 // selectedKeys={[value]}
                 className="w-full"
                 onChange={handleChange}
@@ -664,18 +747,19 @@ export const Newblog = () => {
                   trigger: "h-12",
                 }}
               >
-                {animals.map((animal) => (
-                  <SelectItem key={animal.key}>{animal.label}</SelectItem>
+                {getCategory.map((item) => (
+                  <SelectItem key={item.name}>{item.name}</SelectItem>
                 ))}
               </Select>
             </div>
 
             <div className="">
               <Select
-                items={users}
+                items={getAuthors}
                 label="Select a Author"
                 name="Select_Author"
-                placeholder="Select a Author"
+                placeholder={getAuthors?.length === 0 ? "you don't have any Author yet" : "Select a Author"}
+                // placeholder="Select a Author"
                 // validationBehavior="native"
                 // isRequired
                 variant="bordered"
@@ -728,8 +812,8 @@ export const Newblog = () => {
               <Input
                 type="text"
                 name="title"
-                // validationBehavior="native"
-                // isRequired
+                validationBehavior="native"
+                isRequired
                 // labelPlacement="outside"
                 label="Title"
                 variant="bordered"
@@ -743,11 +827,13 @@ export const Newblog = () => {
               />
             </div>
             <div>
-              <Input
+
+              <SetUniqueSlug value={data.slug} onChange={handleSlugChange} setIsValid={setIsSlugValid}/>
+              {/* <Input
                 type="text"
                 name="slug"
-                // validationBehavior="native"
-                // isRequired
+                validationBehavior="native"
+                isRequired
                 // labelPlacement="outside"
                 label="Slug"
                 variant="bordered"
@@ -758,7 +844,7 @@ export const Newblog = () => {
                 }}
                 onChange={handleChange}
                 value={data.slug}
-              />
+              /> */}
             </div>
             <div>
               <div className="w-full flex flex-row gap-4">
@@ -776,6 +862,8 @@ export const Newblog = () => {
               <input
                 type="file"
                 name="bannerImgUrl"
+                validationBehavior="native"
+                isRequired
                 onChange={uploadImage}
                 // name="file-input"
                 id="file-input"
@@ -830,11 +918,11 @@ export const Newblog = () => {
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div>
               <Select
-                items={users}
+                items={getTags}
                 variant="bordered"
                 name="Select_Tag"
                 label="tags"
-                placeholder="Add tags here"
+                placeholder={getTags.length === 0 ? "you don't have any tags yet" : "Add tags here"}
                 selectionMode="multiple"
                 classNames={{
                   base: "w-full",
@@ -855,17 +943,17 @@ export const Newblog = () => {
                 {(user) => (
                   <SelectItem key={user.name} textValue={user.name}>
                     <div className="flex gap-2 items-center">
-                      <Avatar
+                      {/* <Avatar
                         alt={user.name}
                         className="flex-shrink-0"
                         size="sm"
                         src={user.avatar}
-                      />
+                      /> */}
                       <div className="flex flex-col">
                         <span className="text-small">{user.name}</span>
-                        <span className="text-tiny text-default-400">
-                          {user.email}
-                        </span>
+                        {/* <span className="text-tiny text-default-400">
+                          {user.status === true ? "Active" : "Inactive"}
+                        </span> */}
                       </div>
                     </div>
                   </SelectItem>

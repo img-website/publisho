@@ -16,6 +16,7 @@ import {
   User,
   Pagination,
   useDisclosure,
+  Spinner,
 } from "@nextui-org/react";
 import {PlusIcon} from "./PlusIcon";
 import {VerticalDotsIcon} from "./VerticalDotsIcon";
@@ -24,7 +25,7 @@ import {ChevronDownIcon} from "./ChevronDownIcon";
 import { columns, statusOptions } from "./data";
 import { capitalize } from "./utils";
 import AddTagModal from "./AddTagModal";
-import { collection, deleteDoc, doc, getDocs, orderBy } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { db } from "../../../context/Firebase";
 import { toast } from "sonner";
 
@@ -50,10 +51,17 @@ export default function AddTagTable() {
   const [page, setPage] = useState(1);
   const [tags, setTags] = useState([]);
   const [editTag, setEditTag] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
     const fetchTags = async () => {
+      setLoading(true);
       try {
-        const querySnapshot = await getDocs(collection(db, 'tags'),orderBy("createdAt", "desc"))
+        const tagsQuery = query(
+          collection(db, 'tags'),
+          orderBy('createdAt', 'desc')
+        );
+        const querySnapshot = await getDocs(tagsQuery)
         const tagsData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
@@ -61,6 +69,8 @@ export default function AddTagTable() {
         setTags(tagsData);
       } catch (error) {
         console.error('Error fetching tags: ', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -345,7 +355,7 @@ export default function AddTagTable() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={"No tags found"} items={sortedItems}>
+      <TableBody emptyContent={loading ? <Spinner color="current" size="lg" /> : "No tags found"} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

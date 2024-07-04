@@ -7,7 +7,7 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 import SkeletonLoader from "../components/skeleton/Skeleton";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../context/Firebase";
 import { Link } from "react-router-dom";
 function Category () {
@@ -18,7 +18,11 @@ function Category () {
     const fetchBlogs = async () => {
       setSkeletonLoading(true);
       try {
-        const blogContent = await getDocs(collection(db, "blogs"));
+        const blogsQuery = query(
+          collection(db, "blogs"),
+          orderBy("createdAt", "desc"),
+        );
+        const blogContent = await getDocs(blogsQuery);
         const blogsList = blogContent.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -364,7 +368,7 @@ function Category () {
               blogsData.map((blog) => (
                 <div key={blog.id} className="rounded-2xl group/blog relative">
                   <Link to={`/blog/${blog?.slug}`}>
-                    <div className="flex flex-col items-start justify-between w-full bg-white rounded-2xl rounded-br-none shadow-xl shadow-gray-300">
+                    <div className="flex h-full flex-col items-start justify-between w-full bg-white rounded-2xl rounded-br-none shadow-xl shadow-gray-300">
                       <img
                         className="w-full aspect-[385/221] object-cover rounded-2xl rounded-br-none"
                         width="385"
